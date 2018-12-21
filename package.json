@@ -1,0 +1,31 @@
+{
+  "name": "LaunchPadv2.0",
+  "version": "1.0.0",
+  "description": "LaunchPad version 2.0 - site redesign",
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier --write '**/*.{js,jsx,json}'",
+    "lint": "eslint '**/*.{js,jsx,json}' --quiet"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kozlowsm/LaunchPadv2.0.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kozlowsm/LaunchPadv2.0/issues"
+  },
+  "homepage": "https://github.com/kozlowsm/LaunchPadv2.0#readme",
+  "devDependencies": {
+    "eslint": "^5.10.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-react": "^7.11.1",
+    "prettier": "^1.15.3"
+  }
+}

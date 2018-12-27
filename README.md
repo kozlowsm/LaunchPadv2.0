@@ -16,5 +16,10 @@ LaunchPad version 2.0 - site redesign
 - Make sure the receiving branch and the merging branch are up-to-date with the latest remote changes; execute `git pull` on the receiving (master) branch.
 - Execute `git merge <branch name>` where 'branch name' is the merging branch.
 
-## CSS style guidelines:
+## CSS/HTML style guidelines:
 - https://css-tricks.com/bem-101/ - **Naming convention**
+- https://www.toptal.com/front-end/frontend-clean-code-guide - **clean front-end code**
+
+
+## JavaScript/Node.js guidelines:
+- https://github.com/i0natan/nodebestpractices/blob/master/README.md - **Node best practices**

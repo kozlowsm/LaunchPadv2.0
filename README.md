@@ -26,6 +26,7 @@ LaunchPad version 2.0 - site redesign
 - https://css-tricks.com/bem-101/ - **Naming convention**
 - https://www.toptal.com/front-end/frontend-clean-code-guide - **clean front-end code**
 - https://en.bem.info/methodology/quick-start/ - **BEM methodology**
+- http://getbem.com/introduction/ - **Simple BEM Guide**
 
 
 ## JavaScript/Node.js guidelines:

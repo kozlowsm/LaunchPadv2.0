@@ -27,6 +27,8 @@ LaunchPad version 2.0 - site redesign
 - https://www.toptal.com/front-end/frontend-clean-code-guide - **clean front-end code**
 - https://en.bem.info/methodology/quick-start/ - **BEM methodology**
 - http://getbem.com/introduction/ - **Simple BEM Guide**
+- https://css-tricks.com/snippets/css/a-guide-to-flexbox/ - **Complete Flexbox Guide**
+- https://css-tricks.com/snippets/css/complete-guide-grid/ - **Complete Grid Guide**
 
 
 ## JavaScript/Node.js guidelines:

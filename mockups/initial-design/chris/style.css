@@ -46,7 +46,15 @@ body {
   height: 100%;
   background-color: #232323;
   z-index: 10;
-  transition: 1s;
+
+  margin-left: -60%;
+  transition-property: margin-left;
+  transition-duration: 0.5s;
+  transition-timing-function: cubic-bezier(.34,1.07,.68,.99);
+}
+
+.sidebar--open {
+  margin-left: 0;
 }
 
 .sidebar__exit {
@@ -71,4 +79,14 @@ body {
   background-color: black;
   opacity: 0.40;
   z-index: 1;
+}
+
+@keyframes slidein {
+  from {
+    margin-left:-60%;
+  }
+
+  to {
+    margin-left: 0;
+  }
 }

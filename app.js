@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Templating engine setup
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
-app.set('view engines', 'handlebars');
+app.set('view engine', 'handlebars');
 
 // Routes
 app.use('/', index);

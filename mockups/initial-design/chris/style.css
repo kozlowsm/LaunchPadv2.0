@@ -2,25 +2,29 @@ body {
   margin: 0;
   font-family: 'Open Sans Light', sans-serif;
   background-color: #dddbdb;
+  /* May need to be moved to a more specific rule */
+  overflow: hidden;
 }
 
 .navbar {
   background-color: #232323;
   width: 100%;
-  height: 88px;
+  height: 60px;
 
   display: flex;
   flex-wrap: nowrap;
+  flex-direction: row-reverse;
   align-items: center;
   justify-content: flex-start;
+
+  z-index: 10;
 }
 
 .hamburger {
-  height: 31px;
-  width: 35px;
+  height: 60px;
+  width: 60px;
   background-color: #232323;
   border: none;
-  margin-left: 5%;
   padding: 0;
 }
 
@@ -40,35 +44,43 @@ body {
 
 .sidebar {
   position: absolute;
-  left: 0;
-  top: 0;
+  right: 0;
+  top: 60;
   width: 60%;
-  height: 100%;
-  background-color: #232323;
-  z-index: 10;
-  transition: 1s;
+  height: calc(100% - 60px);
+  background-color: #383838;
+  z-index: 20;
+
+  margin-right: -60%;
+  transition-property: margin-right;
+  transition-duration: 0.4s;
+  transition-timing-function: cubic-bezier(.34,1.07,.68,.99);
 }
 
-.sidebar__exit {
+.sidebar--open {
+  margin-right: 0;
+}
+
+.close-sidebar-button{
   position: absolute;
-  left: 80%;
-  margin-top: 5%;
+  right: 0;
   border: none;
-  width: 35px;
-  height: 35px;
-  font-size: 30px;
-  background-color: #232323;
-  color: #f5851f;
-  font-weight: 200;
+  padding: none;
+  height: 60px;
+  width: 60px;
+  background: linear-gradient(90deg, rgba(175,83,0,1) 0%, rgba(245,133,31,1) 100%);
+  color: #383838;
+  font-size: 36px;
+  z-index: 20;
 }
 
 .dark-screen {
   position: absolute;
   left: 0;
-  top: 0;
+  top: 60;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 60px);
   background-color: black;
   opacity: 0.40;
-  z-index: 1;
+  z-index: 10;
 }

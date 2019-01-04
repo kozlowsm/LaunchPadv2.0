@@ -10,7 +10,9 @@ router.get('/', (req, res) => {
     .then(data => {
       res.render('index/index', { data });
     })
-    .catch(err => new Error(err));
+    .catch(err => {
+      throw new Error(err);
+    });
 });
 
 module.exports = router;

@@ -5,6 +5,7 @@ const path = require('path');
 const express = require('express');
 const exphbs = require('express-handlebars');
 const helmet = require('helmet');
+const responseTime = require('response-time');
 
 // Bring in routes
 const index = require('./routes/index');
@@ -19,6 +20,7 @@ const port = process.env.PORT || 3000;
 // Middleware
 app.use(helmet());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(responseTime());
 
 // Templating engine setup
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));

@@ -1,11 +1,13 @@
 // Built in Modules
 const path = require('path');
+const fs = require('fs');
 
 // Third party modules
 const express = require('express');
 const exphbs = require('express-handlebars');
 const helmet = require('helmet');
 const responseTime = require('response-time');
+const morgan = require('morgan');
 
 // Bring in routes
 const index = require('./routes/index');
@@ -21,6 +23,10 @@ const port = process.env.PORT || 3000;
 app.use(helmet());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(responseTime());
+
+// Setup simple logging of routes using Morgan
+const accessLogStream = fs.createWriteStream(path.join(__dirname, 'acccess.log'), {flags: 'a'});
+app.use(morgan('combined', {stream: accessLogStream}));
 
 // Templating engine setup
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));

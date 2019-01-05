@@ -37,6 +37,7 @@ npm start
 - http://getbem.com/introduction/ - **Simple BEM Guide**
 - https://css-tricks.com/snippets/css/a-guide-to-flexbox/ - **Complete Flexbox Guide**
 - https://css-tricks.com/snippets/css/complete-guide-grid/ - **Complete Grid Guide**
+- https://gist.github.com/gokulkrishh/242e68d1ee94ad05f488 - **Media Queries for Various Screens**
 
 ## JavaScript/Node.js guidelines:
 

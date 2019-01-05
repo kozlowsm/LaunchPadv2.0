@@ -1,13 +1,14 @@
 body {
   margin: 0;
   font-family: 'Open Sans Light', sans-serif;
-  background-color: #dddbdb;
+  background-color: #b0b1b3;
   /* May need to be moved to a more specific rule */
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .navbar {
-  background-color: #232323;
+  background: linear-gradient(90deg, rgba(0,84,152,1) 0%, rgba(0,101,183,1) 100%);
+  box-shadow: 0 5px 5px -5px black;
   width: 100%;
   height: 60px;
   /* Relative required for z-index and box shadow of launch-body */
@@ -30,13 +31,22 @@ body {
   font-weight: 200;
 }
 
+.side-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(164,41,37,1) 0%, rgba(255,75,69,1) 100%);
+}
+
 .launch-body {
   /* Relative required for z-index and box shadow of launch-body */
   position: relative;
-  width: 80%;
+  width: 90%;
   height: 50vh;
-  margin: 0 10%;
-  background-color: #dddddd;
+  margin: 0 15% 0 5%;
+  background-color: #dddbdb;
   box-shadow: 0px 3px 5px #8d8b8b, 
         -3px 3px 5px #8d8b8b, 3px 3px 5px #8d8b8b;
   /* box-shadow: 0px 8px 10px gray, 
@@ -47,83 +57,38 @@ body {
 .upcoming-header {
   width: 100%;
   height: 70px;
-  background: linear-gradient(90deg, rgba(167,166,166,1) 0%, rgba(187,185,185,1) 100%);
+  background: linear-gradient(90deg, rgba(2,76,135,1) 0%, rgba(0,99,180,1) 100%);
   overflow: hidden;
+  position: relative;
 
   display: grid;
   grid-template-columns: 65% 35%;
+  grid-template-rows: 100%;
 }
 
-.decoration {
-  width: 100%;
-  height: 5px;
-  background: linear-gradient(90deg, rgba(175,83,0,1) 0%, rgba(245,133,31,1) 100%);
-}
-
-.launch-name {
+.upcoming-header__launch-name {
   font-weight: 200;
-  margin: 2% 0 0 2%;
-  grid-column-start: 1
+  color: white;
+  margin: 3% 0 0 2%;
+
+  grid-column: 1 / 2
 }
 
-.timer {
-  grid-column: 2 / 3;
-  grid-row: 1 / 3;
-  background-color: #9a9a9a;
-}
-
-.timer__text {
-  /* height: 100%; */
-  color: green;
-  margin: 8% 0 0 0;
-  text-align: center;
+.upcoming-header__timer {
   font-weight: 100;
-  font-size: 30px;
-}
+  color: white;
+  margin: 6% 0 0 4%;
+  font-size: 32px;
+  letter-spacing: 6px;
 
-/* .datetime {
-  grid-area: datetime;
-  width: 90%;
-  height: 90%;
+  grid-column: 2 / 3;
 }
-
-.provider {
-  grid-area: provider;
-  width: 90%;
-  height: 90%;
-}
-
-.rocket {
-  grid-area: rocket;
-  width: 90%;
-  height: 90%;
-}
-
-.livestream {
-  grid-area: livestream;
-  width: 90%;
-  height: 90%;
-}
-
-.map {
-  grid-area: map;
-  width: 90%;
-  height: 90%;
-}*/
 
 .upcoming-body {
   height: calc(100% - 70px);
   width: 100%;
 
   display: block;
-  /* display: grid;
-  justify-items: space-between;
-  grid-template-columns: 1.5fr 1.5fr 1.5fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-template-areas: 
-    'datetime datetime datetime livestream map map map'
-    'provider provider provider livestream map map map'
-    'rocket   rocket   rocket   livestream map map map' */
 }
 
 .upcoming-component {
@@ -133,6 +98,96 @@ body {
 .upcoming-component__data {
   font-weight: 100;
 } 
+
+.launches {
+  width: 90%;
+  margin: 3% 0 0 5%;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.launch {
+  position: relative;
+  height: 80px;
+  width: 100%;
+  margin: 2% 0;
+  background-color: #dddbdb;
+  box-shadow: 3px 3px 3px grey;
+
+  display: grid;
+  grid-template-columns: 3fr 2fr 80px;
+  grid-template-rows: 60% 40%;
+  align-items: center;
+}
+
+.launch__text {
+  margin: 0;
+  width: 97%;
+
+  text-overflow: "...";
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.launch__top {
+  font-size: 26px;
+  font-weight: 400;
+}
+
+.launch__right {
+  margin-right: 3%;
+  text-align: right;
+}
+
+.launch__bottom {
+  font-size: 18px;
+  font-weight: 200;
+}
+
+.launch__left {
+  margin-left: 3%;
+}
+
+.launch__name {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.launch__date {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+.launch__provider {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+.launch__location {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+.launch__button {
+  grid-column: 3 / 4;
+  grid-row: 1 / 3;
+
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  border: none;
+  background-color: #0065b7;
+
+  transition: 0.2s;
+}
+
+.right-arrow {
+  width: 60%;
+  height: 60%;
+  margin: 20% 20%;
+  transition: 0.2s
+}
 
 @media (min-width: 320px) and (max-width: 480px) {
   .navbar__title {

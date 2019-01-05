@@ -16,13 +16,35 @@
       <!-- <div class="decoration"></div> -->
       <h1 class="upcoming-header__launch-name">Falcon 9 Block 5 | Iridium-8</h1>
       <h2 class="upcoming-header__timer">T - 06:34:10:07</h2>
+      <h2 class="upcoming-header__date">January 8, 2019 15:48:00 UTC</h2>
     </div>
     <div class="upcoming-body">
-      <h2 class="upcoming-component">Date: <span class="upcoming-component__data">January 8, 2019 15:48:00 UTC</span></h2>
-      <h2 class="upcoming-component">Provider: <span class="upcoming-component__data">SpaceX</span></h2>
-      <h2 class="upcoming-component">Rocket: <span class="upcoming-component__data">Falcon 9 Block 5</span></h2>
-      <h2 class="upcoming-component">Location: <span class="upcoming-component__data">Vandenberg AFB, CA, USA</span></h2>
-      <a class="upcoming-component" href="http://www.spacex.com/webcast" class="livstream-link">Livestream Link</a>
+      <div class="upcoming-body__data">
+        <div class="upcoming-component">
+          <label class="upcoming-component__label" for="provider">Provider</label>
+          <h3 class="upcoming-component__text upcoming-provider" name="provider">SpaceX</h3>
+        </div>
+        <div class="upcoming-component">
+          <label class="upcoming-component__label" for="rocket">Rocket</label>
+          <h3 class="upcoming-component__text upcoming-rocket" name="provider">Falcon 9 Block 5</h3>
+        </div>
+        <div class="upcoming-component">
+          <label class="upcoming-component__label" for="mission">Mission</label>
+          <div class="upcoming-component__text upcoming-mission" name="mission">
+            <h2 class="upcoming-mission__name">Iridium-8</h2>
+            <h3 class="upcoming-mission__type">Communications Mission</h3>
+            <h4 class="upcoming-mission__desc">SpaceX's Falcon 9 rocket will deliver 10 satellites to low
+              Earth orbit
+              for Iridium, a global leader in mobile voice and data satellite communications. This is the eighth set of
+              10 satellites in a series of 75 total satellites that SpaceX will launch for Iridium's next generation
+              global satellite constellation, Iridium NEXT.</h4>
+          </div>
+        </div>
+      </div>
+      <div class="upcoming-body__location">
+        <div class="upcoming-map" id="map"></div>
+        <button class="livestream-button">Watch Livestream</button>
+      </div>
     </div>
     <div class="side-decoration"></div>
   </div>
@@ -58,9 +80,71 @@
         </svg>
       </button>
     </div>
+    <div class="launch">
+      <div class="side-decoration"></div>
+      <h3 class="launch__top    launch__left launch__text launch__name">Delta IV Heavy | NROL-71</h3>
+      <h3 class="launch__bottom launch__left launch__text launch__date">January 15, 2019 00:00:00 UTC</h3>
+      <h3 class="launch__top    launch__right launch__text launch__provider">United Launch Alliance</h3>
+      <h3 class="launch__bottom launch__right launch__text launch__location">Vandenberg AFB, CA, USA</h3>
+      <button class="launch__button">
+        <svg class="right-arrow">
+          <defs>
+            <linearGradient id="red" x1="0%" y1="0%" x2="100%" y2="0%" spreadMethod="pad">
+              <stop offset="0%" stop-color="#a42925" stop-opacity="1" />
+              <stop offset="100%" stop-color="#ff4b45" stop-opacity="1" />
+            </linearGradient>
+            <!-- Made using: https://stackoverflow.com/questions/6088409/svg-drop-shadow-using-css3 -->
+            <filter id="dropshadow" height="130%">
+              <feGaussianBlur in="SourceAlpha" stdDeviation="3" /> <!-- stdDeviation is how much to blur -->
+              <feOffset dx="2" dy="2" result="offsetblur" /> <!-- how much to offset -->
+              <feComponentTransfer>
+                <feFuncA type="linear" slope="0.5" /> <!-- slope is the opacity of the shadow -->
+              </feComponentTransfer>
+              <feMerge>
+                <feMergeNode /> <!-- this contains the offset blurred image -->
+                <feMergeNode in="SourceGraphic" /> <!-- this contains the element that the filter is applied to -->
+              </feMerge>
+            </filter>
+          </defs>
+          <polygon class="right-arrow__symbol" points="24,4 44,24 24,44 24,34 4,34 4,14 24,14" fill="#b0b1b3" filter="none"></polygon>
+        </svg>
+      </button>
+    </div>
+    <div class="launch">
+      <div class="side-decoration"></div>
+      <h3 class="launch__top    launch__left launch__text launch__name">Soyuz 2.1a | Bars-M No. 3</h3>
+      <h3 class="launch__bottom launch__left launch__text launch__date">January 15, 2019 00:00:00 UTC</h3>
+      <h3 class="launch__top    launch__right launch__text launch__provider">Russian Space Forces</h3>
+      <h3 class="launch__bottom launch__right launch__text launch__location">Plesetsk Cosmodrome, Russian Federation</h3>
+      <button class="launch__button">
+        <svg class="right-arrow">
+          <defs>
+            <linearGradient id="red" x1="0%" y1="0%" x2="100%" y2="0%" spreadMethod="pad">
+              <stop offset="0%" stop-color="#a42925" stop-opacity="1" />
+              <stop offset="100%" stop-color="#ff4b45" stop-opacity="1" />
+            </linearGradient>
+            <!-- Made using: https://stackoverflow.com/questions/6088409/svg-drop-shadow-using-css3 -->
+            <filter id="dropshadow" height="130%">
+              <feGaussianBlur in="SourceAlpha" stdDeviation="3" /> <!-- stdDeviation is how much to blur -->
+              <feOffset dx="2" dy="2" result="offsetblur" /> <!-- how much to offset -->
+              <feComponentTransfer>
+                <feFuncA type="linear" slope="0.5" /> <!-- slope is the opacity of the shadow -->
+              </feComponentTransfer>
+              <feMerge>
+                <feMergeNode /> <!-- this contains the offset blurred image -->
+                <feMergeNode in="SourceGraphic" /> <!-- this contains the element that the filter is applied to -->
+              </feMerge>
+            </filter>
+          </defs>
+          <polygon class="right-arrow__symbol" points="24,4 44,24 24,44 24,34 4,34 4,14 24,14" fill="#b0b1b3" filter="none"></polygon>
+        </svg>
+      </button>
+    </div>
   </div>
 
   <script src="script.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDP3DhZbYGHFFWcTjedVNy_zRWAXnvESbY&callback=initMap"></script>
+
 </body>
 
 </html>

@@ -1,0 +1,141 @@
+body {
+  margin: 0;
+  font-family: 'Open Sans Light', sans-serif;
+  background-color: #dddbdb;
+  /* May need to be moved to a more specific rule */
+  overflow: hidden;
+}
+
+.navbar {
+  background-color: #232323;
+  width: 100%;
+  height: 60px;
+  /* Relative required for z-index and box shadow of launch-body */
+  position: relative;
+
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: flex-start;
+
+  z-index: 10;
+}
+
+.navbar__title {
+  position: absolute;
+  left: 2%;
+  color: #f9f9f9;
+  font-size: 24px;
+  font-weight: 200;
+}
+
+.launch-body {
+  /* Relative required for z-index and box shadow of launch-body */
+  position: relative;
+  width: 80%;
+  height: 50vh;
+  margin: 0 10%;
+  background-color: #dddddd;
+  box-shadow: 0px 3px 5px #8d8b8b, 
+        -3px 3px 5px #8d8b8b, 3px 3px 5px #8d8b8b;
+  /* box-shadow: 0px 8px 10px gray, 
+        -10px 8px 15px gray, 10px 8px 15px gray; */
+  z-index: 0;
+}
+
+.upcoming-header {
+  width: 100%;
+  height: 70px;
+  background: linear-gradient(90deg, rgba(167,166,166,1) 0%, rgba(187,185,185,1) 100%);
+  overflow: hidden;
+
+  display: grid;
+  grid-template-columns: 65% 35%;
+}
+
+.decoration {
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, rgba(175,83,0,1) 0%, rgba(245,133,31,1) 100%);
+}
+
+.launch-name {
+  font-weight: 200;
+  margin: 2% 0 0 2%;
+  grid-column-start: 1
+}
+
+.timer {
+  grid-column: 2 / 3;
+  grid-row: 1 / 3;
+  background-color: #9a9a9a;
+}
+
+.timer__text {
+  /* height: 100%; */
+  color: green;
+  margin: 8% 0 0 0;
+  text-align: center;
+  font-weight: 100;
+  font-size: 30px;
+}
+
+/* .datetime {
+  grid-area: datetime;
+  width: 90%;
+  height: 90%;
+}
+
+.provider {
+  grid-area: provider;
+  width: 90%;
+  height: 90%;
+}
+
+.rocket {
+  grid-area: rocket;
+  width: 90%;
+  height: 90%;
+}
+
+.livestream {
+  grid-area: livestream;
+  width: 90%;
+  height: 90%;
+}
+
+.map {
+  grid-area: map;
+  width: 90%;
+  height: 90%;
+}*/
+
+.upcoming-body {
+  height: calc(100% - 70px);
+  width: 100%;
+
+  display: block;
+  /* display: grid;
+  justify-items: space-between;
+  grid-template-columns: 1.5fr 1.5fr 1.5fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: 
+    'datetime datetime datetime livestream map map map'
+    'provider provider provider livestream map map map'
+    'rocket   rocket   rocket   livestream map map map' */
+}
+
+.upcoming-component {
+  margin: 4% 2%;
+}
+
+.upcoming-component__data {
+  font-weight: 100;
+} 
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .navbar__title {
+    left: 35%;
+  }
+}

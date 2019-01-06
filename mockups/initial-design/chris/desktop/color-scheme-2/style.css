@@ -116,7 +116,7 @@ button {
 }
 
 .upcoming-body {
-  height: calc(100% - 70px);
+  height: calc(100% - 75px);
   width: 100%;
 
   display: grid;
@@ -126,6 +126,7 @@ button {
 
 .upcoming-body__data {
   overflow: scroll;
+  margin-bottom: 5px;
 }
 
 .upcoming-component {
@@ -137,6 +138,7 @@ button {
   margin: 0 0 0 3%;
   padding: 10px 0 10px 5px;
   background-color: #c7c6c6;
+  border-radius: 3px;
   font-weight: 400;
 } 
 
@@ -186,6 +188,7 @@ button {
   margin: 2% 10%;
   background-color: #636262;
   color: white;
+  border-radius: 3px;
 
   font-size: 24px;
   font-weight: 200;

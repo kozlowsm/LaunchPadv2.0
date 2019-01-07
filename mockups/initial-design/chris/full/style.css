@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  font-family: 'Open Sans Light', sans-serif;
+  background-color: #b0b1b3;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.navbar {
+  
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  
+
+  
+}

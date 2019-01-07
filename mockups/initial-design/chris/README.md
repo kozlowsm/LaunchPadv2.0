@@ -1,4 +1,9 @@
 # Navbar and Sidebar Menus
 
 ## Instructions
-Navigate to the folder `mockups/initial-design/chris`. Each folder can be viewed independently from the other folder. With each folder, open the file `launches.html` with Firefox or Firefox Developer Edition. For the `mobile` folder, once page is open, inspect the page and click `Responsive Design Mode` in the top-right corner. For `desktop`, there is an alternate color scheme; to view it open, `launches-alt.html` in Firefox or Firefox Developer Edition.
+
+### Desktop
+Navigate to the folder `mockups/initial-design/chris/desktop`. Within this folder are different views for the same page. Each folder contains a `launches.html` file. Open that file in Firefox or Firefox Developer Edition to view the page.
+
+### Mobile
+Navigate to the folder `mockups/initial-design/chris/mobile`. Within this folder are different folders that contain "parts" of the site. Each of these folders contains a `launches.html`. Open this file in Firefox or Firefox Developer Edition to view the page.

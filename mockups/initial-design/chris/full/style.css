@@ -12,9 +12,6 @@ button {
   border: none;
 }
 
-svg {
-}
-
 /* Define navbar, navbar display, color, and shadow */
 .navbar {
   background: linear-gradient(90deg, rgba(35,35,35,1) 0%, rgba(56,56,56,1) 100%);
@@ -534,6 +531,7 @@ svg {
   }
 
   .launch__dropdown {
+    height: 60px;
     background-color: #636262;
     transition: 0.2s;
 
@@ -548,6 +546,7 @@ svg {
   }
 
   .down-arrow {
+    height: 42px;
     width: 70%;
     margin: 15%;
 
@@ -556,7 +555,7 @@ svg {
 
   .down-arrow__symbol--rotated {
   transform-origin: center;
-  transform: rotate(180deg) translate(0px, 110px);
+  transform: rotate(180deg);
 }
 
   .launch__body {

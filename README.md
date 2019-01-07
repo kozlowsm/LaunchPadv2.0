@@ -2,6 +2,19 @@
 
 LaunchPad version 2.0 - site redesign
 
+## Quick Start
+
+```bash
+# Install dependencies
+npm install
+
+# Serve on localhost:3000
+npm start
+```
+
+## Project Guidelines
+- https://github.com/elsewhencode/project-guidelines **Project Guidelines**
+
 ## Git workflow resources:
 
 - https://help.github.com/

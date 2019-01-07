@@ -1,10 +1,13 @@
 // Built in Modules
 const path = require('path');
+const fs = require('fs');
 
 // Third party modules
 const express = require('express');
 const exphbs = require('express-handlebars');
 const helmet = require('helmet');
+const responseTime = require('response-time');
+const morgan = require('morgan');
 
 // Bring in routes
 const index = require('./routes/index');
@@ -14,11 +17,17 @@ const launchProviders = require('./routes/launchProvider');
 
 // Initialize our express application
 const app = express();
-const port = process.env.PORT || 3000;
 
 // Middleware
 app.use(helmet());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(responseTime());
+
+// Setup simple logging of routes using Morgan
+const accessLogStream = fs.createWriteStream(path.join(__dirname, 'acccess.log'), { flags: 'a' });
+app.use(morgan('combined', { stream: accessLogStream }));
 
 // Templating engine setup
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
@@ -30,8 +39,4 @@ app.use('/launches', launches);
 app.use('/countries', countries);
 app.use('/launch-providers', launchProviders);
 
-// Start Listening for connections
-app.listen(port, () => {
-  // eslint-disable-next-line no-console
-  console.log(`Server started on port ${port}`);
-});
+module.exports = app;

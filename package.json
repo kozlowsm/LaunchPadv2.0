@@ -4,6 +4,7 @@
   "description": "LaunchPad version 2.0 - site redesign",
   "main": "index.js",
   "scripts": {
+    "start": "node server.js",
     "format": "prettier --write '**/*.{js,jsx,json}'",
     "lint": "eslint '**/*.{js,jsx,json}' --quiet"
   },
@@ -34,6 +35,8 @@
     "express-handlebars": "^3.0.0",
     "helmet": "^3.15.0",
     "moment": "^2.23.0",
-    "node-fetch": "^2.3.0"
+    "morgan": "^1.9.1",
+    "node-fetch": "^2.3.0",
+    "response-time": "^2.3.2"
   }
 }

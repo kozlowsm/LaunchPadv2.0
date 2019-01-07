@@ -11,6 +11,218 @@
     <h1 class="navbar__title">Launchpad</h1>
     <div class="side-decoration"></div>
   </div>
+  <div class="upcoming-launch">
+    <div class="upcoming-header">
+      <h1 class="upcoming-header__launch-name">Falcon 9 Block 5 | Iridium-8</h1>
+      <h2 class="upcoming-header__date">January 8, 2019 15:48:00 UTC</h2>
+      <h2 class="upcoming-header__timer">T - 06:34:10:07</h2>
+    </div>
+    <div class="upcoming-body">
+      <div class="upcoming-body__data">
+        <div class="upcoming-component">
+          <label for="provider" class="upcoming-component__label">Provider</label>
+          <h3 class="upcoming-component__text upcoming-provider" name="provider">SpaceX</h3>
+        </div>
+        <div class="upcoming-component">
+          <label for="rocket" class="upcoming-component__label">Rocket</label>
+          <h3 class="upcoming-component__text upcoming-rocket" name="rocket">Falcon 9 Block 5</h3>
+        </div>
+        <div class="upcoming-component">
+          <label for="mission" class="upcoming-component__label">Mission</label>
+          <div class="upcoming-component__text upcoming-mission">
+            <h2 class="upcoming-mission__name">Iridium-8</h2>
+            <h3 class="upcoming-mission__type">Communications Mission</h3>
+            <h4 class="upcoming-mission__desc">SpaceX's Falcon 9 rocket will deliver 10 satellites to low
+              Earth orbit for Iridium, a global leader in mobile voice and data satellite communications. This is the
+              eighth set of
+              10 satellites in a series of 75 total satellites that SpaceX will launch for Iridium's next generation
+              global satellite constellation, Iridium NEXT. SpaceX's Falcon 9 rocket will deliver 10 satellites to low
+              Earth orbit for Iridium, a global leader in mobile voice and data satellite communications. This is the
+              eighth set of
+              10 satellites in a series of 75 total satellites that SpaceX will launch for Iridium's next generation
+              global satellite constellation, Iridium NEXT.</h4>
+          </div>
+        </div>
+      </div>
+      <div class="upcoming-body__location">
+        <div class="upcoming-map--desktop" id="map-desktop"></div>
+        <div class="upcoming-component map-component">
+          <label for="location" class="upcoming-component__label">Location</label>
+          <div class="upcoming-component__text" name="location">
+            <div class="upcoming-map--mobile" id="map-mobile"></div>
+          </div>
+        </div>
+        <button class="livestream-button">Watch Livestream</button>
+      </div>
+    </div>
+    <div class="side-decoration"></div>
+  </div>
+  <div class="launches">
+    <div class="launch">
+      <div class="side-decoration"></div>
+      <div class="launch__header">
+        <h3 class="launch__top    launch__left  launch__text launch__title">Electron | Outerspace 1 and ISILaunch
+          cubesats</h3>
+        <h3 class="launch__bottom launch__left  launch__text launch__date">January 10, 2019 00:00:00 UTC</h3>
+        <h3 class="launch__top    launch__right launch__text launch__provider">Rocket Lab Ltd</h3>
+        <h3 class="launch__bottom launch__right launch__text launch__location">Onenui Station, Mahia Peninsula, New
+          Zealand</h3>
+        <button class="launch__dropdown">
+          <svg class="down-arrow">
+            <defs>
+              <!-- Linear Gradient def -->
+              <linearGradient id="grad-mob" x1="100%" y1="0%" x2="0%" y2="0%" spreadMethod="pad">
+                <stop offset="0%" stop-color="#af5300" stop-opacity="1" />
+                <stop offset="100%" stop-color="#f5851f" stop-opacity="1" />
+              </linearGradient>
+              <!-- Made using: https://stackoverflow.com/questions/6088409/svg-drop-shadow-using-css3 -->
+              <filter id="dropshadow-mob" height="130%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="3" /> <!-- stdDeviation is how much to blur -->
+                <feOffset dx="2" dy="2" result="offsetblur" /> <!-- how much to offset -->
+                <feComponentTransfer>
+                  <feFuncA type="linear" slope="0.5" /> <!-- slope is the opacity of the shadow -->
+                </feComponentTransfer>
+                <feMerge>
+                  <feMergeNode /> <!-- this contains the offset blurred image -->
+                  <feMergeNode in="SourceGraphic" /> <!-- this contains the element that the filter is applied to -->
+                </feMerge>
+              </filter>
+            </defs>
+            <polygon class="down-arrow__symbol" id="down-arrow" points="16,6 26,6 26,21 36,21 21,36 6,21 16,21" fill="#b0b1b3"
+              filter="none"></polygon>
+          </svg>
+        </button>
+        <button class="launch__button">
+          <svg class="right-arrow">
+            <defs>
+              <!-- Linear Gradient def -->
+              <linearGradient id="grad-desk" x1="0%" y1="0%" x2="100%" y2="0%" spreadMethod="pad">
+                <stop offset="0%" stop-color="#af5300" stop-opacity="1" />
+                <stop offset="100%" stop-color="#f5851f" stop-opacity="1" />
+              </linearGradient>
+              <!-- Made using: https://stackoverflow.com/questions/6088409/svg-drop-shadow-using-css3 -->
+              <filter id="dropshadow-desk" height="130%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="3" /> <!-- stdDeviation is how much to blur -->
+                <feOffset dx="2" dy="2" result="offsetblur" /> <!-- how much to offset -->
+                <feComponentTransfer>
+                  <feFuncA type="linear" slope="0.5" /> <!-- slope is the opacity of the shadow -->
+                </feComponentTransfer>
+                <feMerge>
+                  <feMergeNode /> <!-- this contains the offset blurred image -->
+                  <feMergeNode in="SourceGraphic" /> <!-- this contains the element that the filter is applied to -->
+                </feMerge>
+              </filter>
+            </defs>
+            <polygon class="right-arrow__symbol" id="right-arrow" points="24,4 44,24 24,44 24,34 4,34 4,14 24,14" fill="#b0b1b3"
+              filter="none"></polygon>
+          </svg>
+        </button>
+      </div>
+      <div class="launch__body">
+        <div class="launch__name--mobile launch__info">
+          <label for="name">Name</label>
+          <h3 class="launch__text launch__subtext" name="name">Electron | Outerspace 1 and ISILaunch cubesats</h3>
+        </div>
+        <div class="launch__date--mobile launch__info">
+          <label for="date">Date</label>
+          <h3 class="launch__text launch__subtext" name="date">January 10, 2019 00:00:00 UTC</h3>
+        </div>
+        <div class="launch__provider--mobile launch__info">
+          <label for="provider">Provider</label>
+          <h3 class="launch__text launch__subtext" name="provider">Rocket Lab Ltd</h3>
+        </div>
+        <div class="launch__location--mobile launch__info">
+          <label for="location">Location</label>
+          <h3 class="launch__text launch__subtext" name="location">Onenui Station, Mahia Peninsula, New
+            Zealand</h3>
+        </div>
+        <button class="launch__button--mobile">More Information</button>
+      </div>
+    </div>
+    <div class="launch">
+      <div class="side-decoration"></div>
+      <div class="launch__header">
+        <h3 class="launch__top    launch__left  launch__text launch__title">Delta IV Heavy | NROL-71</h3>
+        <h3 class="launch__bottom launch__left  launch__text launch__date">January 15, 2019 00:00:00 UTC</h3>
+        <h3 class="launch__top    launch__right launch__text launch__provider">United Launch Alliance</h3>
+        <h3 class="launch__bottom launch__right launch__text launch__location">Vandenberg AFB, CA, USA</h3>
+        <button class="launch__dropdown">
+          <svg class="down-arrow">
+            <polygon class="down-arrow__symbol" id="down-arrow" points="16,6 26,6 26,21 36,21 21,36 6,21 16,21" fill="#b0b1b3"
+              filter="none"></polygon>
+          </svg>
+        </button>
+        <button class="launch__button">
+          <svg class="right-arrow">
+            <polygon class="right-arrow__symbol" id="right-arrow" points="24,4 44,24 24,44 24,34 4,34 4,14 24,14" fill="#b0b1b3"
+              filter="none"></polygon>
+          </svg>
+        </button>
+      </div>
+      <div class="launch__body">
+        <div class="launch__name--mobile launch__info">
+          <label for="name">Name</label>
+          <h3 class="launch__text launch__subtext" name="name">Delta IV Heavy | NROL-71</h3>
+        </div>
+        <div class="launch__date--mobile launch__info">
+          <label for="date">Date</label>
+          <h3 class="launch__text launch__subtext" name="date">January 15, 2019 00:00:00 UTC</h3>
+        </div>
+        <div class="launch__provider--mobile launch__info">
+          <label for="provider">Provider</label>
+          <h3 class="launch__text launch__subtext" name="provider">United Launch Alliance</h3>
+        </div>
+        <div class="launch__location--mobile launch__info">
+          <label for="location">Location</label>
+          <h3 class="launch__text launch__subtext" name="location">Vandenberg AFB, CA, USA</h3>
+        </div>
+        <button class="launch__button--mobile">More Information</button>
+      </div>
+    </div>
+    <div class="launch">
+      <div class="side-decoration"></div>
+      <div class="launch__header">
+        <h3 class="launch__top    launch__left  launch__text launch__title">Soyuz 2.1a | Bars-M No. 3</h3>
+        <h3 class="launch__bottom launch__left  launch__text launch__date">January 15, 2019 00:00:00 UTC</h3>
+        <h3 class="launch__top    launch__right launch__text launch__provider">Russian Space Forces</h3>
+        <h3 class="launch__bottom launch__right launch__text launch__location">Plesetsk Cosmodrome, Russian Federation</h3>
+        <button class="launch__dropdown">
+          <svg class="down-arrow">
+            <polygon class="down-arrow__symbol" id="down-arrow" points="16,6 26,6 26,21 36,21 21,36 6,21 16,21" fill="#b0b1b3"
+              filter="none"></polygon>
+          </svg>
+        </button>
+        <button class="launch__button">
+          <svg class="right-arrow" transform="rotate(90)">
+            <polygon class="right-arrow__symbol" id="right-arrow" points="24,4 44,24 24,44 24,34 4,34 4,14 24,14" fill="#b0b1b3"
+              filter="none"></polygon>
+          </svg>
+        </button>
+      </div>
+      <div class="launch__body">
+        <div class="launch__name--mobile launch__info">
+          <label for="name">Name</label>
+          <h3 class="launch__text launch__subtext" name="name">Soyuz 2.1a | Bars-M No. 3</h3>
+        </div>
+        <div class="launch__date--mobile launch__info">
+          <label for="date">Date</label>
+          <h3 class="launch__text launch__subtext" name="date">January 15, 2019 00:00:00 UTC</h3>
+        </div>
+        <div class="launch__provider--mobile launch__info">
+          <label for="provider">Provider</label>
+          <h3 class="launch__text launch__subtext" name="provider">Russian Space Forces</h3>
+        </div>
+        <div class="launch__location--mobile launch__info">
+          <label for="location">Location</label>
+          <h3 class="launch__text launch__subtext" name="location">Plesetsk Cosmodrome, Russian Federation</h3>
+        </div>
+        <button class="launch__button--mobile">More Information</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDP3DhZbYGHFFWcTjedVNy_zRWAXnvESbY&callback=initMap"></script>
 </body>
 
 </html>

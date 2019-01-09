@@ -4,6 +4,7 @@ const router = express.Router();
 const { getLaunchData } = require('./../utilities/fetchData');
 
 // Main index page route - Will display next {count} launches
+// Refactor to named functions?
 router.get('/', (req, res) => {
   const launchData = getLaunchData();
   launchData

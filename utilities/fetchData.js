@@ -7,12 +7,19 @@ const fetch = require('node-fetch');
 ********************************************************/ 
 const getLaunchData = async (count = 10) => {
   const url = `https://launchlibrary.net/1.4/launch/next/${count}/?mode=verbose`;
-  const res = await fetch(url);
-  const data = await res.json();
+  const response = await fetch(url);
+  const data = await response.json();
   return data;
 };
 
+const getSingleLaunchData = async (launchID) => {
+  const url = `https://launchlibrary.net/1.4/launch/${launchID}`;
+  const response = await fetch(url);
+  const data = await. response.json();
+  return data;
+}
 
 module.exports = {
   getLaunchData,
+  getSingleLaunchData,
 }

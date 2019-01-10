@@ -28,7 +28,11 @@
       </div>
     </div>
     <div class="upcoming-expand">
-      <button class="upcoming-expand__button"></button>
+      <button class="upcoming-expand__button">
+        <svg class="upcoming-expand__down-arrow down-arrow">
+          <polygon points="16,6 26,6 26,21 36,21 21,36 6,21 16,21" fill="#b0b1b3" filter="none"></polygon>
+        </svg>
+      </button>
     </div>
     <div class="upcoming-body">
       <div class="upcoming-body__data">
@@ -69,7 +73,17 @@
       </div>
     </div>
     <div class="upcoming-collapse">
-      <button class="upcoming-collapse__button"></button>
+      <button class="upcoming-collapse__button">
+        <svg class="upcoming-expand__down-arrow down-arrow" transform="rotate(180)">
+          <defs>
+            <linearGradient id="grad-collapse" x1="100%" y1="0%" x2="0%" y2="0%" spreadMethod="pad">
+              <stop offset="0%" stop-color="#af5300" stop-opacity="1" />
+              <stop offset="100%" stop-color="#f5851f" stop-opacity="1" />
+            </linearGradient>
+          </defs>
+          <polygon points="16,6 26,6 26,21 36,21 21,36 6,21 16,21" fill="url(#grad-collapse)" filter="none"></polygon>
+        </svg>
+      </button>
     </div>
     <div class="side-decoration"></div>
   </div>
@@ -209,7 +223,87 @@
           </svg>
         </button>
         <button class="launch__button">
-          <svg class="right-arrow" transform="rotate(90)">
+          <svg class="right-arrow">
+            <polygon class="right-arrow__symbol" id="right-arrow" points="24,4 44,24 24,44 24,34 4,34 4,14 24,14" fill="#b0b1b3"
+              filter="none"></polygon>
+          </svg>
+        </button>
+      </div>
+      <div class="launch__body">
+        <div class="launch__name--mobile launch__info">
+          <label for="name">Name</label>
+          <h3 class="launch__text launch__subtext" name="name">Soyuz 2.1a | Bars-M No. 3</h3>
+        </div>
+        <div class="launch__date--mobile launch__info">
+          <label for="date">Date</label>
+          <h3 class="launch__text launch__subtext" name="date">January 15, 2019 00:00:00 UTC</h3>
+        </div>
+        <div class="launch__provider--mobile launch__info">
+          <label for="provider">Provider</label>
+          <h3 class="launch__text launch__subtext" name="provider">Russian Space Forces</h3>
+        </div>
+        <div class="launch__location--mobile launch__info">
+          <label for="location">Location</label>
+          <h3 class="launch__text launch__subtext" name="location">Plesetsk Cosmodrome, Russian Federation</h3>
+        </div>
+        <button class="launch__button--mobile">More Information</button>
+      </div>
+    </div>
+    <div class="launch">
+      <div class="side-decoration"></div>
+      <div class="launch__header">
+        <h3 class="launch__top    launch__left  launch__text launch__title">PSLV | EMISAT</h3>
+        <h3 class="launch__bottom launch__left  launch__text launch__date">January 15, 2019 00:00:00 UTC</h3>
+        <h3 class="launch__top    launch__right launch__text launch__provider">Indian Space Research Organization</h3>
+        <h3 class="launch__bottom launch__right launch__text launch__location">Sriharikota, Republic of India</h3>
+        <button class="launch__dropdown">
+          <svg class="down-arrow">
+            <polygon class="down-arrow__symbol" id="down-arrow" points="16,6 26,6 26,21 36,21 21,36 6,21 16,21" fill="#b0b1b3"
+              filter="none"></polygon>
+          </svg>
+        </button>
+        <button class="launch__button">
+          <svg class="right-arrow">
+            <polygon class="right-arrow__symbol" id="right-arrow" points="24,4 44,24 24,44 24,34 4,34 4,14 24,14" fill="#b0b1b3"
+              filter="none"></polygon>
+          </svg>
+        </button>
+      </div>
+      <div class="launch__body">
+        <div class="launch__name--mobile launch__info">
+          <label for="name">Name</label>
+          <h3 class="launch__text launch__subtext" name="name">PSLV | EMISAT</h3>
+        </div>
+        <div class="launch__date--mobile launch__info">
+          <label for="date">Date</label>
+          <h3 class="launch__text launch__subtext" name="date">January 15, 2019 00:00:00 UTC</h3>
+        </div>
+        <div class="launch__provider--mobile launch__info">
+          <label for="provider">Provider</label>
+          <h3 class="launch__text launch__subtext" name="provider">Indian Space Research Organization</h3>
+        </div>
+        <div class="launch__location--mobile launch__info">
+          <label for="location">Location</label>
+          <h3 class="launch__text launch__subtext" name="location">Sriharikota, Republic of India</h3>
+        </div>
+        <button class="launch__button--mobile">More Information</button>
+      </div>
+    </div>
+    <div class="launch">
+      <div class="side-decoration"></div>
+      <div class="launch__header">
+        <h3 class="launch__top    launch__left  launch__text launch__title">Soyuz 2.1a/Fregat | Meridian-M 18</h3>
+        <h3 class="launch__bottom launch__left  launch__text launch__date">January 15, 2019 00:00:00 UTC</h3>
+        <h3 class="launch__top    launch__right launch__text launch__provider">Russian Space Forces</h3>
+        <h3 class="launch__bottom launch__right launch__text launch__location">Plesetsk Cosmodrome, Russian Federation</h3>
+        <button class="launch__dropdown">
+          <svg class="down-arrow">
+            <polygon class="down-arrow__symbol" id="down-arrow" points="16,6 26,6 26,21 36,21 21,36 6,21 16,21" fill="#b0b1b3"
+              filter="none"></polygon>
+          </svg>
+        </button>
+        <button class="launch__button">
+          <svg class="right-arrow">
             <polygon class="right-arrow__symbol" id="right-arrow" points="24,4 44,24 24,44 24,34 4,34 4,14 24,14" fill="#b0b1b3"
               filter="none"></polygon>
           </svg>

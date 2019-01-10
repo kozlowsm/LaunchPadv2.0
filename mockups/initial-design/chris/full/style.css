@@ -1,8 +1,16 @@
+html {
+  position: relative;
+}
+
 /* Removes body margin, sets the font, and background color */
 body {
   margin: 0;
   font-family: 'Open Sans Light', sans-serif;
   background-color: #b0b1b3;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
 }
 
 /* Removes excess decorations for buttons */
@@ -12,34 +20,59 @@ button {
   border: none;
 }
 
-svg {
-}
-
 /* Define navbar, navbar display, color, and shadow */
 .navbar {
-  background: linear-gradient(90deg, rgba(35,35,35,1) 0%, rgba(56,56,56,1) 100%);
+  background: linear-gradient(90deg, rgba(35, 35, 35, 1) 0%, rgba(56, 56, 56, 1) 100%);
   width: 100%;
   height: 60px;
   box-shadow: 0 5px 5px -5px black;
   position: relative;
 
-  display: flex;
+  /* display: flex;
   flex-wrap: nowrap;
   flex-direction: row-reverse;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-start; */
+  display: grid;
+  grid-template-columns: 0px 1fr;
+  grid-template-rows: 100%;
 
   z-index: 10;
 }
 
+/* Used when on mobile and page with a back button */
+.navbar--back-button {
+  grid-template-columns: 65px 1fr;
+}
+
+.navbar__back {
+  height: 60px;
+  overflow: hidden;
+}
+
+.navbar__back--button {
+  width: 60px;
+  height: 60px;
+  margin-left: 3px;
+  background-color: #636262;
+}
+
+.back-arrow {
+  width: 42px;
+  height: 42px;
+}
+
 /* Sets title color, font, weight, and positions title to the left */
 .navbar__title {
-  position: absolute;
-  left: 2%;
   color: #f9f9f9;
+  margin-left: 3%;
+  transition: 0.2s;
 
   font-size: 24px;
   font-weight: 200;
+
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
 }
 
 /* Defines side decoration to be used for any div */
@@ -49,7 +82,7 @@ svg {
   left: 0;
   width: 5px;
   height: 100%;
-  background: linear-gradient(180deg, rgba(175,83,0,1) 0%, rgba(245,133,31,1) 100%);
+  background: linear-gradient(180deg, rgba(175, 83, 0, 1) 0%, rgba(245, 133, 31, 1) 100%);
 
   /* TODO Check if this should be 10 or 20 */
   z-index: 10;
@@ -77,9 +110,9 @@ svg {
 .upcoming-header {
   position: relative;
   width: 100%;
-  height: 70px;
-  padding-top: 5px;
-  background: linear-gradient(90deg, rgba(29,29,29,1) 0%, rgba(41,41,41,1) 100%);
+  height: 60px;
+  /* padding-top: 5px; */
+  background: linear-gradient(90deg, rgba(29, 29, 29, 1) 0%, rgba(41, 41, 41, 1) 100%);
   box-shadow: 0 5px 5px -5px black;
   overflow: hidden;
 
@@ -90,9 +123,17 @@ svg {
   z-index: 10;
 }
 
+.upcoming-header--left {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.upcoming-header__text {
+  font-weight: 200;
+}
 .upcoming-header__launch-name {
   color: white;
-  margin: 3% 0 0 2%;
+  margin-left: 5%;
 
   font-weight: 200;
 
@@ -100,17 +141,27 @@ svg {
   grid-row: 1 / 2;
 }
 
-.upcoming-header__date {
-  position: absolute;
-  top: 0;
-  right: 0;
+.upcoming-header--right {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
 
-  width: 35%;
-  margin: 0 0 0 65%;
-  padding-top: 5px;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 20px 40px;
+}
+
+.upcoming-header__date {
+  height: 20px;
+  margin: 0;
   color: white;
   background-color: #636262;
 
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.upcoming-header__date > .upcoming-header__text {
+  margin: 5px 0 0 0;
   font-size: 12px;
   font-weight: 100;
   text-align: center;
@@ -118,19 +169,26 @@ svg {
 }
 
 .upcoming-header__timer {
-  height: auto;
+  height: 40px;
   margin: 0;
-  padding: 7% 2% 0 2%;
   color: white;
   background-color: #4b4b4b;
 
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+.upcoming-header__timer > .upcoming-header__text {
+  margin: 7px 0 0 0;
 
   font-size: 32px;
   font-weight: 100;
   text-align: center;
   letter-spacing: 6px;
+}
+
+.upcoming-expand {
+  display: none;
 }
 
 .upcoming-body {
@@ -241,13 +299,18 @@ svg {
   grid-row: 2 / 3;
 }
 
-.livestream-button:hover, .launch__button--mobile:hover {
+.livestream-button:hover,
+.launch__button--mobile:hover {
   background-color: #f5851f;
+}
+
+.upcoming-collapse {
+  display: none;
 }
 
 .launches {
   width: 90%;
-  margin: 3% 0 0 5%;
+  margin: 3% 0 10% 5%;
 
   display: flex;
   flex-direction: column;
@@ -277,7 +340,7 @@ svg {
   grid-row: 1 / 2;
 
   display: grid;
-  grid-template-columns: 3fr 2fr 80px; 
+  grid-template-columns: 3fr 2fr 80px;
   grid-template-rows: 48px 32px;
   align-items: center;
 }
@@ -286,7 +349,7 @@ svg {
   width: 97%;
   margin: 0;
 
-  text-overflow: "...";
+  text-overflow: '...';
   white-space: nowrap;
   overflow: hidden;
 }
@@ -357,23 +420,44 @@ svg {
   display: none;
 }
 
+footer {
+  width: 100%;
+  height: 100px;
+  background-color: #2f2f2f;
+  margin: calc(50% - 50vh - 64px) 0 0 0;
+}
+
+.footer {
+  padding-top: 10px;
+}
+
+.footer__title {
+  color: white;
+  margin: 10px 0 0 10px;
+
+  font-size: 20px;
+  font-weight: 200;
+}
+
 /* Rules for mobile */
 @media (min-width: 320px) and (max-width: 480px) {
-
-  /* Sets body size in mobile */
   body {
-    min-height: 200vh;
+    min-height: 100vh;
   }
-  
   /* Changes navbar to solid color from gradient*/
   .navbar {
     background: none;
-    background-color: #232323
+    background-color: #232323;
   }
-  
+
   /* Centers navbar title */
   .navbar__title {
-    left: 35%;
+    margin-left: 35%;
+  }
+
+  /* Used when on mobile and page with a back button */
+  .navbar__title--back-button {
+    margin-left: calc(35% - 65px);
   }
 
   /* ? Does this need to be here */
@@ -386,6 +470,10 @@ svg {
     width: calc(100% - 20px);
     height: auto;
     margin: 0 10px;
+
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 120px 60px 0px 0px;
   }
 
   .upcoming-header {
@@ -394,43 +482,72 @@ svg {
     background: none;
     background-color: #1e1e1e;
 
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+
     grid-template-columns: 100%;
-    grid-template-rows: 60px 20px 40px;
+    grid-template-rows: 60px 60px;
+  }
+
+  .upcoming-header--left {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
   }
 
   .upcoming-header__launch-name {
     margin: auto;
 
     font-weight: 100;
-    font-size: 24px;
+    font-size: 14px;
     text-align: center;
+  }
 
+  .upcoming-header--right {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+
+    grid-template-rows: 20px 40px;
+  }
+
+  .upcoming-header__date {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
   }
 
-  .upcoming-header__date {
-    position: relative;
-    width: 100%;
-    margin: 0;
+  .upcoming-header__timer {
+    font-size: 28px;
+  }
+
+  .upcoming-expand {
+    display: unset;
+    background-color: #636262;
+    overflow: hidden;
+    transition: 0.2s;
+    z-index: 20;
 
     grid-column: 1 / 2;
     grid-row: 2 / 3;
   }
 
-  .upcoming-header__timer {
+  .upcoming-expand__button {
+    width: 60px;
     height: 100%;
-    padding: 2%;
+    margin: 0 calc((100% - 60px) / 2);
+    background-color: #636262;
+  }
 
-    grid-column: 1 / 2;
-    grid-row: 3 / 4;
-
-    font-size: 28px;
+  .upcoming-expand__down-arrow {
+    width: 42px;
+    height: 42px;
   }
 
   .upcoming-body {
     height: auto;
     margin-bottom: 10px;
+    overflow: hidden;
+
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
 
     display: flex;
     flex-direction: column;
@@ -485,6 +602,28 @@ svg {
     width: 100%;
   }
 
+  .upcoming-collapse {
+    display: unset;
+    background-color: #c3bebe;
+    overflow: hidden;
+    z-index: 20;
+
+    grid-column: 1 / 2;
+    grid-row: 4 / 5;
+  }
+
+  .upcoming-collapse__button {
+    width: 60px;
+    height: 100%;
+    margin: 0 calc((100% - 60px) / 2);
+    background-color: #c3bebe;
+  }
+
+  .upcoming-collapse__down-symbol {
+    width: 42px;
+    height: 42px;
+  }
+
   .launches {
     width: calc(100% - 20px);
     margin: 15px 10px;
@@ -525,7 +664,9 @@ svg {
     font-weight: 400;
   }
 
-  .launch__date, .launch__provider, .launch__location {
+  .launch__date,
+  .launch__provider,
+  .launch__location {
     display: none;
   }
 
@@ -534,6 +675,7 @@ svg {
   }
 
   .launch__dropdown {
+    height: 60px;
     background-color: #636262;
     transition: 0.2s;
 
@@ -548,6 +690,7 @@ svg {
   }
 
   .down-arrow {
+    height: 42px;
     width: 70%;
     margin: 15%;
 
@@ -555,9 +698,9 @@ svg {
   }
 
   .down-arrow__symbol--rotated {
-  transform-origin: center;
-  transform: rotate(180deg) translate(0px, 110px);
-}
+    transform-origin: center;
+    transform: rotate(180deg);
+  }
 
   .launch__body {
     display: grid;
@@ -611,5 +754,10 @@ svg {
     font-size: 20px;
     font-weight: 200;
     transition: 0.2s;
+  }
+
+  footer {
+    align-self: flex-end;
+    margin-top: calc(28% + 1px);
   }
 }

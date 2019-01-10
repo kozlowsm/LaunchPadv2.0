@@ -697,15 +697,9 @@ footer {
   }
 
   .down-arrow__symbol--rotated {
-<<<<<<< HEAD
-  transform-origin: center;
-  transform: rotate(180deg);
-}
-=======
     transform-origin: center;
-    transform: rotate(180deg) translate(0px, 110px);
+    transform: rotate(180deg);
   }
->>>>>>> full-mockup
 
   .launch__body {
     display: grid;

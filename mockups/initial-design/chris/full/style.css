@@ -7,6 +7,10 @@ body {
   margin: 0;
   font-family: 'Open Sans Light', sans-serif;
   background-color: #b0b1b3;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
 }
 
 /* Removes excess decorations for buttons */
@@ -14,9 +18,6 @@ button {
   margin: 0;
   padding: 0;
   border: none;
-}
-
-svg {
 }
 
 /* Define navbar, navbar display, color, and shadow */
@@ -309,7 +310,7 @@ svg {
 
 .launches {
   width: 90%;
-  margin: 3% 0 0 5%;
+  margin: 3% 0 10% 5%;
 
   display: flex;
   flex-direction: column;
@@ -423,11 +424,10 @@ footer {
   width: 100%;
   height: 100px;
   background-color: #2f2f2f;
-  margin: 0;
+  margin: calc(50% - 50vh - 64px) 0 0 0;
 }
 
 .footer {
-  margin-top: 5%;
   padding-top: 10px;
 }
 
@@ -442,9 +442,7 @@ footer {
 /* Rules for mobile */
 @media (min-width: 320px) and (max-width: 480px) {
   body {
-    height: auto;
-    margin-bottom: 120px;
-    min-height: 85.2vh;
+    min-height: 100vh;
   }
   /* Changes navbar to solid color from gradient*/
   .navbar {
@@ -757,7 +755,7 @@ footer {
   }
 
   footer {
-    position: absolute;
-    bottom: 0;
+    align-self: flex-end;
+    margin-top: calc(28% + 1px);
   }
 }

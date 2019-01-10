@@ -6,7 +6,7 @@ const fetch = require('node-fetch');
  * To get more/less launches provide a count argument to the function
 ********************************************************/ 
 const getLaunchData = async (count = 10) => {
-  const url = `https://launchlibrary.net/1.4/launch/next/${count}/?mode=verbose`;
+  const url = `https://launchlibrary.net/1.4/launch/next/${count}`;
   const response = await fetch(url);
   const data = await response.json();
   return data;
@@ -15,7 +15,7 @@ const getLaunchData = async (count = 10) => {
 const getSingleLaunchData = async (launchID) => {
   const url = `https://launchlibrary.net/1.4/launch/${launchID}`;
   const response = await fetch(url);
-  const data = await. response.json();
+  const data = await response.json();
   return data;
 }
 

@@ -23,6 +23,7 @@ app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+// Adds a response time header
 app.use(responseTime());
 
 // Setup simple logging of routes using Morgan

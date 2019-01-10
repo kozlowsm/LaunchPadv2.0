@@ -74,8 +74,8 @@ button {
 .upcoming-header {
   position: relative;
   width: 100%;
-  height: 70px;
-  padding-top: 5px;
+  height: 60px;
+  /* padding-top: 5px; */
   background: linear-gradient(90deg, rgba(29,29,29,1) 0%, rgba(41,41,41,1) 100%);
   box-shadow: 0 5px 5px -5px black;
   overflow: hidden;
@@ -87,9 +87,17 @@ button {
   z-index: 10;
 }
 
+.upcoming-header--left {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.upcoming-header__text {
+  font-weight: 200;
+}
 .upcoming-header__launch-name {
   color: white;
-  margin: 3% 0 0 2%;
+  margin-left: 5%;
 
   font-weight: 200;
 
@@ -97,17 +105,27 @@ button {
   grid-row: 1 / 2;
 }
 
-.upcoming-header__date {
-  position: absolute;
-  top: 0;
-  right: 0;
+.upcoming-header--right {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
 
-  width: 35%;
-  margin: 0 0 0 65%;
-  padding-top: 5px;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 20px 40px;
+}
+
+.upcoming-header__date {
+  height: 20px;
+  margin: 0;
   color: white;
   background-color: #636262;
 
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.upcoming-header__date > .upcoming-header__text {
+  margin: 5px 0 0 0;
   font-size: 12px;
   font-weight: 100;
   text-align: center;
@@ -115,19 +133,26 @@ button {
 }
 
 .upcoming-header__timer {
-  height: auto;
+  height: 40px;
   margin: 0;
-  padding: 7% 2% 0 2%;
   color: white;
   background-color: #4b4b4b;
 
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+.upcoming-header__timer > .upcoming-header__text {
+  margin: 7px 0 0 0 ;
 
   font-size: 32px;
   font-weight: 100;
   text-align: center;
   letter-spacing: 6px;
+}
+
+.upcoming-expand {
+  display: none;
 }
 
 .upcoming-body {
@@ -240,6 +265,10 @@ button {
 
 .livestream-button:hover, .launch__button--mobile:hover {
   background-color: #f5851f;
+}
+
+.upcoming-collapse {
+  display: none;
 }
 
 .launches {
@@ -356,11 +385,6 @@ button {
 
 /* Rules for mobile */
 @media (min-width: 320px) and (max-width: 480px) {
-
-  /* Sets body size in mobile */
-  body {
-    min-height: 200vh;
-  }
   
   /* Changes navbar to solid color from gradient*/
   .navbar {
@@ -383,6 +407,10 @@ button {
     width: calc(100% - 20px);
     height: auto;
     margin: 0 10px;
+
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 120px 60px 0px 0px;
   }
 
   .upcoming-header {
@@ -391,43 +419,72 @@ button {
     background: none;
     background-color: #1e1e1e;
 
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+
     grid-template-columns: 100%;
-    grid-template-rows: 60px 20px 40px;
+    grid-template-rows: 60px 60px;
+  }
+
+  .upcoming-header--left {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
   }
 
   .upcoming-header__launch-name {
     margin: auto;
 
     font-weight: 100;
-    font-size: 24px;
+    font-size: 14px;
     text-align: center;
+  }
 
+  .upcoming-header--right {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+
+    grid-template-rows: 20px 40px;
+  }
+
+  .upcoming-header__date {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
   }
 
-  .upcoming-header__date {
-    position: relative;
-    width: 100%;
-    margin: 0;
+  .upcoming-header__timer {
+    font-size: 28px;
+  }
+
+  .upcoming-expand {
+    display: unset;
+    background-color: #636262;
+    overflow: hidden;
+    transition: 0.2s;
+    z-index: 20;
 
     grid-column: 1 / 2;
     grid-row: 2 / 3;
   }
 
-  .upcoming-header__timer {
+  .upcoming-expand__button {
+    width: 60px;
     height: 100%;
-    padding: 2%;
+    margin: 0 calc((100% - 60px) / 2);
+    background-color: #636262;
+  }
 
-    grid-column: 1 / 2;
-    grid-row: 3 / 4;
-
-    font-size: 28px;
+  .upcoming-expand__down-arrow {
+    width: 42px;
+    height: 42px;
   }
 
   .upcoming-body {
     height: auto;
     margin-bottom: 10px;
+    overflow: hidden;
+
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
 
     display: flex;
     flex-direction: column;
@@ -480,6 +537,28 @@ button {
 
   .info-window-pad {
     width: 100%;
+  }
+
+  .upcoming-collapse {
+    display: unset;
+    background-color: #c3bebe;
+    overflow: hidden;
+    z-index: 20;
+
+    grid-column: 1 / 2;
+    grid-row: 4 / 5;
+  }
+
+  .upcoming-collapse__button {
+    width: 60px;
+    height: 100%;
+    margin: 0 calc((100% - 60px) / 2);
+    background-color: #c3bebe;
+  }
+
+  .upcoming-collapse__down-symbol {
+    width: 42px;
+    height: 42px;
   }
 
   .launches {

@@ -42,6 +42,10 @@ const downArrowSymbols = document.querySelectorAll(".down-arrow__symbol")
 const launchButtons = document.querySelectorAll(".launch__button");
 const rightArrowSymbols = document.querySelectorAll(".right-arrow__symbol");
 
+const upcomingExpand = document.querySelector(".upcoming-expand");
+const upcomingCollapse = document.querySelector(".upcoming-collapse");
+const upcomingLaunch = document.querySelector(".upcoming-launch");
+
 for(let i = 0; i < launchDropdowns.length; i++) {
   launchDropdowns[i].addEventListener("click", () => {
     launches[i].setAttribute("style", (launches[i].offsetHeight == 60) ? "height: 360px" : "height: 60px");
@@ -67,3 +71,11 @@ for (let i = 0; i < launchButtons.length; i++) {
     rightArrowSymbols[i].setAttribute("filter", "none");
   })
 }
+
+upcomingExpand.querySelector(".upcoming-expand__button").addEventListener("click", () => {
+  upcomingLaunch.setAttribute("style", "grid-template-rows: 120px 0px auto 60px");
+})
+
+upcomingCollapse.querySelector(".upcoming-collapse__button").addEventListener("click", () => {
+  upcomingLaunch.setAttribute("style", "grid-template-grid: 120px ");
+})

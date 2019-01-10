@@ -46,6 +46,8 @@ const upcomingExpand = document.querySelector(".upcoming-expand");
 const upcomingCollapse = document.querySelector(".upcoming-collapse");
 const upcomingLaunch = document.querySelector(".upcoming-launch");
 
+const navbarBackButton = document.querySelector(".navbar__back--button");
+
 for(let i = 0; i < launchDropdowns.length; i++) {
   launchDropdowns[i].addEventListener("click", () => {
     launches[i].setAttribute("style", (launches[i].offsetHeight == 60) ? "height: 360px" : "height: 60px");
@@ -74,8 +76,18 @@ for (let i = 0; i < launchButtons.length; i++) {
 
 upcomingExpand.querySelector(".upcoming-expand__button").addEventListener("click", () => {
   upcomingLaunch.setAttribute("style", "grid-template-rows: 120px 0px auto 60px");
-})
+});
 
 upcomingCollapse.querySelector(".upcoming-collapse__button").addEventListener("click", () => {
   upcomingLaunch.setAttribute("style", "grid-template-grid: 120px ");
+});
+
+navbarBackButton.addEventListener("mouseover", event => {
+  navbarBackButton.setAttribute("style", "background-color: #dddbdb");
+  navbarBackButton.querySelector(".back-arrow__symbol").setAttribute("fill", "url(#grad-back)");
+})
+
+navbarBackButton.addEventListener("mouseout", event => {
+  navbarBackButton.setAttribute("style", "background-color: #636262");
+  navbarBackButton.querySelector(".back-arrow__symbol").setAttribute("fill", "#b0b1b3");
 })

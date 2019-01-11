@@ -9,9 +9,6 @@ const helmet = require('helmet');
 const responseTime = require('response-time');
 const morgan = require('morgan');
 
-// Custom Modules
-const { sliceData } = require('./utilities/hbsHelpers');
-
 // Bring in routes
 const index = require('./routes/index');
 const launches = require('./routes/launches');
@@ -34,7 +31,7 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, 'acccess.log')
 app.use(morgan('combined', { stream: accessLogStream }));
 
 // Templating engine setup
-app.engine('handlebars', exphbs({ helpers: { sliceData }, defaultLayout: 'main' }));
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 // Routes

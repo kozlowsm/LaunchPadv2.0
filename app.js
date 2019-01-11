@@ -10,7 +10,7 @@ const responseTime = require('response-time');
 const morgan = require('morgan');
 
 // Custom Modules
-const { eachBetween } = require('./utilities/hbsHelpers');
+const { eachBetween, jsonItUp } = require('./utilities/hbsHelpers');
 
 // Bring in routes
 const index = require('./routes/index');
@@ -34,7 +34,7 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, 'acccess.log')
 app.use(morgan('combined', { stream: accessLogStream }));
 
 // Templating engine setup
-app.engine('handlebars', exphbs({ helpers: { eachBetween }, defaultLayout: 'main' }));
+app.engine('handlebars', exphbs({ helpers: { eachBetween, jsonItUp }, defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 // Routes

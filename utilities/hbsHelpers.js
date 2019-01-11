@@ -9,6 +9,9 @@ const eachBetween = (data, start, end, options) => {
   return returnItem;
 };
 
+const jsonItUp = context => jsonItUp.stringify(context);
+
 module.exports = {
   eachBetween,
+  jsonItUp,
 };

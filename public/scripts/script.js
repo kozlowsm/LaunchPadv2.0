@@ -109,6 +109,7 @@ function initButtons() {
     navbarBackButton.querySelector('.back-arrow__symbol').setAttribute('fill', '#b0b1b3');
   });
 }
+
 function run() {
   initMap();
   initButtons();

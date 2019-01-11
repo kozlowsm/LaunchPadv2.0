@@ -92,7 +92,7 @@ button {
 .upcoming-launch {
   position: relative;
   width: 90%;
-  height: 50vh;
+  height: 53vh;
   margin: 0 15% 0 5%;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
@@ -110,7 +110,7 @@ button {
 .upcoming-header {
   position: relative;
   width: 100%;
-  height: 60px;
+  height: 90px;
   /* padding-top: 5px; */
   background: linear-gradient(90deg, rgba(29, 29, 29, 1) 0%, rgba(41, 41, 41, 1) 100%);
   box-shadow: 0 5px 5px -5px black;
@@ -118,7 +118,7 @@ button {
 
   display: grid;
   grid-template-columns: 65% 35%;
-  grid-template-rows: 100%;
+  grid-template-rows: 1fr 30px;
 
   z-index: 10;
 }
@@ -186,6 +186,27 @@ button {
   font-weight: 100;
   text-align: center;
   letter-spacing: 6px;
+}
+
+.upcoming-header--bottom {
+  grid-column: 1 / 3;
+  grid-row: 2 / 3;
+}
+
+.more-information {
+  width: 100%;
+  height: 30px;
+  color: white;
+  background: #636262;
+  transition: 0.2s;
+
+  font-size: 16px;
+  font-weight: 200;
+}
+
+.more-information:hover {
+  /* background-color: none; */
+  background: linear-gradient(90deg, rgba(184, 89, 4, 1) 0%, rgba(245, 133, 31, 1) 100%);
 }
 
 .upcoming-expand {
@@ -475,11 +496,11 @@ footer {
 
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 120px 60px 0px 0px;
+    grid-template-rows: 150px 60px 0px 0px;
   }
 
   .upcoming-header {
-    height: 120px;
+    height: 150px;
     padding: auto;
     background: none;
     background-color: #1e1e1e;
@@ -488,7 +509,7 @@ footer {
     grid-row: 1 / 2;
 
     grid-template-columns: 100%;
-    grid-template-rows: 60px 60px;
+    grid-template-rows: 60px 60px 30px;
   }
 
   .upcoming-header--left {
@@ -518,6 +539,11 @@ footer {
 
   .upcoming-header__timer {
     font-size: 28px;
+  }
+
+  .upcoming-header--bottom {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
   }
 
   .upcoming-expand {

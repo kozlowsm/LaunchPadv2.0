@@ -9,9 +9,12 @@ const helmet = require('helmet');
 const responseTime = require('response-time');
 const morgan = require('morgan');
 
+<<<<<<< HEAD
 // Custom Modules
 const { eachBetween } = require('./utilities/hbsHelpers');
 
+=======
+>>>>>>> a208fd295ad0cbbf9b87033f94b558c86da17c55
 // Bring in routes
 const index = require('./routes/index');
 const launches = require('./routes/launches');
@@ -34,7 +37,11 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, 'acccess.log')
 app.use(morgan('combined', { stream: accessLogStream }));
 
 // Templating engine setup
+<<<<<<< HEAD
 app.engine('handlebars', exphbs({ helpers: { eachBetween }, defaultLayout: 'main' }));
+=======
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+>>>>>>> a208fd295ad0cbbf9b87033f94b558c86da17c55
 app.set('view engine', 'handlebars');
 
 // Routes

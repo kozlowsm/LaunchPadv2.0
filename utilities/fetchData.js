@@ -15,6 +15,7 @@ const getLaunchData = async (count = 10) => {
   data.launches = data.launches.filter((launch) => {
     return launch.lsp.id !== 88;
   });
+
   return data;
 };
 
@@ -24,11 +25,6 @@ const getSingleLaunchData = async launchID => {
   const data = await response.json();
   return data;
 };
-
-// getLaunchData(5)
-//   .then(data => {
-//     console.log(data);
-// });
 
 module.exports = {
   getLaunchData,

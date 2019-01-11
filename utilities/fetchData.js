@@ -12,7 +12,7 @@ const getLaunchData = async (count = 10) => {
   let data = await response.json();
 
   //Filter out chinese launches
-  data = data.launches.filter((launch) => {
+  data.launches = data.launches.filter((launch) => {
     return launch.lsp.id !== 88;
   });
   return data;

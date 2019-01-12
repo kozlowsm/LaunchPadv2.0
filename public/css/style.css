@@ -352,6 +352,8 @@ button {
   width: 100%;
   margin: 6px 0;
   background-color: #dddbdb;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
   box-shadow: 3px 3px 3px grey;
   transition: 0.2s; /* ? Do we need this*/
 

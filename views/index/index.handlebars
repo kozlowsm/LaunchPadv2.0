@@ -55,7 +55,16 @@
           <div class="upcoming-map--mobile" id="map-mobile"></div>
         </div>
       </div>
-      <button class="livestream-button">Watch Livestream</button>
+      {{#if data.launches.[0].vidURLs}}
+      <div class="livestream">
+        <a class="livestream__button" target="_blank" href="{{data.launches.[0].vidURLs.[0]}}">Watch
+          Livestream</a>
+      </div>
+      {{else}}
+      <div class="livestream livestream--disabled">
+        <a class="livestream__button livestream__button--disabled">Livestream Unavailable</a>
+      </div>
+      {{/if}}
     </div>
   </div>
   <div class="upcoming-collapse">

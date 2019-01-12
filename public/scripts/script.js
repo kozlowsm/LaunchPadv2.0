@@ -91,9 +91,9 @@ function initDropdownButtons() {
   const upcomingLaunch = document.querySelector('.upcoming-launch');
 
   // Set the number of loads possible (i.e. total launches / 5)
-  numLoads = launchList.length / 5 - 2;
+  numLoads = (launchList.length - 1) / 5 - 2;
   // Numer of launches to load after all but less than 5 launches are left
-  remainingLoads = launchList.length % 5;
+  remainingLoads = (launchList.length - 1) % 5;
 
   for (let i = 0; i < launchDropdowns.length; i++) {
     // eslint-disable-next-line no-loop-func

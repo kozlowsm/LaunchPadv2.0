@@ -91,21 +91,40 @@ function initDropdownButtons() {
   const upcomingLaunch = document.querySelector('.upcoming-launch');
 
   // Set the number of loads possible (i.e. total launches / 5)
-  numLoads = launchList.length / 5 - 2;
+  numLoads = (launchList.length - 1) / 5 - 2;
   // Numer of launches to load after all but less than 5 launches are left
-  remainingLoads = launchList.length % 5;
+  remainingLoads = (launchList.length - 1) % 5;
 
   for (let i = 0; i < launchDropdowns.length; i++) {
+    // The repetitive nesting is a fix for a bug allowing infinite expansion/collapsing
+
     // eslint-disable-next-line no-loop-func
     launchDropdowns[i].addEventListener('click', () => {
       if (launchList[i].offsetHeight === 60) {
         launchList[i].setAttribute('style', 'height: 360px');
         launches.setAttribute('style', `height: ${launchesHeight + 300}px`);
         launchesHeight += 300;
-      } else {
+
+        launchHeaders[i].classList.toggle('launch__header--open');
+        launchTitles[i].classList.toggle('launch__title--open');
+        launchDropdowns[i].classList.toggle('launch__dropdown--open');
+        downArrowSymbols[i].setAttribute(
+          'fill',
+          downArrowSymbols[i].getAttribute('fill') === '#b0b1b3' ? 'url(#grad-mob)' : '#b0b1b3'
+        );
+        downArrowSymbols[i].classList.toggle('down-arrow__symbol--rotated');
+      } else if (launchList[i].offsetHeight === 360) {
         launchList[i].setAttribute('style', 'height: 60px');
         launches.setAttribute('style', `height: ${launchesHeight - 300}px`);
         launchesHeight -= 300;
+        launchHeaders[i].classList.toggle('launch__header--open');
+        launchTitles[i].classList.toggle('launch__title--open');
+        launchDropdowns[i].classList.toggle('launch__dropdown--open');
+        downArrowSymbols[i].setAttribute(
+          'fill',
+          downArrowSymbols[i].getAttribute('fill') === '#b0b1b3' ? 'url(#grad-mob)' : '#b0b1b3'
+        );
+        downArrowSymbols[i].classList.toggle('down-arrow__symbol--rotated');
       }
 
       // launches.setAttribute(
@@ -113,14 +132,14 @@ function initDropdownButtons() {
       //   `height: ${launchList[i].offsetHeight === 60 ? height + 300 : height - 300}`
       // );
 
-      launchHeaders[i].classList.toggle('launch__header--open');
-      launchTitles[i].classList.toggle('launch__title--open');
-      launchDropdowns[i].classList.toggle('launch__dropdown--open');
-      downArrowSymbols[i].setAttribute(
-        'fill',
-        downArrowSymbols[i].getAttribute('fill') === '#b0b1b3' ? 'url(#grad-mob)' : '#b0b1b3'
-      );
-      downArrowSymbols[i].classList.toggle('down-arrow__symbol--rotated');
+      // launchHeaders[i].classList.toggle('launch__header--open');
+      // launchTitles[i].classList.toggle('launch__title--open');
+      // launchDropdowns[i].classList.toggle('launch__dropdown--open');
+      // downArrowSymbols[i].setAttribute(
+      //   'fill',
+      //   downArrowSymbols[i].getAttribute('fill') === '#b0b1b3' ? 'url(#grad-mob)' : '#b0b1b3'
+      // );
+      // downArrowSymbols[i].classList.toggle('down-arrow__symbol--rotated');
     });
   }
 
@@ -142,6 +161,7 @@ function initLoadButtons() {
 
   loadMoreButton.addEventListener('click', event => {
     if (numLoads > 0) {
+      currentOffset += 5;
       if (width >= 320 && width < 480) {
         console.log(`new height of <launches>: ${launchesHeight + 5 * 72}`);
         launchesParent.setAttribute('style', `height: ${launchesHeight + 5 * 72}px`);
@@ -151,6 +171,9 @@ function initLoadButtons() {
         console.log(`new height of <launches>: ${launchesHeight + 5 * 92}`);
         launchesParent.setAttribute('style', `height: ${launchesHeight + 5 * 92}px`);
         launchesHeight += 5 * 92;
+      }
+      for (let i = 0; i < 5; i++) {
+        launchesParent.querySelector(`.launch-${currentOffset - 5 + i}`).hidden = false;
       }
     } else {
       if (width >= 320 && width < 480) {
@@ -184,6 +207,11 @@ function initLaunches() {
   if (width >= 480) {
     launches.setAttribute('style', `height: ${currentOffset * 92}px`);
     launchesHeight = currentOffset * 92;
+  }
+
+  // Set the first five launches to not hidden
+  for (let i = 0; i < 5; i++) {
+    launches.querySelector(`.launch-${currentOffset - 5 + i}`).hidden = false;
   }
 }
 

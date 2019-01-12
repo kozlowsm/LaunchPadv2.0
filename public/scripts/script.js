@@ -1,3 +1,8 @@
+let currentOffset = 0;
+let launchesHeight = 0;
+let numLoads = 0;
+let remainingLoads = 0;
+
 function initMap() {
   const offset = 1.83;
   const latitude = +document.querySelector('.upcoming-body__location--lat').textContent;
@@ -42,40 +47,10 @@ function initMap() {
 }
 
 //
-function initButtons() {
-  const launches = document.querySelectorAll('.launch');
-  const launchHeaders = document.querySelectorAll('.launch__header');
-  const launchTitles = document.querySelectorAll('.launch__title');
-
-  const launchDropdowns = document.querySelectorAll('.launch__dropdown');
-  const downArrowSymbols = document.querySelectorAll('.down-arrow__symbol');
-
+function initHoverButtons() {
   const launchButtons = document.querySelectorAll('.launch__button');
   const rightArrowSymbols = document.querySelectorAll('.right-arrow__symbol');
-
-  const upcomingExpand = document.querySelector('.upcoming-expand');
-  const upcomingCollapse = document.querySelector('.upcoming-collapse');
-  const upcomingLaunch = document.querySelector('.upcoming-launch');
-
   const navbarBackButton = document.querySelector('.navbar__back--button');
-
-  for (let i = 0; i < launchDropdowns.length; i++) {
-    launchDropdowns[i].addEventListener('click', () => {
-      launches[i].setAttribute(
-        'style',
-        launches[i].offsetHeight == 60 ? 'height: 360px' : 'height: 60px'
-      );
-      launchHeaders[i].classList.toggle('launch__header--open');
-      launchTitles[i].classList.toggle('launch__title--open');
-      launchDropdowns[i].classList.toggle('launch__dropdown--open');
-      downArrowSymbols[i].setAttribute(
-        'fill',
-        downArrowSymbols[i].getAttribute('fill') == '#b0b1b3' ? 'url(#grad-mob)' : '#b0b1b3'
-      );
-      // downArrowSymbols[i].setAttribute("filter", (downArrowSymbols[i].getAttribute("filter") == "none") ? "url(#dropshadow-mob)" : "none");
-      downArrowSymbols[i].classList.toggle('down-arrow__symbol--rotated');
-    });
-  }
 
   for (let i = 0; i < launchButtons.length; i++) {
     launchButtons[i].addEventListener('mouseover', event => {
@@ -91,14 +66,6 @@ function initButtons() {
     });
   }
 
-  upcomingExpand.querySelector('.upcoming-expand__button').addEventListener('click', () => {
-    upcomingLaunch.setAttribute('style', 'grid-template-rows: 150px 0px auto 60px');
-  });
-
-  upcomingCollapse.querySelector('.upcoming-collapse__button').addEventListener('click', () => {
-    upcomingLaunch.setAttribute('style', 'grid-template-rows: 150px 60px 0px 0px ');
-  });
-
   navbarBackButton.addEventListener('mouseover', event => {
     navbarBackButton.setAttribute('style', 'background-color: #dddbdb');
     navbarBackButton.querySelector('.back-arrow__symbol').setAttribute('fill', 'url(#grad-back)');
@@ -110,9 +77,122 @@ function initButtons() {
   });
 }
 
+function initDropdownButtons() {
+  const launches = document.querySelector('.launches');
+  const launchList = document.querySelectorAll('.launch');
+  const launchHeaders = document.querySelectorAll('.launch__header');
+  const launchTitles = document.querySelectorAll('.launch__title');
+
+  const launchDropdowns = document.querySelectorAll('.launch__dropdown');
+  const downArrowSymbols = document.querySelectorAll('.down-arrow__symbol');
+
+  const upcomingExpand = document.querySelector('.upcoming-expand');
+  const upcomingCollapse = document.querySelector('.upcoming-collapse');
+  const upcomingLaunch = document.querySelector('.upcoming-launch');
+
+  // Set the number of loads possible (i.e. total launches / 5)
+  numLoads = launchList.length / 5 - 2;
+  // Numer of launches to load after all but less than 5 launches are left
+  remainingLoads = launchList.length % 5;
+
+  for (let i = 0; i < launchDropdowns.length; i++) {
+    // eslint-disable-next-line no-loop-func
+    launchDropdowns[i].addEventListener('click', () => {
+      if (launchList[i].offsetHeight === 60) {
+        launchList[i].setAttribute('style', 'height: 360px');
+        launches.setAttribute('style', `height: ${launchesHeight + 300}px`);
+        launchesHeight += 300;
+      } else {
+        launchList[i].setAttribute('style', 'height: 60px');
+        launches.setAttribute('style', `height: ${launchesHeight - 300}px`);
+        launchesHeight -= 300;
+      }
+
+      // launches.setAttribute(
+      //   'style',
+      //   `height: ${launchList[i].offsetHeight === 60 ? height + 300 : height - 300}`
+      // );
+
+      launchHeaders[i].classList.toggle('launch__header--open');
+      launchTitles[i].classList.toggle('launch__title--open');
+      launchDropdowns[i].classList.toggle('launch__dropdown--open');
+      downArrowSymbols[i].setAttribute(
+        'fill',
+        downArrowSymbols[i].getAttribute('fill') === '#b0b1b3' ? 'url(#grad-mob)' : '#b0b1b3'
+      );
+      downArrowSymbols[i].classList.toggle('down-arrow__symbol--rotated');
+    });
+  }
+
+  upcomingExpand.querySelector('.upcoming-expand__button').addEventListener('click', () => {
+    upcomingLaunch.setAttribute('style', 'grid-template-rows: 150px 0px auto 60px');
+  });
+
+  upcomingCollapse.querySelector('.upcoming-collapse__button').addEventListener('click', () => {
+    upcomingLaunch.setAttribute('style', 'grid-template-rows: 150px 60px 0px 0px ');
+  });
+}
+
+function initLoadButtons() {
+  const launchesParent = document.querySelector('.launches');
+  const loadMoreButton = document.querySelector('.load-more__button');
+
+  const { width } = window.screen;
+  console.log(`<launches> height: ${launchesHeight}`);
+
+  loadMoreButton.addEventListener('click', event => {
+    if (numLoads > 0) {
+      if (width >= 320 && width < 480) {
+        console.log(`new height of <launches>: ${launchesHeight + 5 * 72}`);
+        launchesParent.setAttribute('style', `height: ${launchesHeight + 5 * 72}px`);
+        launchesHeight += 5 * 72;
+      }
+      if (width >= 480) {
+        console.log(`new height of <launches>: ${launchesHeight + 5 * 92}`);
+        launchesParent.setAttribute('style', `height: ${launchesHeight + 5 * 92}px`);
+        launchesHeight += 5 * 92;
+      }
+    } else {
+      if (width >= 320 && width < 480) {
+        console.log(`new height of <launches>: ${launchesHeight + remainingLoads * 72}`);
+        launchesParent.setAttribute('style', `height: ${launchesHeight + remainingLoads * 72}px`);
+        launchesHeight += remainingLoads * 72;
+      }
+      if (width >= 480) {
+        console.log(`new height of <launches>: ${launchesHeight + remainingLoads * 92}`);
+        launchesParent.setAttribute('style', `height: ${launchesHeight + remainingLoads * 92}px`);
+        launchesHeight += remainingLoads * 92;
+      }
+      loadMoreButton.setAttribute('disabled', 'disabled');
+      loadMoreButton.classList.toggle('load-more__button--disabled');
+      loadMoreButton.innerHTML = 'No More Launches to Load';
+    }
+    numLoads--;
+    console.log(numLoads);
+  });
+}
+
+function initLaunches() {
+  currentOffset += 5;
+  const launches = document.querySelector('.launches');
+
+  const { width } = window.screen;
+  if (width >= 320 && width < 480) {
+    launches.setAttribute('style', `height: ${currentOffset * 72}px`);
+    launchesHeight = currentOffset * 72;
+  }
+  if (width >= 480) {
+    launches.setAttribute('style', `height: ${currentOffset * 92}px`);
+    launchesHeight = currentOffset * 92;
+  }
+}
+
 function run() {
   initMap();
-  initButtons();
+  initLaunches();
+  initHoverButtons();
+  initDropdownButtons();
+  initLoadButtons();
 }
 
 window.onload = run;

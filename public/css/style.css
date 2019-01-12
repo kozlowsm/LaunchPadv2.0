@@ -18,6 +18,8 @@ button {
   margin: 0;
   padding: 0;
   border: none;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
 }
 
 /* Define navbar, navbar display, color, and shadow */
@@ -198,6 +200,7 @@ button {
   height: 30px;
   color: white;
   background: #636262;
+  border-radius: 0;
   transition: 0.2s;
 
   font-size: 16px;
@@ -337,16 +340,17 @@ button {
 .launches {
   width: 90%;
   margin: 3% 0 5% 5%;
+  transition: 0.2s;
+  overflow: hidden;
 
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
 }
-
 .launch {
   position: relative;
   height: 80px;
   width: 100%;
-  margin: 1% 0;
+  margin: 6px 0;
   background-color: #dddbdb;
   box-shadow: 3px 3px 3px grey;
   transition: 0.2s; /* ? Do we need this*/
@@ -457,6 +461,8 @@ button {
   height: 60px;
   color: white;
   background-color: #636262;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
   transition: 0.2s;
 
   font-size: 18px;
@@ -465,6 +471,13 @@ button {
 
 .load-more__button:hover {
   background: linear-gradient(90deg, rgba(184, 89, 4, 1) 0%, rgba(245, 133, 31, 1) 100%);
+}
+
+.load-more__button--disabled,
+.load-more__button--disabled:hover {
+  color: #b9b9b9;
+  background-color: #929292;
+  pointer-events: none;
 }
 
 footer {
@@ -739,6 +752,7 @@ footer {
 
   .launch__dropdown--open {
     background-color: #c3bebe;
+    border-bottom-right-radius: 0px;
   }
 
   .down-arrow {
@@ -755,9 +769,12 @@ footer {
   }
 
   .launch__body {
+    height: 300px;
+    border-bottom-right-radius: 3px;
+
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 60px 60px 60px 60px 60px 60px;
+    grid-template-rows: 60px 60px 60px 60px 60px;
   }
 
   .launch__info {
@@ -798,7 +815,9 @@ footer {
 
   .launch__button--mobile {
     width: 80%;
-    margin: 3% 10%;
+    height: 40px;
+    padding: 0;
+    margin: 10px 10%;
     color: white;
     background-color: #636262;
     border-radius: 3px;

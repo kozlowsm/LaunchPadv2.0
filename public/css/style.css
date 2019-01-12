@@ -18,6 +18,8 @@ button {
   margin: 0;
   padding: 0;
   border: none;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
 }
 
 /* Define navbar, navbar display, color, and shadow */
@@ -92,7 +94,7 @@ button {
 .upcoming-launch {
   position: relative;
   width: 90%;
-  height: 50vh;
+  height: 53vh;
   margin: 0 15% 0 5%;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
@@ -110,7 +112,7 @@ button {
 .upcoming-header {
   position: relative;
   width: 100%;
-  height: 60px;
+  height: 90px;
   /* padding-top: 5px; */
   background: linear-gradient(90deg, rgba(29, 29, 29, 1) 0%, rgba(41, 41, 41, 1) 100%);
   box-shadow: 0 5px 5px -5px black;
@@ -118,7 +120,7 @@ button {
 
   display: grid;
   grid-template-columns: 65% 35%;
-  grid-template-rows: 100%;
+  grid-template-rows: 1fr 30px;
 
   z-index: 10;
 }
@@ -188,13 +190,34 @@ button {
   letter-spacing: 6px;
 }
 
+.upcoming-header--bottom {
+  grid-column: 1 / 3;
+  grid-row: 2 / 3;
+}
+
+.more-information {
+  width: 100%;
+  height: 30px;
+  color: white;
+  background: #636262;
+  border-radius: 0;
+  transition: 0.2s;
+
+  font-size: 16px;
+  font-weight: 200;
+}
+
+.more-information:hover {
+  background: linear-gradient(90deg, rgba(184, 89, 4, 1) 0%, rgba(245, 133, 31, 1) 100%);
+}
+
 .upcoming-expand {
   display: none;
 }
 
 .upcoming-body {
   width: 100%;
-  height: calc(100% - 75px);
+  height: calc(100% - 90px);
 
   display: grid;
   grid-template-columns: 50% 50%;
@@ -220,8 +243,12 @@ button {
   font-weight: 400;
 }
 
+.upcoming-component__mission {
+  min-height: 62%;
+}
+
 .upcoming-mission {
-  height: calc(70% + 5px);
+  height: 100%;
 }
 
 .upcoming-mission__name {
@@ -312,17 +339,18 @@ button {
 
 .launches {
   width: 90%;
-  margin: 3% 0 10% 5%;
+  margin: 3% 0 5% 5%;
+  transition: 0.2s;
+  overflow: hidden;
 
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
 }
-
 .launch {
   position: relative;
   height: 80px;
   width: 100%;
-  margin: 1% 0;
+  margin: 6px 0;
   background-color: #dddbdb;
   box-shadow: 3px 3px 3px grey;
   transition: 0.2s; /* ? Do we need this*/
@@ -422,6 +450,36 @@ button {
   display: none;
 }
 
+.load-more {
+  height: 60px;
+  width: 90%;
+  margin: 0 5%;
+}
+
+.load-more__button {
+  width: 100%;
+  height: 60px;
+  color: white;
+  background-color: #636262;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  transition: 0.2s;
+
+  font-size: 18px;
+  font-weight: 200;
+}
+
+.load-more__button:hover {
+  background: linear-gradient(90deg, rgba(184, 89, 4, 1) 0%, rgba(245, 133, 31, 1) 100%);
+}
+
+.load-more__button--disabled,
+.load-more__button--disabled:hover {
+  color: #b9b9b9;
+  background-color: #929292;
+  pointer-events: none;
+}
+
 footer {
   width: 100%;
   height: 100px;
@@ -475,11 +533,11 @@ footer {
 
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 120px 60px 0px 0px;
+    grid-template-rows: 150px 60px 0px 0px;
   }
 
   .upcoming-header {
-    height: 120px;
+    height: 150px;
     padding: auto;
     background: none;
     background-color: #1e1e1e;
@@ -488,7 +546,7 @@ footer {
     grid-row: 1 / 2;
 
     grid-template-columns: 100%;
-    grid-template-rows: 60px 60px;
+    grid-template-rows: 60px 60px 30px;
   }
 
   .upcoming-header--left {
@@ -518,6 +576,11 @@ footer {
 
   .upcoming-header__timer {
     font-size: 28px;
+  }
+
+  .upcoming-header--bottom {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
   }
 
   .upcoming-expand {
@@ -689,6 +752,7 @@ footer {
 
   .launch__dropdown--open {
     background-color: #c3bebe;
+    border-bottom-right-radius: 0px;
   }
 
   .down-arrow {
@@ -705,9 +769,12 @@ footer {
   }
 
   .launch__body {
+    height: 300px;
+    border-bottom-right-radius: 3px;
+
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 60px 60px 60px 60px 60px 60px;
+    grid-template-rows: 60px 60px 60px 60px 60px;
   }
 
   .launch__info {
@@ -748,7 +815,9 @@ footer {
 
   .launch__button--mobile {
     width: 80%;
-    margin: 3% 10%;
+    height: 40px;
+    padding: 0;
+    margin: 10px 10%;
     color: white;
     background-color: #636262;
     border-radius: 3px;
@@ -756,6 +825,9 @@ footer {
     font-size: 20px;
     font-weight: 200;
     transition: 0.2s;
+  }
+
+  .load-more__button {
   }
 
   footer {

@@ -13,6 +13,9 @@
         <h2 class="upcoming-header__text">T - 06:34:10:07</h2>
       </div>
     </div>
+    <div class="upcoming-header--bottom">
+      <button class="more-information">More Information</button>
+    </div>
   </div>
   <div class="upcoming-expand">
     <button class="upcoming-expand__button">
@@ -23,15 +26,15 @@
   </div>
   <div class="upcoming-body">
     <div class="upcoming-body__data">
-      <div class="upcoming-component">
+      <div class="upcoming-component upcoming-component__provider">
         <label for="provider" class="upcoming-component__label">Provider</label>
         <h3 class="upcoming-component__text upcoming-provider" name="provider">{{data.launches.[0].lsp.name}}</h3>
       </div>
-      <div class="upcoming-component">
+      <div class="upcoming-component upcoming-component__rocket">
         <label for="rocket" class="upcoming-component__label">Rocket</label>
         <h3 class="upcoming-component__text upcoming-rocket" name="rocket">{{data.launches.[0].rocket.name}}</h3>
       </div>
-      <div class="upcoming-component">
+      <div class="upcoming-component upcoming-component__mission">
         <label for="mission" class="upcoming-component__label">Mission</label>
         <div class="upcoming-component__text upcoming-mission">
           <h2 class="upcoming-mission__name">{{data.launches.[0].missions.[0].name}}</h2>
@@ -41,6 +44,8 @@
       </div>
     </div>
     <div class="upcoming-body__location">
+      <span class="upcoming-body__location--pad" hidden>{{data.launches.[0].location.pads.[0].name}}</span>
+      <span class="upcoming-body__location--name" hidden>{{data.launches.[0].location.name}}</span>
       <span class="upcoming-body__location--lat" hidden>{{data.launches.[0].location.pads.[0].latitude}}</span>
       <span class="upcoming-body__location--lng" hidden>{{data.launches.[0].location.pads.[0].longitude}}</span>
       <div class="upcoming-map--desktop" id="map-desktop"></div>
@@ -67,4 +72,89 @@
     </button>
   </div>
   <div class="side-decoration"></div>
+</div>
+<div class="launches">
+  {{#each data.launches}}
+  <div class="launch launch-{{@index}}">
+    <div class="side-decoration"></div>
+    <div class="launch__header">
+      <h3 class="launch__top    launch__left  launch__text launch__title">{{name}}</h3>
+      <h3 class="launch__bottom launch__left  launch__text launch__date">{{net}}</h3>
+      <h3 class="launch__top    launch__right launch__text launch__provider">{{lsp.name}}</h3>
+      <h3 class="launch__bottom launch__right launch__text launch__location">{{location.name}}</h3>
+      <button class="launch__dropdown">
+        <svg class="down-arrow">
+          <defs>
+            <!-- Linear Gradient def -->
+            <linearGradient id="grad-mob" x1="100%" y1="0%" x2="0%" y2="0%" spreadMethod="pad">
+              <stop offset="0%" stop-color="#af5300" stop-opacity="1" />
+              <stop offset="100%" stop-color="#f5851f" stop-opacity="1" />
+            </linearGradient>
+            <!-- Made using: https://stackoverflow.com/questions/6088409/svg-drop-shadow-using-css3 -->
+            <filter id="dropshadow-mob" height="130%">
+              <feGaussianBlur in="SourceAlpha" stdDeviation="3" /> <!-- stdDeviation is how much to blur -->
+              <feOffset dx="2" dy="2" result="offsetblur" /> <!-- how much to offset -->
+              <feComponentTransfer>
+                <feFuncA type="linear" slope="0.5" /> <!-- slope is the opacity of the shadow -->
+              </feComponentTransfer>
+              <feMerge>
+                <feMergeNode /> <!-- this contains the offset blurred image -->
+                <feMergeNode in="SourceGraphic" /> <!-- this contains the element that the filter is applied to -->
+              </feMerge>
+            </filter>
+          </defs>
+          <polygon class="down-arrow__symbol" id="down-arrow" points="16,6 26,6 26,21 36,21 21,36 6,21 16,21" fill="#b0b1b3"
+            filter="none"></polygon>
+        </svg>
+      </button>
+      <button class="launch__button">
+        <svg class="right-arrow">
+          <defs>
+            <!-- Linear Gradient def -->
+            <linearGradient id="grad-desk" x1="0%" y1="0%" x2="100%" y2="0%" spreadMethod="pad">
+              <stop offset="0%" stop-color="#af5300" stop-opacity="1" />
+              <stop offset="100%" stop-color="#f5851f" stop-opacity="1" />
+            </linearGradient>
+            <!-- Made using: https://stackoverflow.com/questions/6088409/svg-drop-shadow-using-css3 -->
+            <filter id="dropshadow-desk" height="130%">
+              <feGaussianBlur in="SourceAlpha" stdDeviation="3" /> <!-- stdDeviation is how much to blur -->
+              <feOffset dx="2" dy="2" result="offsetblur" /> <!-- how much to offset -->
+              <feComponentTransfer>
+                <feFuncA type="linear" slope="0.5" /> <!-- slope is the opacity of the shadow -->
+              </feComponentTransfer>
+              <feMerge>
+                <feMergeNode /> <!-- this contains the offset blurred image -->
+                <feMergeNode in="SourceGraphic" /> <!-- this contains the element that the filter is applied to -->
+              </feMerge>
+            </filter>
+          </defs>
+          <polygon class="right-arrow__symbol" id="right-arrow" points="24,4 44,24 24,44 24,34 4,34 4,14 24,14" fill="#b0b1b3"
+            filter="none"></polygon>
+        </svg>
+      </button>
+    </div>
+    <div class="launch__body">
+      <div class="launch__name--mobile launch__info">
+        <label for="name">Name</label>
+        <h3 class="launch__text launch__subtext" name="name">{{name}}</h3>
+      </div>
+      <div class="launch__date--mobile launch__info">
+        <label for="date">Date</label>
+        <h3 class="launch__text launch__subtext" name="date">{{net}}</h3>
+      </div>
+      <div class="launch__provider--mobile launch__info">
+        <label for="provider">Provider</label>
+        <h3 class="launch__text launch__subtext" name="provider">{{lsp.name}}</h3>
+      </div>
+      <div class="launch__location--mobile launch__info">
+        <label for="location">Location</label>
+        <h3 class="launch__text launch__subtext" name="location">{{location.name}}</h3>
+      </div>
+      <button class="launch__button--mobile">More Information</button>
+    </div>
+  </div>
+  {{/each}}
+</div>
+<div class="load-more">
+  <button class="load-more__button">Load More</button>
 </div>

@@ -84,7 +84,7 @@
 </div>
 <div class="launches">
   {{#each data.launches}}
-  <div class="launch launch-{{@index}}">
+  <div class="launch launch-{{@index}}" hidden>
     <div class="side-decoration"></div>
     <div class="launch__header">
       <h3 class="launch__top    launch__left  launch__text launch__title">{{name}}</h3>
@@ -145,19 +145,19 @@
     <div class="launch__body">
       <div class="launch__name--mobile launch__info">
         <label for="name">Name</label>
-        <h3 class="launch__text launch__subtext" name="name">{{name}}</h3>
+        <h3 class="launch__subtext" name="name">{{name}}</h3>
       </div>
       <div class="launch__date--mobile launch__info">
         <label for="date">Date</label>
-        <h3 class="launch__text launch__subtext" name="date">{{net}}</h3>
+        <h3 class="launch__subtext" name="date">{{net}}</h3>
       </div>
       <div class="launch__provider--mobile launch__info">
         <label for="provider">Provider</label>
-        <h3 class="launch__text launch__subtext" name="provider">{{lsp.name}}</h3>
+        <h3 class="launch__subtext" name="provider">{{lsp.name}}</h3>
       </div>
       <div class="launch__location--mobile launch__info">
         <label for="location">Location</label>
-        <h3 class="launch__text launch__subtext" name="location">{{location.name}}</h3>
+        <h3 class="launch__subtext" name="location">{{location.name}}</h3>
       </div>
       <button class="launch__button--mobile">More Information</button>
     </div>

@@ -288,6 +288,11 @@ button {
   grid-row: 1 / 2;
 }
 
+.upcoming-component__link--disabled {
+  background-color: #929292;
+  pointer-events: none;
+}
+
 .upcoming-component__link:hover {
   background-color: #c7c6c6;
 }
@@ -298,7 +303,7 @@ button {
   transition: 0.2s;
 }
 
-.info-link-__symbol-disabled .upcoming-component__mission {
+.upcoming-component__mission {
   min-height: 62%;
 }
 

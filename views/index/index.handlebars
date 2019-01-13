@@ -30,6 +30,7 @@
         <label for="provider" class="upcoming-component__label">Provider</label>
         <div class="upcoming-component__info">
           <h3 class="upcoming-component__text upcoming-provider" name="provider">{{data.launches.[0].lsp.name}}</h3>
+          {{#if data.launches.[0].lsp.wikiURL}}
           <a href="{{data.launches.[0].lsp.wikiURL}}" target="_blank" class="upcoming-component__link">
             <svg class="info-link">
               <defs>
@@ -41,12 +42,20 @@
               <polygon class="info-link__right-arrow" points="10,15 20,15 20,10 30,20 20,30 20,25 10,25" fill="#b0b1b3"></polygon>
             </svg>
           </a>
+          {{else}}
+          <a class="upcoming-component__link upcoming-component__link--disabled">
+            <svg class="info-link">
+              <polygon class="info-link__right-arrow" points="10,15 20,15 20,10 30,20 20,30 20,25 10,25" fill="#b9b9b9"></polygon>
+            </svg>
+          </a>
+          {{/if}}
         </div>
       </div>
       <div class="upcoming-component upcoming-component__rocket">
         <label for="rocket" class="upcoming-component__label">Rocket</label>
         <div class="upcoming-component__info">
           <h3 class="upcoming-component__text upcoming-rocket" name="rocket">{{data.launches.[0].rocket.name}}</h3>
+          {{#if data.launches.[0].rocket.wikiURL}}
           <a href="{{data.launches.[0].rocket.wikiURL}}" target="_blank" class="upcoming-component__link">
             <svg class="info-link">
               <defs>
@@ -58,6 +67,13 @@
               <polygon class="info-link__right-arrow" points="10,15 20,15 20,10 30,20 20,30 20,25 10,25" fill="#b0b1b3"></polygon>
             </svg>
           </a>
+          {{else}}
+          <a class="upcoming-component__link upcoming-component__link--disabled">
+            <svg class="info-link">
+              <polygon class="info-link__right-arrow" points="10,15 20,15 20,10 30,20 20,30 20,25 10,25" fill="#b9b9b9"></polygon>
+            </svg>
+          </a>
+          {{/if}}
         </div>
       </div>
       <div class="upcoming-component upcoming-component__mission">

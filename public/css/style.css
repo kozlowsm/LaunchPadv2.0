@@ -102,7 +102,7 @@ button {
 .upcoming-launch {
   position: relative;
   width: 90%;
-  height: 53vh;
+  height: 63vh;
   margin: 0 15% 0 5%;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
@@ -233,30 +233,81 @@ button {
 }
 
 .upcoming-body__data {
-  overflow: scroll;
+  height: auto;
   margin-bottom: 5px;
+  overflow: scroll;
 }
 
 .upcoming-component {
+  position: relative;
   margin: 1% 3% 0 3%;
 }
 
-.upcoming-component__text {
-  width: calc(97% - 5px);
-  margin: 0 0 0 3%;
-  padding: 10px 0 10px 5px;
+.upcoming-component__info {
+  min-height: 40px;
+  margin: 10px 0;
   background-color: #c7c6c6;
   border-radius: 3px;
 
-  font-weight: 400;
+  display: grid;
+  grid-template-columns: calc(100% - 40px) 40px;
+  grid-template-rows: 100%;
 }
 
-.upcoming-component__mission {
+.upcoming-component__text {
+  width: 100%;
+  margin: 3px 0 0 8px;
+  padding: 10px 0 10px 5px;
+  border-radius: 3px;
+
+  font-weight: 400;
+
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.upcoming-provider {
+  height: 27px;
+  padding: 10px 0 0 0;
+}
+
+.upcoming-component__link {
+  position: relative;
+  height: 40px;
+  float: right;
+  color: blue;
+  background-color: #636262;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  transition: 0.2s;
+
+  font-weight: 800;
+  text-decoration: none;
+
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+.upcoming-component__link:hover {
+  background-color: #c7c6c6;
+}
+
+.info-link {
+  height: 40px;
+  width: 40px;
+  transition: 0.2s;
+}
+
+.info-link-__symbol-disabled .upcoming-component__mission {
   min-height: 62%;
 }
 
 .upcoming-mission {
-  height: 100%;
+  margin-top: 0;
+  min-height: 200px;
+
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
 }
 
 .upcoming-mission__name {

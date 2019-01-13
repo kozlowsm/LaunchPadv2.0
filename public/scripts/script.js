@@ -48,9 +48,23 @@ function initMap() {
 
 //
 function initHoverButtons() {
+  const upcomingComponentLink = document.querySelectorAll('.upcoming-component__link');
   const launchButtons = document.querySelectorAll('.launch__button');
   const rightArrowSymbols = document.querySelectorAll('.right-arrow__symbol');
   const navbarBackButton = document.querySelector('.navbar__back--button');
+
+  for (let i = 0; i < upcomingComponentLink.length; i++) {
+    upcomingComponentLink[i].addEventListener('mouseover', event => {
+      upcomingComponentLink[i]
+        .querySelector('.info-link__right-arrow')
+        .setAttribute('fill', 'url(#grad-info)');
+    });
+    upcomingComponentLink[i].addEventListener('mouseout', event => {
+      upcomingComponentLink[i]
+        .querySelector('.info-link__right-arrow')
+        .setAttribute('fill', '#b0b1b3');
+    });
+  }
 
   for (let i = 0; i < launchButtons.length; i++) {
     launchButtons[i].addEventListener('mouseover', event => {

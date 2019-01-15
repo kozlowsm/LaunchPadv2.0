@@ -7,10 +7,10 @@
     </div>
     <div class="upcoming-header--right">
       <div class="upcoming-header__date">
-        <h2 class="upcoming-header__text">{{data.launches.[0].net}}</h2>
+        <h2 class="upcoming-header__text upcoming-header__text--date">{{data.launches.[0].windowstart}}</h2>
       </div>
       <div class="upcoming-header__timer">
-        <h2 class="upcoming-header__text">T - 06:34:10:07</h2>
+        <h2 class="upcoming-header__text upcoming-header__text--countdown">T - 06:34:10:07</h2>
       </div>
     </div>
     <div class="upcoming-header--bottom">
@@ -130,7 +130,7 @@
     <div class="side-decoration"></div>
     <div class="launch__header">
       <h3 class="launch__top    launch__left  launch__text launch__title">{{name}}</h3>
-      <h3 class="launch__bottom launch__left  launch__text launch__date">{{net}}</h3>
+      <h3 class="launch__bottom launch__left  launch__text launch__date">{{windowstart}}</h3>
       <h3 class="launch__top    launch__right launch__text launch__provider">{{lsp.name}}</h3>
       <h3 class="launch__bottom launch__right launch__text launch__location">{{location.name}}</h3>
       <button class="launch__dropdown">
@@ -191,7 +191,7 @@
       </div>
       <div class="launch__date--mobile launch__info">
         <label for="date">Date</label>
-        <h3 class="launch__subtext" name="date">{{net}}</h3>
+        <h3 class="launch__subtext" name="date">{{windowstart}}</h3>
       </div>
       <div class="launch__provider--mobile launch__info">
         <label for="provider">Provider</label>

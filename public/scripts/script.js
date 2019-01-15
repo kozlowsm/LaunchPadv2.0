@@ -46,7 +46,21 @@ function initMap() {
   });
 }
 
-//
+function initLaunches() {
+  currentOffset += 5;
+  const launches = document.querySelector('.launches');
+
+  const width = window.innerWidth;
+  if (width < 768) {
+    launches.setAttribute('style', `height: ${currentOffset * 72}px`);
+    launchesHeight = currentOffset * 72;
+  }
+  if (width >= 768) {
+    launches.setAttribute('style', `height: ${currentOffset * 92}px`);
+    launchesHeight = currentOffset * 92;
+  }
+}
+
 function initHoverButtons() {
   const launchButtons = document.querySelectorAll('.launch__button');
   const rightArrowSymbols = document.querySelectorAll('.right-arrow__symbol');
@@ -143,18 +157,15 @@ function initLoadButtons() {
   const loadMoreButton = document.querySelector('.load-more__button');
 
   const width = window.innerWidth;
-  console.log(`<launches> height: ${launchesHeight}`);
 
   loadMoreButton.addEventListener('click', event => {
     if (numLoads > 0) {
       currentOffset += 5;
       if (width < 768) {
-        console.log(`new height of <launches>: ${launchesHeight + 5 * 72}`);
         launchesParent.setAttribute('style', `height: ${launchesHeight + 5 * 72}px`);
         launchesHeight += 5 * 72;
       }
       if (width >= 768) {
-        console.log(`new height of <launches>: ${launchesHeight + 5 * 92}`);
         launchesParent.setAttribute('style', `height: ${launchesHeight + 5 * 92}px`);
         launchesHeight += 5 * 92;
       }
@@ -163,12 +174,10 @@ function initLoadButtons() {
       }
     } else {
       if (width < 768) {
-        console.log(`new height of <launches>: ${launchesHeight + remainingLoads * 72}`);
         launchesParent.setAttribute('style', `height: ${launchesHeight + remainingLoads * 72}px`);
         launchesHeight += remainingLoads * 72;
       }
       if (width >= 768) {
-        console.log(`new height of <launches>: ${launchesHeight + remainingLoads * 92}`);
         launchesParent.setAttribute('style', `height: ${launchesHeight + remainingLoads * 92}px`);
         launchesHeight += remainingLoads * 92;
       }
@@ -177,26 +186,24 @@ function initLoadButtons() {
       loadMoreButton.innerHTML = 'No More Launches to Load';
     }
     numLoads--;
-    console.log(numLoads);
   });
 }
 
-function initLaunches() {
-  currentOffset += 5;
-  const launches = document.querySelector('.launches');
+function convertCurrentTimeToUsersTime() {
+  const upcomingHeaderTextDate = document.querySelector('.upcoming-header__text--date');
+  const windowStart = new Date(upcomingHeaderTextDate.innerHTML);
+  const options = {
+    hour12: true,
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+  };
+  const userDate = windowStart.toLocaleDateString('en', options);
 
-  const width = window.innerWidth;
-  console.log(width);
-  if (width < 768) {
-    // console.log('small');
-    launches.setAttribute('style', `height: ${currentOffset * 72}px`);
-    launchesHeight = currentOffset * 72;
-  }
-  if (width >= 768) {
-    launches.setAttribute('style', `height: ${currentOffset * 92}px`);
-    launchesHeight = currentOffset * 92;
-  }
-  console.log(launchesHeight);
+  upcomingHeaderTextDate.innerHTML = userDate;
 }
 
 function run() {
@@ -205,6 +212,7 @@ function run() {
   initHoverButtons();
   initDropdownButtons();
   initLoadButtons();
+  convertCurrentTimeToUsersTime();
 }
 
 window.onload = run;

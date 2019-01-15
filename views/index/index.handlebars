@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="upcoming-header--bottom">
-      <button class="more-information">More Information</button>
+      <a class="more-information"><span>More Information</span></a>
     </div>
   </div>
   <div class="upcoming-expand">
@@ -33,14 +33,6 @@
           {{#if data.launches.[0].lsp.wikiURL}}
           <a href="{{data.launches.[0].lsp.wikiURL}}" target="_blank" class="upcoming-component__link">
             <svg class="info-link">
-              <defs>
-                <linearGradient id="grad-info" x1="0%" y1="0%" x2="100%" y2="0%" spreadMethod="pad">
-                  <stop offset="0%" stop-color="#af5300" stop-opacity="1" />
-                  <stop offset="100%" stop-color="#f5851f" stop-opacity="1" />
-                </linearGradient>
-              </defs>
-              {{!-- <polygon class="info-link__right-arrow" points="10,15 20,15 20,10 30,20 20,30 20,25 10,25" fill="#b0b1b3"></polygon>
-              --}}
               <g>
                 <circle cx="20" cy="20" r="12" fill="#636262"></circle>
                 <circle cx="20" cy="20" r="10" fill="#c7c6c6"></circle>
@@ -65,14 +57,6 @@
           {{#if data.launches.[0].rocket.wikiURL}}
           <a href="{{data.launches.[0].rocket.wikiURL}}" target="_blank" class="upcoming-component__link">
             <svg class="info-link">
-              <defs>
-                <linearGradient id="grad-info" x1="0%" y1="0%" x2="100%" y2="0%" spreadMethod="pad">
-                  <stop offset="0%" stop-color="#af5300" stop-opacity="1" />
-                  <stop offset="100%" stop-color="#f5851f" stop-opacity="1" />
-                </linearGradient>
-              </defs>
-              {{!-- <polygon class="info-link__right-arrow" points="10,15 20,15 20,10 30,20 20,30 20,25 10,25" fill="#b0b1b3"></polygon>
-              --}}
               <g>
                 <circle cx="20" cy="20" r="12" fill="#636262"></circle>
                 <circle cx="20" cy="20" r="10" fill="#c7c6c6"></circle>
@@ -174,7 +158,7 @@
             filter="none"></polygon>
         </svg>
       </button>
-      <button class="launch__button">
+      <a class="launch__button">
         <svg class="right-arrow">
           <defs>
             <!-- Linear Gradient def -->
@@ -198,7 +182,7 @@
           <polygon class="right-arrow__symbol" id="right-arrow" points="24,4 44,24 24,44 24,34 4,34 4,14 24,14" fill="#b0b1b3"
             filter="none"></polygon>
         </svg>
-      </button>
+      </a>
     </div>
     <div class="launch__body">
       <div class="launch__name--mobile launch__info">
@@ -217,7 +201,7 @@
         <label for="location">Location</label>
         <h3 class="launch__subtext" name="location">{{location.name}}</h3>
       </div>
-      <button class="launch__button--mobile">More Information</button>
+      <a href="#" class="launch__button--mobile"><span>More Information</span></a>
     </div>
   </div>
   {{/each}}

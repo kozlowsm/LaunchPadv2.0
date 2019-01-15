@@ -141,6 +141,15 @@ button {
 .upcoming-header__text {
   font-weight: 200;
 }
+
+.upcoming-header__text--name {
+  font-size: 24px;
+
+  text-overflow: '...';
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .upcoming-header__launch-name {
   color: white;
   margin-top: 15px;
@@ -372,9 +381,9 @@ button {
 }
 
 .upcoming-map--desktop {
-  width: 80%;
+  width: 90%;
   /* height: 300px; */
-  margin: 1% 10%;
+  margin: 1% 5%;
   position: relative;
   z-index: 0;
 
@@ -393,9 +402,9 @@ button {
 }
 
 .livestream {
-  width: 80%;
+  width: 90%;
   height: 40px;
-  margin: 3% 10%;
+  margin: 3% 5%;
   background-color: #636262;
   border-radius: 3px;
 
@@ -608,8 +617,34 @@ footer {
   font-weight: 200;
 }
 
-/* Rules for mobile */
-@media (min-width: 320px) and (max-width: 480px) {
+/* Rules for tablet/iPad */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .upcoming-launch {
+    height: 50vh;
+  }
+
+  .upcoming-component__text {
+    font-size: 16px;
+  }
+
+  .upcoming-header__timer > .upcoming-header__text {
+    font-size: 22px;
+  }
+
+  .upcoming-mission__name {
+    font-size: 20px;
+  }
+
+  .upcoming-mission__type {
+    font-size: 18px;
+  }
+
+  .upcoming-mission__desc {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 767px) {
   body {
     min-height: 100vh;
   }
@@ -840,8 +875,6 @@ footer {
 
   .launch__text {
     margin: 6% 0 0 3%;
-    /* ? Should overflow text scroll or have ellipses */
-    /* overflow-x: scroll; */
 
     font-size: 20px;
     font-weight: 200;
@@ -909,7 +942,7 @@ footer {
 
   .launch__subtext {
     width: 93%;
-    margin: 3% 0 0 3%;
+    margin: 1% 0 0 3%;
     padding: 3px 0 3px 5px;
     background-color: #c7c6c6;
     border-radius: 3px;
@@ -976,5 +1009,16 @@ footer {
   footer {
     align-self: flex-end;
     margin-top: calc(28% + 1px);
+  }
+}
+
+/* Rules for mobile */
+@media (max-width: 480px) {
+  .upcoming-header__timer > .upcoming-header__text {
+    font-size: 26px;
+  }
+
+  .launch__subtext {
+    margin: 3% 0 0 3%;
   }
 }

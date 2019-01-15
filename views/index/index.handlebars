@@ -2,7 +2,7 @@
   <div class="upcoming-header">
     <div class="upcoming-header--left">
       <div class="upcoming-header__launch-name">
-        <h1 class="upcoming-header__text launch__text">{{data.launches.[0].name}}</h1>
+        <h1 class="upcoming-header__text upcoming-header__text--name">{{data.launches.[0].name}}</h1>
       </div>
     </div>
     <div class="upcoming-header--right">
@@ -126,7 +126,7 @@
 </div>
 <div class="launches">
   {{#each data.launches}}
-  <div class="launch launch-{{@index}}" hidden>
+  <div class="launch launch-{{@index}}">
     <div class="side-decoration"></div>
     <div class="launch__header">
       <h3 class="launch__top    launch__left  launch__text launch__title">{{name}}</h3>

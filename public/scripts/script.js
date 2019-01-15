@@ -126,20 +126,6 @@ function initDropdownButtons() {
         );
         downArrowSymbols[i].classList.toggle('down-arrow__symbol--rotated');
       }
-
-      // launches.setAttribute(
-      //   'style',
-      //   `height: ${launchList[i].offsetHeight === 60 ? height + 300 : height - 300}`
-      // );
-
-      // launchHeaders[i].classList.toggle('launch__header--open');
-      // launchTitles[i].classList.toggle('launch__title--open');
-      // launchDropdowns[i].classList.toggle('launch__dropdown--open');
-      // downArrowSymbols[i].setAttribute(
-      //   'fill',
-      //   downArrowSymbols[i].getAttribute('fill') === '#b0b1b3' ? 'url(#grad-mob)' : '#b0b1b3'
-      // );
-      // downArrowSymbols[i].classList.toggle('down-arrow__symbol--rotated');
     });
   }
 
@@ -156,18 +142,18 @@ function initLoadButtons() {
   const launchesParent = document.querySelector('.launches');
   const loadMoreButton = document.querySelector('.load-more__button');
 
-  const { width } = window.screen;
+  const width = window.innerWidth;
   console.log(`<launches> height: ${launchesHeight}`);
 
   loadMoreButton.addEventListener('click', event => {
     if (numLoads > 0) {
       currentOffset += 5;
-      if (width >= 320 && width < 480) {
+      if (width < 768) {
         console.log(`new height of <launches>: ${launchesHeight + 5 * 72}`);
         launchesParent.setAttribute('style', `height: ${launchesHeight + 5 * 72}px`);
         launchesHeight += 5 * 72;
       }
-      if (width >= 480) {
+      if (width >= 768) {
         console.log(`new height of <launches>: ${launchesHeight + 5 * 92}`);
         launchesParent.setAttribute('style', `height: ${launchesHeight + 5 * 92}px`);
         launchesHeight += 5 * 92;
@@ -176,12 +162,12 @@ function initLoadButtons() {
         launchesParent.querySelector(`.launch-${currentOffset - 5 + i}`).hidden = false;
       }
     } else {
-      if (width >= 320 && width < 480) {
+      if (width < 768) {
         console.log(`new height of <launches>: ${launchesHeight + remainingLoads * 72}`);
         launchesParent.setAttribute('style', `height: ${launchesHeight + remainingLoads * 72}px`);
         launchesHeight += remainingLoads * 72;
       }
-      if (width >= 480) {
+      if (width >= 768) {
         console.log(`new height of <launches>: ${launchesHeight + remainingLoads * 92}`);
         launchesParent.setAttribute('style', `height: ${launchesHeight + remainingLoads * 92}px`);
         launchesHeight += remainingLoads * 92;
@@ -199,20 +185,18 @@ function initLaunches() {
   currentOffset += 5;
   const launches = document.querySelector('.launches');
 
-  const { width } = window.screen;
-  if (width >= 320 && width < 480) {
+  const width = window.innerWidth;
+  console.log(width);
+  if (width < 768) {
+    // console.log('small');
     launches.setAttribute('style', `height: ${currentOffset * 72}px`);
     launchesHeight = currentOffset * 72;
   }
-  if (width >= 480) {
+  if (width >= 768) {
     launches.setAttribute('style', `height: ${currentOffset * 92}px`);
     launchesHeight = currentOffset * 92;
   }
-
-  // Set the first five launches to not hidden
-  for (let i = 0; i < 5; i++) {
-    launches.querySelector(`.launch-${currentOffset - 5 + i}`).hidden = false;
-  }
+  console.log(launchesHeight);
 }
 
 function run() {

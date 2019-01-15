@@ -256,19 +256,21 @@ button {
 
 .upcoming-component__text {
   width: 100%;
-  margin: 3px 0 0 8px;
+  margin: 0 0 0 8px;
   padding: 10px 0 10px 5px;
   border-radius: 3px;
+  overflow-x: scroll;
 
   font-weight: 400;
+  white-space: nowrap;
 
   grid-column: 1 / 2;
   grid-row: 1 / 2;
 }
 
 .upcoming-provider {
-  height: 27px;
-  padding: 10px 0 0 0;
+  /* height: 27px;
+  padding: 10px 0 0 0; */
 }
 
 .upcoming-component__link {
@@ -334,6 +336,7 @@ button {
 
   font-size: 16px;
   font-weight: 200;
+  white-space: normal;
 }
 
 .upcoming-body__location {
@@ -359,7 +362,7 @@ button {
 .upcoming-map--desktop {
   width: 80%;
   /* height: 300px; */
-  margin: 0 10%;
+  margin: 1% 10%;
   position: relative;
   z-index: 0;
 
@@ -720,7 +723,15 @@ footer {
 
   .upcoming-component__text {
     width: auto;
-    margin: 1% 0 3% 3%;
+    margin: 0 3% 0 3%;
+  }
+
+  .upcoming-component__info {
+    min-height: 40px;
+  }
+
+  .upcoming-component__link:hover {
+    background-color: #636262;
   }
 
   .upcoming-mission {

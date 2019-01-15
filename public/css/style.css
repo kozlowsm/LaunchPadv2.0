@@ -278,7 +278,6 @@ button {
   height: 40px;
   float: right;
   color: blue;
-  background-color: #636262;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
   transition: 0.2s;
@@ -296,13 +295,17 @@ button {
 }
 
 .upcoming-component__link:hover {
-  background-color: #c7c6c6;
+  background-color: #636262;
 }
 
 .info-link {
   height: 40px;
   width: 40px;
   transition: 0.2s;
+}
+
+.info-link g {
+  height: 40px;
 }
 
 .upcoming-component__mission {

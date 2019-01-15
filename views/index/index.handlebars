@@ -76,6 +76,7 @@
       </div>
       <div class="upcoming-component upcoming-component__mission">
         <label for="mission" class="upcoming-component__label">Mission</label>
+        {{#if data.launches.[0].missions}}
         <div class="upcoming-component__info upcoming-mission">
           <div class="upcoming-component__text upcoming-mission__text">
             <h2 class="upcoming-mission__name">{{data.launches.[0].missions.[0].name}}</h2>
@@ -83,6 +84,11 @@
             <h4 class="upcoming-mission__desc">{{data.launches.[0].missions.[0].description}}</h4>
           </div>
         </div>
+        {{else}}
+        <div class="upcoming-component__mission upcoming-component__mission--no-mission">
+          <h1 class="upcoming-component__no-mission">No Mission Available</h1>
+        </div>
+        {{/if}}
       </div>
     </div>
     <div class="upcoming-body__location">

@@ -28,18 +28,62 @@
     <div class="upcoming-body__data">
       <div class="upcoming-component upcoming-component__provider">
         <label for="provider" class="upcoming-component__label">Provider</label>
-        <h3 class="upcoming-component__text upcoming-provider" name="provider">{{data.launches.[0].lsp.name}}</h3>
+        <div class="upcoming-component__info">
+          <h3 class="upcoming-component__text" name="provider">{{data.launches.[0].lsp.name}}</h3>
+          {{#if data.launches.[0].lsp.wikiURL}}
+          <a href="{{data.launches.[0].lsp.wikiURL}}" target="_blank" class="upcoming-component__link">
+            <svg class="info-link">
+              <defs>
+                <linearGradient id="grad-info" x1="0%" y1="0%" x2="100%" y2="0%" spreadMethod="pad">
+                  <stop offset="0%" stop-color="#af5300" stop-opacity="1" />
+                  <stop offset="100%" stop-color="#f5851f" stop-opacity="1" />
+                </linearGradient>
+              </defs>
+              <polygon class="info-link__right-arrow" points="10,15 20,15 20,10 30,20 20,30 20,25 10,25" fill="#b0b1b3"></polygon>
+            </svg>
+          </a>
+          {{else}}
+          <a class="upcoming-component__link upcoming-component__link--disabled">
+            <svg class="info-link">
+              <polygon class="info-link__right-arrow" points="10,15 20,15 20,10 30,20 20,30 20,25 10,25" fill="#b9b9b9"></polygon>
+            </svg>
+          </a>
+          {{/if}}
+        </div>
       </div>
       <div class="upcoming-component upcoming-component__rocket">
         <label for="rocket" class="upcoming-component__label">Rocket</label>
-        <h3 class="upcoming-component__text upcoming-rocket" name="rocket">{{data.launches.[0].rocket.name}}</h3>
+        <div class="upcoming-component__info">
+          <h3 class="upcoming-component__text" name="rocket">{{data.launches.[0].rocket.name}}</h3>
+          {{#if data.launches.[0].rocket.wikiURL}}
+          <a href="{{data.launches.[0].rocket.wikiURL}}" target="_blank" class="upcoming-component__link">
+            <svg class="info-link">
+              <defs>
+                <linearGradient id="grad-info" x1="0%" y1="0%" x2="100%" y2="0%" spreadMethod="pad">
+                  <stop offset="0%" stop-color="#af5300" stop-opacity="1" />
+                  <stop offset="100%" stop-color="#f5851f" stop-opacity="1" />
+                </linearGradient>
+              </defs>
+              <polygon class="info-link__right-arrow" points="10,15 20,15 20,10 30,20 20,30 20,25 10,25" fill="#b0b1b3"></polygon>
+            </svg>
+          </a>
+          {{else}}
+          <a class="upcoming-component__link upcoming-component__link--disabled">
+            <svg class="info-link">
+              <polygon class="info-link__right-arrow" points="10,15 20,15 20,10 30,20 20,30 20,25 10,25" fill="#b9b9b9"></polygon>
+            </svg>
+          </a>
+          {{/if}}
+        </div>
       </div>
       <div class="upcoming-component upcoming-component__mission">
         <label for="mission" class="upcoming-component__label">Mission</label>
-        <div class="upcoming-component__text upcoming-mission">
-          <h2 class="upcoming-mission__name">{{data.launches.[0].missions.[0].name}}</h2>
-          <h3 class="upcoming-mission__type">{{data.launches.[0].missions.[0].typeName}}</h3>
-          <h4 class="upcoming-mission__desc">{{data.launches.[0].missions.[0].description}}</h4>
+        <div class="upcoming-component__info upcoming-mission">
+          <div class="upcoming-component__text upcoming-mission__text">
+            <h2 class="upcoming-mission__name">{{data.launches.[0].missions.[0].name}}</h2>
+            <h3 class="upcoming-mission__type">{{data.launches.[0].missions.[0].typeName}}</h3>
+            <h4 class="upcoming-mission__desc">{{data.launches.[0].missions.[0].description}}</h4>
+          </div>
         </div>
       </div>
     </div>

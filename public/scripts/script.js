@@ -144,7 +144,7 @@ function initDropdownButtons() {
   }
 
   upcomingExpand.querySelector('.upcoming-expand__button').addEventListener('click', () => {
-    upcomingLaunch.setAttribute('style', 'grid-template-rows: 150px 0px auto 60px');
+    upcomingLaunch.setAttribute('style', 'grid-template-rows: 150px 0px auto 90px');
   });
 
   upcomingCollapse.querySelector('.upcoming-collapse__button').addEventListener('click', () => {

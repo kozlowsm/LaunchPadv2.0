@@ -14,7 +14,8 @@
       </div>
     </div>
     <div class="upcoming-header--bottom">
-      <a class="more-information more-information--expand"><span>More Information</span></a>
+      <a href="/launches/{{data.launches.[0].id}}" class="more-information more-information--expand"><span>More
+          Information</span></a>
     </div>
   </div>
   <div class="upcoming-expand">
@@ -117,7 +118,8 @@
   </div>
   <div class="upcoming-collapse">
     <div class="upcoming-collapse__more-information">
-      <a class="more-information more-information--collapse" href="#"><span>More Information</span></a>
+      <a href="/launches/{{data.launches.[0].id}}" class="more-information more-information--collapse" href="#"><span>More
+          Information</span></a>
     </div>
     <button class="upcoming-collapse__button">
       <svg class="upcoming-expand__down-arrow" transform="rotate(180)">
@@ -167,7 +169,7 @@
             filter="none"></polygon>
         </svg>
       </button>
-      <a class="launch__button">
+      <a href="/launches/{{id}}" class="launch__button">
         <svg class="right-arrow">
           <defs>
             <!-- Linear Gradient def -->
@@ -210,7 +212,7 @@
         <label for="location">Location</label>
         <h3 class="launch__subtext" name="location">{{location.name}}</h3>
       </div>
-      <a href="#" class="launch__button--mobile"><span>More Information</span></a>
+      <a href="/launches/{{id}}" class="launch__button--mobile"><span>More Information</span></a>
     </div>
   </div>
   {{/each}}

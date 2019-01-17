@@ -1,3 +1,9 @@
+//Take only what you need
+const { format } = require('date-fns');
+
+// Temporary
+console.log(format(new Date(), 'MM/DD/YYYY'));
+
 let currentOffset = 0;
 let launchesHeight = 0;
 let numLoads = 0;

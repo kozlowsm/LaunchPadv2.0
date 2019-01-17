@@ -35,6 +35,7 @@ button {
   background: linear-gradient(90deg, rgba(35, 35, 35, 1) 0%, rgba(56, 56, 56, 1) 100%);
   width: 100%;
   height: 60px;
+  margin-bottom: 20px;
   box-shadow: 0 5px 5px -5px black;
   position: relative;
 
@@ -97,6 +98,10 @@ button {
   /* TODO Check if this should be 10 or 20 */
   z-index: 10;
 }
+
+/**********************************************************************************************************/
+/*                                            Homepage Styles                                             */
+/**********************************************************************************************************/
 
 /* Defines upcoming launch size, color, and shadow */
 .upcoming-launch {
@@ -629,6 +634,152 @@ footer {
   font-size: 20px;
   font-weight: 200;
 }
+
+/**********************************************************************************************************/
+/*                                         Single Launch Styles                                           */
+/**********************************************************************************************************/
+
+.single-launch {
+  position: relative;
+  width: 50%;
+  /* height: 100vh; */
+  margin:  0 25% 0 25%;
+  background-color: #dddbdb;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  box-shadow: 0px 3px 5px #8d8b8b, -3px 3px 5px #8d8b8b, 3px 3px 5px #8d8b8b;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.single-launch__block {
+  margin: 0;
+}
+
+.single-launch__name {
+  color: white;
+  background: linear-gradient(90deg, rgba(29, 29, 29, 1) 0%, rgba(41, 41, 41, 1) 100%);
+}
+
+.single-launch__name--text {
+  margin-left: 10px;
+
+  font-weight: 200;
+}
+
+.single-launch__date {
+  color: white;
+  background-color: #636262;
+
+  text-align: center;
+}
+
+.single-launch__date--text {
+  font-size: 18px;
+  font-weight: 200;
+}
+
+.single-launch__timer {
+  color: white;
+  background-color: #4b4b4b;
+  box-shadow: 0 5px 5px -5px black;
+
+  text-align: center;
+}
+
+.single-launch__timer--text {
+  margin: 10px;
+
+  font-size: 30px;
+  font-weight: 200;
+  letter-spacing: 5px;
+}
+
+.single-launch__item{
+  margin: 15px 0 0 10px;
+}
+
+.single-launch__item--label {
+  font-size: 18px;
+}
+
+.single-launch__item--info {
+  width: 90%;
+  margin: 5px 0 0 10px;
+  background-color: #c7c6c6;
+  border-radius: 3px;
+
+  display: grid;
+  grid-template-columns: 1fr 37px;
+}
+
+.single-launch__item--grid {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.single-launch__item--text {
+  margin: 3px calc(10% - 10px) 3px 10px;
+  padding: 5px 0 5px 5px;
+  
+  font-size: 20px;
+  font-weight: 200;
+}
+
+.mission {
+  padding: 10px 0;
+
+  display: block;
+}
+
+.mission__name {
+  font-size: 28px;
+}
+
+.mission__type {
+  font-size: 24px;
+}
+
+.mission__desc {
+  font-size: 18px;
+}
+
+.mission--not-available {
+  height: 50px;
+  /* padding: 20px 0; */
+  background-color: #e7e7e7
+
+  /* font-size: 36px; */
+}
+
+.mission__no-text {
+  width: 100%;
+  margin: 10px 0 0 0;
+  padding: 0;
+  color: #b3b3b3;
+  
+  font-size: 24px;
+  font-weight: 200;
+  text-align: center;
+
+  display: inline-block;
+}
+
+.single-launch__map {
+  width: 90%;
+  
+  display: block;
+}
+
+.single-launch__map--active {
+  width: 100%;
+  height: 500px;
+}
+
+/**********************************************************************************************************/
+/*                                             Media Queries                                              */
+/**********************************************************************************************************/
 
 /* Rules for tablet/iPad */
 @media (min-width: 768px) and (max-width: 1024px) {

@@ -1,0 +1,55 @@
+<div class="single-launch">
+  <div class="single-launch__block single-launch__name">
+    <h1 class="single-launch__name--text">{{data.launches.[0].name}}</h1>
+  </div>
+  <div class="single-launch__block single-launch__date">
+    <h2 class="single-launch__date--text">{{data.launches.[0].windowstart}}</h2>
+  </div>
+  <div class="single-launch__block single-launch__timer">
+    <h2 class="single-launch__timer--text">T - 06:34:10:07</h2>
+  </div>
+  <div class="single-launch__item single-launch__provider">
+    <label for="provider" class="single-launch__item--label">Provider</label>
+    <div class="single-launch__item--info single-launch__item--grid" name="provider">
+      <h4 class="single-launch__item--text">{{data.launches.[0].lsp.name}}</h4>
+    </div>
+  </div>
+  <div class="single-launch__item single-launch__rocket">
+    <label for="rocket" class="single-launch__item--label">Rocket</label>
+    <div class="single-launch__item--info single-launch__item--grid" name="rocket">
+      <h4 class="single-launch__item--text">{{data.launches.[0].rocket.name}}</h4>
+    </div>
+  </div>
+  <div class="single-launch__item single-launch__mission">
+    <label for="mission" class="single-launch__item--label">Mission</label>
+    {{#if data.launches.[0].missions}}
+    <div class="single-launch__item--info mission" name="mission">
+      <h3 class="mission__name single-launch__item--text">{{data.launches.[0].missions.[0].name}}</h3>
+      <h4 class="mission__type single-launch__item--text">{{data.launches.[0].missions.[0].typeName}}</h4>
+      <h5 class="mission__desc single-launch__item--text">{{data.launches.[0].missions.[0].description}}</h5>
+    </div>
+    {{else}}
+    <div class="single-launch__item--info mission mission--not-available" name="mission">
+      <h3 class="mission__no-text">No Mission Available</h3>
+    </div>
+    {{/if}}
+  </div>
+  <div class="single-launch__item single-launch__location">
+    <label for="location" class="single-launch__item--label">Location</label>
+    <div class="single-launch__item--info single-launch__item--grid" name="location">
+      <h4 class="single-launch__item--text single-launch__location--text">{{data.launches.[0].location.name}}</h4>
+    </div>
+  </div>
+  <div class="single-launch__item">
+    <label for="map" class="single-launch__item--label">Map</label>
+    <div class="single-launch__item--info single-launch__map" name="map">
+      <div class="single-launch__map--lat" hidden>{{data.launches.[0].location.pads.[0].latitude}}</div>
+      <div class="single-launch__map--lng" hidden>{{data.launches.[0].location.pads.[0].longitude}}</div>
+      <div class="single-launch__map--pad" hidden>{{data.launches.[0].location.pads.[0].name}}</div>
+      <div class="single-launch__map--active" name="map"></div>
+    </div>
+  </div>
+  <div class="side-decoration"></div>
+</div>
+
+<script src="/scripts/launches.js"></script>

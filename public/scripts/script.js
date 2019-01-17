@@ -52,7 +52,21 @@ function initMap() {
   });
 }
 
-//
+function initLaunches() {
+  currentOffset += 5;
+  const launches = document.querySelector('.launches');
+
+  const width = window.innerWidth;
+  if (width < 768) {
+    launches.setAttribute('style', `height: ${currentOffset * 72}px`);
+    launchesHeight = currentOffset * 72;
+  }
+  if (width >= 768) {
+    launches.setAttribute('style', `height: ${currentOffset * 92}px`);
+    launchesHeight = currentOffset * 92;
+  }
+}
+
 function initHoverButtons() {
   const launchButtons = document.querySelectorAll('.launch__button');
   const rightArrowSymbols = document.querySelectorAll('.right-arrow__symbol');
@@ -132,25 +146,11 @@ function initDropdownButtons() {
         );
         downArrowSymbols[i].classList.toggle('down-arrow__symbol--rotated');
       }
-
-      // launches.setAttribute(
-      //   'style',
-      //   `height: ${launchList[i].offsetHeight === 60 ? height + 300 : height - 300}`
-      // );
-
-      // launchHeaders[i].classList.toggle('launch__header--open');
-      // launchTitles[i].classList.toggle('launch__title--open');
-      // launchDropdowns[i].classList.toggle('launch__dropdown--open');
-      // downArrowSymbols[i].setAttribute(
-      //   'fill',
-      //   downArrowSymbols[i].getAttribute('fill') === '#b0b1b3' ? 'url(#grad-mob)' : '#b0b1b3'
-      // );
-      // downArrowSymbols[i].classList.toggle('down-arrow__symbol--rotated');
     });
   }
 
   upcomingExpand.querySelector('.upcoming-expand__button').addEventListener('click', () => {
-    upcomingLaunch.setAttribute('style', 'grid-template-rows: 150px 0px auto 60px');
+    upcomingLaunch.setAttribute('style', 'grid-template-rows: 150px 0px auto 90px');
   });
 
   upcomingCollapse.querySelector('.upcoming-collapse__button').addEventListener('click', () => {
@@ -162,19 +162,16 @@ function initLoadButtons() {
   const launchesParent = document.querySelector('.launches');
   const loadMoreButton = document.querySelector('.load-more__button');
 
-  const { width } = window.screen;
-  console.log(`<launches> height: ${launchesHeight}`);
+  const width = window.innerWidth;
 
   loadMoreButton.addEventListener('click', event => {
     if (numLoads > 0) {
       currentOffset += 5;
-      if (width >= 320 && width < 480) {
-        console.log(`new height of <launches>: ${launchesHeight + 5 * 72}`);
+      if (width < 768) {
         launchesParent.setAttribute('style', `height: ${launchesHeight + 5 * 72}px`);
         launchesHeight += 5 * 72;
       }
-      if (width >= 480) {
-        console.log(`new height of <launches>: ${launchesHeight + 5 * 92}`);
+      if (width >= 768) {
         launchesParent.setAttribute('style', `height: ${launchesHeight + 5 * 92}px`);
         launchesHeight += 5 * 92;
       }
@@ -182,13 +179,11 @@ function initLoadButtons() {
         launchesParent.querySelector(`.launch-${currentOffset - 5 + i}`).hidden = false;
       }
     } else {
-      if (width >= 320 && width < 480) {
-        console.log(`new height of <launches>: ${launchesHeight + remainingLoads * 72}`);
+      if (width < 768) {
         launchesParent.setAttribute('style', `height: ${launchesHeight + remainingLoads * 72}px`);
         launchesHeight += remainingLoads * 72;
       }
-      if (width >= 480) {
-        console.log(`new height of <launches>: ${launchesHeight + remainingLoads * 92}`);
+      if (width >= 768) {
         launchesParent.setAttribute('style', `height: ${launchesHeight + remainingLoads * 92}px`);
         launchesHeight += remainingLoads * 92;
       }
@@ -197,28 +192,24 @@ function initLoadButtons() {
       loadMoreButton.innerHTML = 'No More Launches to Load';
     }
     numLoads--;
-    console.log(numLoads);
   });
 }
 
-function initLaunches() {
-  currentOffset += 5;
-  const launches = document.querySelector('.launches');
+function convertCurrentTimeToUsersTime() {
+  const upcomingHeaderTextDate = document.querySelector('.upcoming-header__text--date');
+  const windowStart = new Date(upcomingHeaderTextDate.innerHTML);
+  const options = {
+    hour12: true,
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+  };
+  const userDate = windowStart.toLocaleDateString('en', options);
 
-  const { width } = window.screen;
-  if (width >= 320 && width < 480) {
-    launches.setAttribute('style', `height: ${currentOffset * 72}px`);
-    launchesHeight = currentOffset * 72;
-  }
-  if (width >= 480) {
-    launches.setAttribute('style', `height: ${currentOffset * 92}px`);
-    launchesHeight = currentOffset * 92;
-  }
-
-  // Set the first five launches to not hidden
-  for (let i = 0; i < 5; i++) {
-    launches.querySelector(`.launch-${currentOffset - 5 + i}`).hidden = false;
-  }
+  upcomingHeaderTextDate.innerHTML = userDate;
 }
 
 function run() {
@@ -227,6 +218,7 @@ function run() {
   initHoverButtons();
   initDropdownButtons();
   initLoadButtons();
+  convertCurrentTimeToUsersTime();
 }
 
 window.onload = run;

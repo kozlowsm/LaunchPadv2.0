@@ -2,6 +2,7 @@ const express = require('express');
 const { getSingleLaunchData } = require('../utilities/fetchData');
 
 const router = express.Router();
+const { getSingleLaunchData } = require('./../utilities/fetchData');
 
 router.get('/:id', (req, res) => {
   const launchID = req.params.id;
@@ -16,5 +17,4 @@ router.get('/:id', (req, res) => {
       throw new Error(err);
     });
 });
-
 module.exports = router;

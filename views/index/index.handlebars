@@ -2,24 +2,25 @@
   <div class="upcoming-header">
     <div class="upcoming-header--left">
       <div class="upcoming-header__launch-name">
-        <h1 class="upcoming-header__text launch__text">{{data.launches.[0].name}}</h1>
+        <h1 class="upcoming-header__text upcoming-header__text--name">{{data.launches.[0].name}}</h1>
       </div>
     </div>
     <div class="upcoming-header--right">
       <div class="upcoming-header__date">
-        <h2 class="upcoming-header__text">{{data.launches.[0].net}}</h2>
+        <h2 class="upcoming-header__text upcoming-header__text--date">{{data.launches.[0].windowstart}}</h2>
       </div>
       <div class="upcoming-header__timer">
-        <h2 class="upcoming-header__text">T - 06:34:10:07</h2>
+        <h2 class="upcoming-header__text upcoming-header__text--countdown">T - 06:34:10:07</h2>
       </div>
     </div>
     <div class="upcoming-header--bottom">
-      <a href="/launches/{{data.launches.[0].id}}"><button class="more-information">More Information</button></a>
+      <a href="/launches/{{data.launches.[0].id}}" class="more-information more-information--expand"><span>More
+          Information</span></a>
     </div>
   </div>
   <div class="upcoming-expand">
     <button class="upcoming-expand__button">
-      <svg class="upcoming-expand__down-arrow down-arrow">
+      <svg class="upcoming-expand__down-arrow">
         <polygon points="16,6 26,6 26,21 36,21 21,36 6,21 16,21" fill="#b0b1b3" filter="none"></polygon>
       </svg>
     </button>
@@ -28,19 +29,67 @@
     <div class="upcoming-body__data">
       <div class="upcoming-component upcoming-component__provider">
         <label for="provider" class="upcoming-component__label">Provider</label>
-        <h3 class="upcoming-component__text upcoming-provider" name="provider">{{data.launches.[0].lsp.name}}</h3>
+        <div class="upcoming-component__info">
+          <h3 class="upcoming-component__text" name="provider">{{data.launches.[0].lsp.name}}</h3>
+          {{#if data.launches.[0].lsp.wikiURL}}
+          <a href="{{data.launches.[0].lsp.wikiURL}}" target="_blank" class="upcoming-component__link">
+            <svg class="info-link">
+              <g>
+                <circle cx="20" cy="20" r="12" fill="#636262"></circle>
+                <circle cx="20" cy="20" r="10" fill="#c7c6c6"></circle>
+                <rect x="19" y="20" width="2" height="10" fill="#636262"></rect>
+                <circle cx="20" cy="16" r="1.5" fill="#636262"></circle>
+              </g>
+            </svg>
+          </a>
+          {{else}}
+          <a class="upcoming-component__link upcoming-component__link--disabled">
+            <svg class="info-link">
+              <polygon class="info-link__right-arrow" points="10,15 20,15 20,10 30,20 20,30 20,25 10,25" fill="#b9b9b9"></polygon>
+            </svg>
+          </a>
+          {{/if}}
+        </div>
       </div>
       <div class="upcoming-component upcoming-component__rocket">
         <label for="rocket" class="upcoming-component__label">Rocket</label>
-        <h3 class="upcoming-component__text upcoming-rocket" name="rocket">{{data.launches.[0].rocket.name}}</h3>
+        <div class="upcoming-component__info">
+          <h3 class="upcoming-component__text" name="rocket">{{data.launches.[0].rocket.name}}</h3>
+          {{#if data.launches.[0].rocket.wikiURL}}
+          <a href="{{data.launches.[0].rocket.wikiURL}}" target="_blank" class="upcoming-component__link">
+            <svg class="info-link">
+              <g>
+                <circle cx="20" cy="20" r="12" fill="#636262"></circle>
+                <circle cx="20" cy="20" r="10" fill="#c7c6c6"></circle>
+                <rect x="19" y="20" width="2" height="10" fill="#636262"></rect>
+                <circle cx="20" cy="16" r="1.5" fill="#636262"></circle>
+              </g>
+            </svg>
+          </a>
+          {{else}}
+          <a class="upcoming-component__link upcoming-component__link--disabled">
+            <svg class="info-link">
+              <polygon class="info-link__right-arrow" points="10,15 20,15 20,10 30,20 20,30 20,25 10,25" fill="#b9b9b9"></polygon>
+            </svg>
+          </a>
+          {{/if}}
+        </div>
       </div>
       <div class="upcoming-component upcoming-component__mission">
         <label for="mission" class="upcoming-component__label">Mission</label>
-        <div class="upcoming-component__text upcoming-mission">
-          <h2 class="upcoming-mission__name">{{data.launches.[0].missions.[0].name}}</h2>
-          <h3 class="upcoming-mission__type">{{data.launches.[0].missions.[0].typeName}}</h3>
-          <h4 class="upcoming-mission__desc">{{data.launches.[0].missions.[0].description}}</h4>
+        {{#if data.launches.[0].missions}}
+        <div class="upcoming-component__info upcoming-mission">
+          <div class="upcoming-component__text upcoming-mission__text">
+            <h2 class="upcoming-mission__name">{{data.launches.[0].missions.[0].name}}</h2>
+            <h3 class="upcoming-mission__type">{{data.launches.[0].missions.[0].typeName}}</h3>
+            <h4 class="upcoming-mission__desc">{{data.launches.[0].missions.[0].description}}</h4>
+          </div>
         </div>
+        {{else}}
+        <div class="upcoming-component__mission upcoming-component__mission--no-mission">
+          <h1 class="upcoming-component__no-mission">No Mission Available</h1>
+        </div>
+        {{/if}}
       </div>
     </div>
     <div class="upcoming-body__location">
@@ -68,8 +117,12 @@
     </div>
   </div>
   <div class="upcoming-collapse">
+    <div class="upcoming-collapse__more-information">
+      <a href="/launches/{{data.launches.[0].id}}" class="more-information more-information--collapse" href="#"><span>More
+          Information</span></a>
+    </div>
     <button class="upcoming-collapse__button">
-      <svg class="upcoming-expand__down-arrow down-arrow" transform="rotate(180)">
+      <svg class="upcoming-expand__down-arrow" transform="rotate(180)">
         <defs>
           <linearGradient id="grad-collapse" x1="100%" y1="0%" x2="0%" y2="0%" spreadMethod="pad">
             <stop offset="0%" stop-color="#af5300" stop-opacity="1" />
@@ -84,11 +137,11 @@
 </div>
 <div class="launches">
   {{#each data.launches}}
-  <div class="launch launch-{{@index}}" hidden>
+  <div class="launch launch-{{@index}}">
     <div class="side-decoration"></div>
     <div class="launch__header">
       <h3 class="launch__top    launch__left  launch__text launch__title">{{name}}</h3>
-      <h3 class="launch__bottom launch__left  launch__text launch__date">{{net}}</h3>
+      <h3 class="launch__bottom launch__left  launch__text launch__date">{{windowstart}}</h3>
       <h3 class="launch__top    launch__right launch__text launch__provider">{{lsp.name}}</h3>
       <h3 class="launch__bottom launch__right launch__text launch__location">{{location.name}}</h3>
       <button class="launch__dropdown">
@@ -116,7 +169,7 @@
             filter="none"></polygon>
         </svg>
       </button>
-      <button class="launch__button">
+      <a href="/launches/{{id}}" class="launch__button">
         <svg class="right-arrow">
           <defs>
             <!-- Linear Gradient def -->
@@ -140,7 +193,7 @@
           <polygon class="right-arrow__symbol" id="right-arrow" points="24,4 44,24 24,44 24,34 4,34 4,14 24,14" fill="#b0b1b3"
             filter="none"></polygon>
         </svg>
-      </button>
+      </a>
     </div>
     <div class="launch__body">
       <div class="launch__name--mobile launch__info">
@@ -149,7 +202,7 @@
       </div>
       <div class="launch__date--mobile launch__info">
         <label for="date">Date</label>
-        <h3 class="launch__subtext" name="date">{{net}}</h3>
+        <h3 class="launch__subtext" name="date">{{windowstart}}</h3>
       </div>
       <div class="launch__provider--mobile launch__info">
         <label for="provider">Provider</label>
@@ -159,7 +212,7 @@
         <label for="location">Location</label>
         <h3 class="launch__subtext" name="location">{{location.name}}</h3>
       </div>
-      <button class="launch__button--mobile">More Information</button>
+      <a href="/launches/{{id}}" class="launch__button--mobile"><span>More Information</span></a>
     </div>
   </div>
   {{/each}}
@@ -167,3 +220,5 @@
 <div class="load-more">
   <button class="load-more__button">Load More</button>
 </div>
+
+<script src="/scripts/script.js"></script>

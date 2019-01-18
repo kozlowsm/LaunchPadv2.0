@@ -1,13 +1,24 @@
-//Take only what you need
-const { format } = require('date-fns');
-
-// Temporary
-console.log(format(new Date(), 'MM/DD/YYYY'));
+// Take only what you need
+const {
+  differenceInSeconds,
+  differenceInMinutes,
+  differenceInHours,
+  differenceInDays,
+  isAfter,
+} = require('date-fns');
 
 let currentOffset = 0;
 let launchesHeight = 0;
 let numLoads = 0;
 let remainingLoads = 0;
+
+// Time Variables
+let upcomingHeaderTimer = null;
+let currentDiffDays = 0;
+let currentDiffHours = 0;
+let currentDiffMinutes = 0;
+let currentDiffSeconds = 0;
+let inTheFuture = true;
 
 function initMap() {
   const offset = 1.83;
@@ -50,6 +61,39 @@ function initMap() {
     openMobile ? infoWindowMobile.close() : infoWindowMobile.open(mapMobile, markerMobile);
     openMobile = !openMobile;
   });
+}
+
+function initUpcomingCountdown() {
+  upcomingHeaderTimer = document.querySelector('.upcoming-header__text--countdown');
+  windowStart = new Date(document.querySelector('.upcoming-header__text--date').innerHTML);
+  const now = new Date();
+
+  let diffDays = differenceInDays(now, windowStart);
+  currentDiffDays = Math.abs(diffDays);
+
+  let diffHours = differenceInHours(now, windowStart) - 24 * diffDays;
+  currentDiffHours = Math.abs(diffHours);
+
+  let diffMinutes = differenceInMinutes(now, windowStart) - 24 * 60 * diffDays - 60 * diffHours;
+  currentDiffMinutes = Math.abs(diffMinutes);
+
+  let diffSeconds =
+    differenceInSeconds(now, windowStart) -
+    24 * 60 * 60 * diffDays -
+    60 * 60 * diffHours -
+    60 * diffMinutes;
+  currentDiffSeconds = Math.abs(diffSeconds);
+
+  inTheFuture = isAfter(windowStart, now);
+
+  // If the launch is in the future, use 'T-'
+  if (inTheFuture) {
+    diffDays = diffDays <= -10 ? -diffDays : `0${-diffDays}`;
+    diffHours = diffHours <= -10 ? -diffHours : `0${-diffHours}`;
+    diffMinutes = diffMinutes <= -10 ? -diffMinutes : `0${-diffMinutes}`;
+    diffSeconds = diffSeconds <= -10 ? -diffSeconds : `0${-diffSeconds}`;
+  }
+  upcomingHeaderTimer.innerHTML = `T - ${diffDays}:${diffHours}:${diffMinutes}:${diffSeconds}`;
 }
 
 function initLaunches() {
@@ -212,13 +256,126 @@ function convertCurrentTimeToUsersTime() {
   upcomingHeaderTextDate.innerHTML = userDate;
 }
 
+function tickClockDown() {
+  if (currentDiffSeconds === 0) {
+    if (currentDiffMinutes === 0) {
+      if (currentDiffHours === 0) {
+        if (currentDiffDays === 0) {
+          inTheFuture = false;
+          currentDiffSeconds += 1;
+        } else {
+          currentDiffDays -= 1;
+        }
+        currentDiffDays -= 1;
+      } else {
+        currentDiffHours -= 1;
+      }
+      currentDiffHours -= 1;
+    } else {
+      currentDiffMinutes -= 1;
+    }
+    currentDiffSeconds = 59;
+  } else {
+    currentDiffSeconds -= 1;
+  }
+
+  if (currentDiffSeconds === 0) {
+
+  }
+
+  const currentDiffDaysFormat = currentDiffDays >= 10 ? currentDiffDays : `0${currentDiffDays}`;
+  const currentDiffHoursFormat = currentDiffHours >= 10 ? currentDiffHours : `0${currentDiffHours}`;
+  const currentDiffMinutesFormat =
+    currentDiffMinutes >= 10 ? currentDiffMinutes : `0${currentDiffMinutes}`;
+  const currentDiffSecondsFormat =
+    currentDiffSeconds >= 10 ? currentDiffSeconds : `0${currentDiffSeconds}`;
+  if (inTheFuture) {
+    upcomingHeaderTimer.innerHTML = `T - ${currentDiffDaysFormat}:${currentDiffHoursFormat}:${currentDiffMinutesFormat}:${currentDiffSecondsFormat}`;
+  } else {
+    upcomingHeaderTimer.innerHTML = `T + ${currentDiffDaysFormat}:${currentDiffHoursFormat}:${currentDiffMinutesFormat}:${currentDiffSecondsFormat}`;
+  }
+}
+
+function tickClockUp() {
+  currentDiffDays = 0;
+  currentDiffHours = 0;
+  currentDiffMinutes = 0;
+  currentDiffSeconds = 0;
+
+  if (currentDiffSeconds === 59) {
+    if (currentDiffMinutes === 59) {
+      if (currentDiffHours === 23) {
+        currentDiffDays += 1;
+        currentDiffHours = 0;
+      } else {
+        currentDiffHours += 1;
+      }
+      currentDiffMinutes = 0;
+    } else {
+      currentDiffMinutes += 1;
+    }
+    currentDiffSeconds = 0;
+  } else {
+    currentDiffSeconds += 1;
+  }
+
+  const currentDiffDaysFormat = currentDiffDays >= 10 ? currentDiffDays : `0${currentDiffDays}`;
+  const currentDiffHoursFormat = currentDiffHours >= 10 ? currentDiffHours : `0${currentDiffHours}`;
+  const currentDiffMinutesFormat =
+    currentDiffMinutes >= 10 ? currentDiffMinutes : `0${currentDiffMinutes}`;
+  const currentDiffSecondsFormat =
+    currentDiffSeconds >= 10 ? currentDiffSeconds : `0${currentDiffSeconds}`;
+  upcomingHeaderTimer.innerHTML = `T + ${currentDiffDaysFormat}:${currentDiffHoursFormat}:${currentDiffMinutesFormat}:${currentDiffSecondsFormat}`;
+}
+
+function tickClock() {
+  if (currentDiffSeconds === 0) {
+    if (currentDiffMinutes === 0) {
+      if (currentDiffHours === 0) {
+        if (currentDiffDays === 0) {
+          inTheFuture = false;
+          upcomingHeaderTimer.innerHTML = 'In Flight';
+        } else {
+          currentDiffDays -= 1;
+          currentDiffHours = 23;
+          currentDiffMinutes = 59;
+          currentDiffSeconds = 59;
+        }
+      } else {
+        currentDiffHours -= 1;
+        currentDiffMinutes = 59;
+        currentDiffSeconds = 59;
+      }
+    } else {
+      currentDiffMinutes -= 1;
+      currentDiffSeconds = 59;
+    }
+  } else {
+    currentDiffSeconds -= 1;
+  }
+
+  if (inTheFuture) {
+    const currentDiffDaysFormat = currentDiffDays >= 10 ? currentDiffDays : `0${currentDiffDays}`;
+    const currentDiffHoursFormat = currentDiffHours >= 10 ? currentDiffHours : `0${currentDiffHours}`;
+    const currentDiffMinutesFormat =
+      currentDiffMinutes >= 10 ? currentDiffMinutes : `0${currentDiffMinutes}`;
+    const currentDiffSecondsFormat =
+      currentDiffSeconds >= 10 ? currentDiffSeconds : `0${currentDiffSeconds}`;
+    upcomingHeaderTimer.innerHTML = `T - ${currentDiffDaysFormat}:${currentDiffHoursFormat}:${currentDiffMinutesFormat}:${currentDiffSecondsFormat}`;
+  } else {
+    upcomingHeaderTimer.innerHTML = 'In Progress';
+  }
+}
+
 function run() {
   initMap();
+  initUpcomingCountdown();
   initLaunches();
   initHoverButtons();
   initDropdownButtons();
   initLoadButtons();
   convertCurrentTimeToUsersTime();
+  setInterval(tickClock, 1000);
 }
 
 window.onload = run;

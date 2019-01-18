@@ -5,9 +5,6 @@
   <div class="single-launch__block single-launch__date">
     <h2 class="single-launch__date--text">{{data.launches.[0].windowstart}}</h2>
   </div>
-  <div class="single-launch__block single-launch__timer">
-    <h2 class="single-launch__timer--text">T - 06:34:10:07</h2>
-  </div>
   <div class="single-launch__item single-launch__provider">
     <label for="provider" class="single-launch__item--label">Provider</label>
     <div class="single-launch__item--info single-launch__item--grid" name="provider">
@@ -40,7 +37,7 @@
       <h4 class="single-launch__item--text single-launch__location--text">{{data.launches.[0].location.name}}</h4>
     </div>
   </div>
-  <div class="single-launch__item">
+  <div class="single-launch__item single-launch__item--last">
     <label for="map" class="single-launch__item--label">Map</label>
     <div class="single-launch__item--info single-launch__map" name="map">
       <div class="single-launch__map--lat" hidden>{{data.launches.[0].location.pads.[0].latitude}}</div>

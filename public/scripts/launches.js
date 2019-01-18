@@ -1,3 +1,5 @@
+console.log('loaded');
+
 function initMap() {
   const offset = 1.83;
   const latitude = +document.querySelector('.single-launch__map--lat').textContent;
@@ -20,11 +22,30 @@ function initMap() {
 
   const infoWindow = new google.maps.InfoWindow({ content: contentString });
 
-  let infoWindowOpen = false;
+  infoWindow.open(map, marker);
+  let infoWindowOpen = true;
 
   marker.addListener('click', () => {
     infoWindowOpen ? infoWindow.close() : infoWindow.open(map, marker);
     infoWindowOpen = !infoWindowOpen;
+  });
+}
+
+function initBackButton() {
+  const navbar = document.querySelector('.navbar');
+  const navbarBack = document.querySelector('.navbar__back');
+  const navbarBackButton = document.querySelector('.navbar__back--button');
+
+  navbar.setAttribute('style', 'grid-template-columns: 60px 1fr;');
+
+  navbarBack.hidden = false;
+
+  navbarBackButton.addEventListener('mouseover', event => {
+    navbarBackButton.querySelector('.back-arrow__symbol').setAttribute('fill', 'url(#grad-back)');
+  });
+
+  navbarBackButton.addEventListener('mouseout', event => {
+    navbarBackButton.querySelector('.back-arrow__symbol').setAttribute('fill', '#b0b1b3');
   });
 }
 
@@ -47,6 +68,7 @@ function convertCurrentTimeToUsersTime() {
 
 function run() {
   initMap();
+  initBackButton();
   convertCurrentTimeToUsersTime();
 }
 

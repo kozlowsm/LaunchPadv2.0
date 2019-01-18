@@ -114,7 +114,6 @@ function initLaunches() {
 function initHoverButtons() {
   const launchButtons = document.querySelectorAll('.launch__button');
   const rightArrowSymbols = document.querySelectorAll('.right-arrow__symbol');
-  const navbarBackButton = document.querySelector('.navbar__back--button');
 
   for (let i = 0; i < launchButtons.length; i++) {
     launchButtons[i].addEventListener('mouseover', event => {
@@ -129,16 +128,6 @@ function initHoverButtons() {
       rightArrowSymbols[i].setAttribute('filter', 'none');
     });
   }
-
-  navbarBackButton.addEventListener('mouseover', event => {
-    navbarBackButton.setAttribute('style', 'background-color: #dddbdb');
-    navbarBackButton.querySelector('.back-arrow__symbol').setAttribute('fill', 'url(#grad-back)');
-  });
-
-  navbarBackButton.addEventListener('mouseout', event => {
-    navbarBackButton.setAttribute('style', 'background-color: #636262');
-    navbarBackButton.querySelector('.back-arrow__symbol').setAttribute('fill', '#b0b1b3');
-  });
 }
 
 function initDropdownButtons() {

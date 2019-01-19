@@ -6190,8 +6190,11 @@ function initMap() {
   const infoWindowDesktop = new google.maps.InfoWindow({ content: contentString });
   const infoWindowMobile = new google.maps.InfoWindow({ content: contentString });
 
-  let openDesktop = false;
-  let openMobile = false;
+  infoWindowDesktop.open(mapDesktop, markerDesktop);
+  infoWindowMobile.open(mapMobile, markerMobile);
+
+  let openDesktop = true;
+  let openMobile = true;
 
   markerDesktop.addListener('click', () => {
     openDesktop ? infoWindowDesktop.close() : infoWindowDesktop.open(mapDesktop, markerDesktop);

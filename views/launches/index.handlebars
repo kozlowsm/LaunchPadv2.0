@@ -8,13 +8,23 @@
   <div class="single-launch__item single-launch__provider">
     <label for="provider" class="single-launch__item--label">Provider</label>
     <div class="single-launch__item--info single-launch__item--grid" name="provider">
-      <h4 class="single-launch__item--text">{{data.launches.[0].lsp.name}}</h4>
+      {{#if data.launches.[0].lsp.wikiURL}}
+      <a href="{{data.launches.[0].lsp.wikiURL}}" class="upcoming-component__text upcoming-component__wiki" name="provider"
+        target="_blank">{{data.launches.[0].lsp.name}}</a>
+      {{else}}
+      <h3 class="upcoming-component__text upcoming-component__wiki--disabled" name="provider">{{data.launches.[0].lsp.name}}</h3>
+      {{/if}}
     </div>
   </div>
   <div class="single-launch__item single-launch__rocket">
     <label for="rocket" class="single-launch__item--label">Rocket</label>
     <div class="single-launch__item--info single-launch__item--grid" name="rocket">
-      <h4 class="single-launch__item--text">{{data.launches.[0].rocket.name}}</h4>
+      {{#if data.launches.[0].rocket.wikiURL}}
+      <a href="{{data.launches.[0].rocket.wikiURL}}" class="upcoming-component__text upcoming-component__wiki" name="rocket"
+        target="_blank">{{data.launches.[0].rocket.name}}</a>
+      {{else}}
+      <h3 class="upcoming-component__text upcoming-component__wiki upcoming-component__wiki--disabled" name="rocket">{{data.launches.[0].rocket.name}}</h3>
+      {{/if}}
     </div>
   </div>
   <div class="single-launch__item single-launch__mission">

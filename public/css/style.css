@@ -305,6 +305,10 @@ button {
   text-decoration: none;
 }
 
+.upcoming-component__wiki:hover {
+  color: #996956;
+}
+
 .upcoming-component__wiki--disabled {
   color: #545464;
 }

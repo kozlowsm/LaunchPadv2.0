@@ -86,11 +86,13 @@ button {
 /* Sets title color, font, weight, and positions title to the left */
 .navbar__title {
   color: #f9f9f9;
+  margin: 16px 0 0 3%;
   margin-left: 3%;
   transition: 0.2s;
 
   font-size: 24px;
   font-weight: 200;
+  text-decoration: none;
 
   grid-column: 2 / 3;
   grid-row: 1 / 2;

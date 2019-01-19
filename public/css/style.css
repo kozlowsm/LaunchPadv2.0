@@ -283,10 +283,6 @@ button {
   margin: 10px 0;
   background-color: #c7c6c6;
   border-radius: 3px;
-
-  display: grid;
-  grid-template-columns: calc(100% - 40px) 40px;
-  grid-template-rows: 100%;
 }
 
 .upcoming-component__text {
@@ -294,43 +290,23 @@ button {
   margin: 0 0 0 8px;
   padding: 10px 0 10px 5px;
   border-radius: 3px;
-  overflow-x: scroll;
 
+  font-size: 16px;
   font-weight: 400;
   white-space: nowrap;
 
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
+  display: inline-block;
 }
 
-.upcoming-provider {
-  /* height: 27px;
-  padding: 10px 0 0 0; */
-}
+.upcoming-component__wiki {
+  color: #754330;
 
-.upcoming-component__link {
-  position: relative;
-  height: 40px;
-  float: right;
-  color: blue;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-  transition: 0.2s;
-
-  font-weight: 800;
+  font-size: 16px;
   text-decoration: none;
-
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
 }
 
-.upcoming-component__link--disabled {
-  background-color: #929292;
-  pointer-events: none;
-}
-
-.upcoming-component__link:hover {
-  background-color: #636262;
+.upcoming-component__wiki--disabled {
+  color: #545464;
 }
 
 .info-link {
@@ -951,10 +927,6 @@ footer {
 
   .upcoming-component__info {
     min-height: 40px;
-  }
-
-  .upcoming-component__link:hover {
-    background-color: #636262;
   }
 
   .upcoming-mission {

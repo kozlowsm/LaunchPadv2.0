@@ -5,19 +5,26 @@
   <div class="single-launch__block single-launch__date">
     <h2 class="single-launch__date--text">{{data.launches.[0].windowstart}}</h2>
   </div>
-  <div class="single-launch__block single-launch__timer">
-    <h2 class="single-launch__timer--text">T - 06:34:10:07</h2>
-  </div>
   <div class="single-launch__item single-launch__provider">
     <label for="provider" class="single-launch__item--label">Provider</label>
     <div class="single-launch__item--info single-launch__item--grid" name="provider">
-      <h4 class="single-launch__item--text">{{data.launches.[0].lsp.name}}</h4>
+      {{#if data.launches.[0].lsp.wikiURL}}
+      <a href="{{data.launches.[0].lsp.wikiURL}}" class="upcoming-component__text upcoming-component__wiki" name="provider"
+        target="_blank">{{data.launches.[0].lsp.name}}</a>
+      {{else}}
+      <h3 class="upcoming-component__text upcoming-component__wiki--disabled" name="provider">{{data.launches.[0].lsp.name}}</h3>
+      {{/if}}
     </div>
   </div>
   <div class="single-launch__item single-launch__rocket">
     <label for="rocket" class="single-launch__item--label">Rocket</label>
     <div class="single-launch__item--info single-launch__item--grid" name="rocket">
-      <h4 class="single-launch__item--text">{{data.launches.[0].rocket.name}}</h4>
+      {{#if data.launches.[0].rocket.wikiURL}}
+      <a href="{{data.launches.[0].rocket.wikiURL}}" class="upcoming-component__text upcoming-component__wiki" name="rocket"
+        target="_blank">{{data.launches.[0].rocket.name}}</a>
+      {{else}}
+      <h3 class="upcoming-component__text upcoming-component__wiki upcoming-component__wiki--disabled" name="rocket">{{data.launches.[0].rocket.name}}</h3>
+      {{/if}}
     </div>
   </div>
   <div class="single-launch__item single-launch__mission">
@@ -40,7 +47,7 @@
       <h4 class="single-launch__item--text single-launch__location--text">{{data.launches.[0].location.name}}</h4>
     </div>
   </div>
-  <div class="single-launch__item">
+  <div class="single-launch__item single-launch__item--last">
     <label for="map" class="single-launch__item--label">Map</label>
     <div class="single-launch__item--info single-launch__map" name="map">
       <div class="single-launch__map--lat" hidden>{{data.launches.[0].location.pads.[0].latitude}}</div>

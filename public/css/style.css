@@ -30,14 +30,18 @@ button {
   outline: none;
 }
 
+/**********************************************************************************************************/
+/*                                             Navbar Styles                                              */
+/**********************************************************************************************************/
+
 /* Define navbar, navbar display, color, and shadow */
 .navbar {
-  background: linear-gradient(90deg, rgba(35, 35, 35, 1) 0%, rgba(56, 56, 56, 1) 100%);
+  position: relative;
   width: 100%;
   height: 60px;
   margin-bottom: 20px;
+  background: linear-gradient(90deg, rgba(35, 35, 35, 1) 0%, rgba(56, 56, 56, 1) 100%);
   box-shadow: 0 5px 5px -5px black;
-  position: relative;
 
   /* display: flex;
   flex-wrap: nowrap;
@@ -51,36 +55,44 @@ button {
   z-index: 10;
 }
 
-/* Used when on mobile and page with a back button */
-.navbar--back-button {
-  grid-template-columns: 65px 1fr;
-}
-
 .navbar__back {
   height: 60px;
-  overflow: hidden;
+  /* overflow: hidden; */
+
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
 }
 
+/* Used when on mobile and page with a back button */
+/* .navbar--back-button {
+  grid-template-columns: 65px 1fr;
+} */
+
 .navbar__back--button {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 60px;
   height: 60px;
-  margin-left: 3px;
-  background-color: #636262;
+  background-color: #242424;
 }
 
 .back-arrow {
   width: 42px;
   height: 42px;
+  margin: 9px;  
 }
 
 /* Sets title color, font, weight, and positions title to the left */
 .navbar__title {
   color: #f9f9f9;
+  margin: 16px 0 0 3%;
   margin-left: 3%;
   transition: 0.2s;
 
   font-size: 24px;
   font-weight: 200;
+  text-decoration: none;
 
   grid-column: 2 / 3;
   grid-row: 1 / 2;
@@ -271,10 +283,6 @@ button {
   margin: 10px 0;
   background-color: #c7c6c6;
   border-radius: 3px;
-
-  display: grid;
-  grid-template-columns: calc(100% - 40px) 40px;
-  grid-template-rows: 100%;
 }
 
 .upcoming-component__text {
@@ -282,43 +290,23 @@ button {
   margin: 0 0 0 8px;
   padding: 10px 0 10px 5px;
   border-radius: 3px;
-  overflow-x: scroll;
 
+  font-size: 16px;
   font-weight: 400;
   white-space: nowrap;
 
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
+  display: inline-block;
 }
 
-.upcoming-provider {
-  /* height: 27px;
-  padding: 10px 0 0 0; */
-}
+.upcoming-component__wiki {
+  color: #754330;
 
-.upcoming-component__link {
-  position: relative;
-  height: 40px;
-  float: right;
-  color: blue;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-  transition: 0.2s;
-
-  font-weight: 800;
+  font-size: 16px;
   text-decoration: none;
-
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
 }
 
-.upcoming-component__link--disabled {
-  background-color: #929292;
-  pointer-events: none;
-}
-
-.upcoming-component__link:hover {
-  background-color: #636262;
+.upcoming-component__wiki--disabled {
+  color: #545464;
 }
 
 .info-link {
@@ -641,9 +629,9 @@ footer {
 
 .single-launch {
   position: relative;
-  width: 50%;
+  width: 70%;
   /* height: 100vh; */
-  margin:  0 25% 0 25%;
+  margin:  0 15% 0 15%;
   background-color: #dddbdb;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
@@ -654,7 +642,7 @@ footer {
 }
 
 .single-launch__block {
-  margin: 0;
+  margin: 0 0 0 5px;
 }
 
 .single-launch__name {
@@ -663,37 +651,21 @@ footer {
 }
 
 .single-launch__name--text {
-  margin-left: 10px;
+  margin: 15px 0 5px 10px;
 
   font-weight: 200;
 }
 
 .single-launch__date {
   color: white;
-  background-color: #636262;
-
-  text-align: center;
+  background: linear-gradient(90deg, rgba(29, 29, 29, 1) 0%, rgba(41, 41, 41, 1) 100%);
 }
 
 .single-launch__date--text {
-  font-size: 18px;
+  margin: 5px 0 5px 10px;
+
+  font-size: 16px;
   font-weight: 200;
-}
-
-.single-launch__timer {
-  color: white;
-  background-color: #4b4b4b;
-  box-shadow: 0 5px 5px -5px black;
-
-  text-align: center;
-}
-
-.single-launch__timer--text {
-  margin: 10px;
-
-  font-size: 30px;
-  font-weight: 200;
-  letter-spacing: 5px;
 }
 
 .single-launch__item{
@@ -701,12 +673,13 @@ footer {
 }
 
 .single-launch__item--label {
+  margin-left: 3%;
   font-size: 18px;
 }
 
 .single-launch__item--info {
   width: 90%;
-  margin: 5px 0 0 10px;
+  margin: 5px 5% 0 5%;
   background-color: #c7c6c6;
   border-radius: 3px;
 
@@ -766,6 +739,10 @@ footer {
   display: inline-block;
 }
 
+.single-launch__item--last {
+  margin-bottom: 15px;
+}
+
 .single-launch__map {
   width: 90%;
   
@@ -775,10 +752,11 @@ footer {
 .single-launch__map--active {
   width: 100%;
   height: 500px;
+  border-radius: 3px;
 }
 
 /**********************************************************************************************************/
-/*                                             Media Queries                                              */
+/*                                          iPad Media Queries                                            */
 /**********************************************************************************************************/
 
 /* Rules for tablet/iPad */
@@ -816,6 +794,10 @@ footer {
   }
 }
 
+/**********************************************************************************************************/
+/*                                          Mobile Media Queries                                            */
+/**********************************************************************************************************/
+
 @media (max-width: 767px) {
   body {
     min-height: 100vh;
@@ -824,16 +806,6 @@ footer {
   .navbar {
     background: none;
     background-color: #232323;
-  }
-
-  /* Centers navbar title */
-  .navbar__title {
-    margin-left: 35%;
-  }
-
-  /* Used when on mobile and page with a back button */
-  .navbar__title--back-button {
-    margin-left: calc(35% - 65px);
   }
 
   /* ? Does this need to be here */
@@ -955,10 +927,6 @@ footer {
 
   .upcoming-component__info {
     min-height: 40px;
-  }
-
-  .upcoming-component__link:hover {
-    background-color: #636262;
   }
 
   .upcoming-mission {
@@ -1209,6 +1177,10 @@ footer {
     margin-top: calc(28% + 1px);
   }
 }
+
+/**********************************************************************************************************/
+/*                                      Small Screen Media Queries                                        */
+/**********************************************************************************************************/
 
 /* Rules for mobile */
 @media (max-width: 480px) {

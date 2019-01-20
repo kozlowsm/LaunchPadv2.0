@@ -28,18 +28,18 @@ function initMap() {
   const launch = { lat: latitude, lng: longitude };
   const center = { lat: latitude + offset, lng: longitude };
 
-  const mapDesktop = new google.maps.Map(document.getElementById('map-desktop'), {
-    zoom: 6,
-    center,
-    disableDefaultUI: true,
-  });
+  // const mapDesktop = new google.maps.Map(document.getElementById('map-desktop'), {
+  //   zoom: 6,
+  //   center,
+  //   disableDefaultUI: true,
+  // });
   const mapMobile = new google.maps.Map(document.getElementById('map-mobile'), {
     zoom: 6,
     center,
     disableDefaultUI: true,
   });
 
-  const markerDesktop = new google.maps.Marker({ position: launch, map: mapDesktop });
+  // const markerDesktop = new google.maps.Marker({ position: launch, map: mapDesktop });
   const markerMobile = new google.maps.Marker({ position: launch, map: mapMobile });
 
   const padName = document.querySelector('.upcoming-body__location--pad').textContent;
@@ -47,19 +47,19 @@ function initMap() {
 
   const contentString = `<h2 class='info-window-pad'>${padName}<h3 class='info-window-city'>${locName}</h3>`;
 
-  const infoWindowDesktop = new google.maps.InfoWindow({ content: contentString });
+  // const infoWindowDesktop = new google.maps.InfoWindow({ content: contentString });
   const infoWindowMobile = new google.maps.InfoWindow({ content: contentString });
 
-  infoWindowDesktop.open(mapDesktop, markerDesktop);
+  // infoWindowDesktop.open(mapDesktop, markerDesktop);
   infoWindowMobile.open(mapMobile, markerMobile);
 
   let openDesktop = true;
   let openMobile = true;
 
-  markerDesktop.addListener('click', () => {
-    openDesktop ? infoWindowDesktop.close() : infoWindowDesktop.open(mapDesktop, markerDesktop);
-    openDesktop = !openDesktop;
-  });
+  // markerDesktop.addListener('click', () => {
+  //   openDesktop ? infoWindowDesktop.close() : infoWindowDesktop.open(mapDesktop, markerDesktop);
+  //   openDesktop = !openDesktop;
+  // });
   markerMobile.addListener('click', () => {
     openMobile ? infoWindowMobile.close() : infoWindowMobile.open(mapMobile, markerMobile);
     openMobile = !openMobile;

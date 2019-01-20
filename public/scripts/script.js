@@ -359,6 +359,19 @@ function tickClock() {
   }
 }
 
+function initLaunchDates() {
+  const launchDates = document.querySelectorAll('.launch__date----test');
+
+  for(let i = 0; i < launchDates.length; i++) {
+    const windowStart = new Date(launchDates[i].querySelector('.launch__datetime').innerHTML);
+    console.log(windowStart);
+  }
+
+  // const windowStart = new Date(upcomingHeaderTextDate.innerHTML);
+  // const options = { hour12: true, year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+  // const userDate = windowStart.toLocaleDateString('en', options);
+}
+
 function run() {
   initMap();
   initUpcomingCountdown();
@@ -367,6 +380,7 @@ function run() {
   initDropdownButtons();
   initLoadButtons();
   convertCurrentTimeToUsersTime();
+  initLaunchDates();
   setInterval(tickClock, 1000);
 }
 

@@ -40,7 +40,8 @@ button {
   width: 100%;
   height: 60px;
   margin-bottom: 20px;
-  background: linear-gradient(90deg, rgba(35, 35, 35, 1) 0%, rgba(56, 56, 56, 1) 100%);
+  /* background: linear-gradient(90deg, rgba(35, 35, 35, 1) 0%, rgba(56, 56, 56, 1) 100%); */
+  background: linear-gradient(90deg, rgba(10,10,20,1) 50%, rgba(226,225,225,1) 100%);
   box-shadow: 0 5px 5px -5px black;
 
   /* display: flex;
@@ -49,10 +50,30 @@ button {
   align-items: center;
   justify-content: flex-start; */
   display: grid;
-  grid-template-columns: 0px 1fr;
+  grid-template-columns: 60px 0px 1fr;
   grid-template-rows: 100%;
 
   z-index: 10;
+}
+
+.header-decoration {
+  position: relative; 
+
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.header-decoration__anchor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+}
+
+.symbol-width-60 {
+  width: 60px;
+  height: 60px;
 }
 
 .navbar__back {
@@ -85,17 +106,20 @@ button {
 
 /* Sets title color, font, weight, and positions title to the left */
 .navbar__title {
-  color: #f9f9f9;
-  margin: 16px 0 0 3%;
-  margin-left: 3%;
+  margin: 16px 0 0 10px;
   transition: 0.2s;
-
-  font-size: 24px;
-  font-weight: 200;
-  text-decoration: none;
 
   grid-column: 2 / 3;
   grid-row: 1 / 2;
+}
+
+.navbar__link {
+  color: #f9f9f9;
+
+  font-size: 30px;
+  font-weight: 100;
+  text-decoration: none;
+  letter-spacing: 5px;
 }
 
 /* Defines side decoration to be used for any div */
@@ -123,7 +147,7 @@ button {
   margin: 0 15% 0 5%;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
-  background-color: #dddbdb;
+  background-color: #e2e1e1;
   box-shadow: 0px 3px 5px #8d8b8b, -3px 3px 5px #8d8b8b, 3px 3px 5px #8d8b8b;
 
   z-index: 0;
@@ -139,19 +163,25 @@ button {
   width: 100%;
   height: 90px;
   /* padding-top: 5px; */
-  background: linear-gradient(90deg, rgba(29, 29, 29, 1) 0%, rgba(41, 41, 41, 1) 100%);
+  /* background: linear-gradient(90deg, rgba(29, 29, 29, 1) 0%, rgba(41, 41, 41, 1) 100%); */
+  background: linear-gradient(90deg, rgba(10,10,20,1) 50%, rgba(226,225,225,1) 100%);
   box-shadow: 0 5px 5px -5px black;
   overflow: hidden;
 
   display: grid;
-  grid-template-columns: 65% 35%;
-  grid-template-rows: 1fr 30px;
+  grid-template-columns: 60px 65fr 35fr;
+  grid-template-rows: 60px 30px;
 
   z-index: 10;
 }
 
-.upcoming-header--left {
+.upcoming-header__decoration {
   grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.upcoming-header--left {
+  grid-column: 2 / 3;
   grid-row: 1 / 2;
 }
 
@@ -169,17 +199,18 @@ button {
 
 .upcoming-header__launch-name {
   color: white;
-  margin-top: 15px;
+  margin-top: 20px;
   margin-left: 5%;
 
   font-weight: 200;
+  letter-spacing: 3px;
 
   grid-column: 1 / 2;
   grid-row: 1 / 2;
 }
 
 .upcoming-header--right {
-  grid-column: 2 / 3;
+  grid-column: 3 / 4;
   grid-row: 1 / 2;
 
   display: grid;
@@ -190,8 +221,8 @@ button {
 .upcoming-header__date {
   height: 20px;
   margin: 0;
-  color: white;
-  background-color: #636262;
+  color: #0a0a14;
+  background-color: #b7b6b6;
 
   grid-column: 1 / 2;
   grid-row: 1 / 2;
@@ -201,6 +232,8 @@ button {
   margin: 5px 0 0 0;
   font-size: 12px;
   font-weight: 100;
+
+  font-weight: 400;
   text-align: center;
   letter-spacing: 1px;
 }
@@ -208,8 +241,8 @@ button {
 .upcoming-header__timer {
   height: 40px;
   margin: 0;
-  color: white;
-  background-color: #4b4b4b;
+  color: #0a0a14;
+  background-color: #8c8b8b;
 
   grid-column: 1 / 2;
   grid-row: 2 / 3;
@@ -225,21 +258,22 @@ button {
 }
 
 .upcoming-header--bottom {
-  grid-column: 1 / 3;
+  grid-column: 1 / 4;
   grid-row: 2 / 3;
 }
 
 .more-information {
   width: 100%;
   height: 30px;
-  color: white;
-  background: #636262;
+  color: #0a0a14;
+  background: #b7b6b6;
   border-radius: 0;
   transition: 0.2s;
 
   font-size: 16px;
   font-weight: 200;
   text-align: center;
+  letter-spacing: 4px;
 
   display: inline-block;
 }
@@ -299,14 +333,14 @@ button {
 }
 
 .upcoming-component__wiki {
-  color: #754330;
+  color: #363669;
 
   font-size: 16px;
   text-decoration: none;
 }
 
 .upcoming-component__wiki:hover {
-  color: #996956;
+  color: #7575a5;
 }
 
 .upcoming-component__wiki--disabled {
@@ -429,7 +463,7 @@ button {
 .livestream__button {
   width: 100%;
   height: 100%;
-  margin-top: 7px;
+  margin-top: 10px;
   color: white;
 
   text-decoration: none;
@@ -1195,4 +1229,128 @@ footer {
   .launch__subtext {
     margin: 3% 0 0 3%;
   }
+}
+
+/**********************************************************************************************************/
+/*                                             Test Styles                                                */
+/**********************************************************************************************************/
+
+.launches----test {
+  width: 90%;
+  margin: 3% 0 5% 5%;
+  transition: 0.2s;
+  overflow: hidden;
+  -webkit-transform: scale3d(1, 1, 1);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.launches__fields {
+  width: 100%;
+  height: 30px;
+
+  display: grid;
+  grid-template-columns: 90px 1fr 1fr 1fr;
+  grid-template-rows: 90px;
+}
+
+.launches__field {
+  height: 30px;
+  border-bottom: 1px solid #0a0a14;
+
+  text-align: left;
+}
+
+.launches__field--date {
+  width: 90px;
+  border-bottom: none;
+
+  text-align: center;
+
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.launches__mission {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+.launches__provider {
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+}
+
+.launches__location {
+  grid-column: 4 / 5;
+  grid-row: 1 / 2;
+}
+
+.field {
+  margin-top: 10px;
+
+  font-size: 16px;
+  font-weight: 200;
+  letter-spacing: 3px;
+
+  display: inline-block;
+}
+
+.launch----test {
+  height: 90px;
+  width: 100%;
+  margin: 2px 0;
+
+  display: grid;
+  grid-template-columns: 90px 1fr 1fr 1fr;
+  grid-template-rows: 90px;
+}
+
+.launch__date----test {
+  width: 60px;
+  height: 60px;
+  margin: 15px;
+  background-color: #e2e1e1;
+  border-radius: 3px;
+
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 29px 2px 29px;
+}
+
+.launch__month {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.launch__day {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+}
+
+.date-text {
+  margin: 7px 0 0 0;
+
+  font-weight: 100;
+  text-align: center;
+}
+
+.launch__component----test {
+  margin-right: 10px;
+
+  overflow: hidden;
+}
+
+.launch__mission----test {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+.launch__text {
+  margin-top: 35px;
+
+  font-size: 16px;
+  font-weight: 100;
+  letter-spacing: 1px;
 }

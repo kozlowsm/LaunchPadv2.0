@@ -1,0 +1,4 @@
+#0a0a14 - Deep dark blue
+#e2e1e1 - Moon white
+#b7b6b6 - Darker Moon white
+#8c8b8b - Dark side

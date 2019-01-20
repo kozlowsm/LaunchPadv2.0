@@ -11,6 +11,16 @@
 <body>
   <header>
     <div class="navbar">
+      <div class="header-decoration">
+        <a href="/" class="header-decoration__anchor">
+          <svg class="header-decoration__symbol symbol-width-60">
+            <g>
+              <circle cx="0" cy="30" r="3" stroke="#e2e1e1" fill="#e2e1e1"></circle>
+              <circle cx="-40" cy="30" r="90" stroke="#e2e1e1" stroke-width="2" fill="none"></circle>
+            </g>
+          </svg>
+        </a>
+      </div>
       <div class="navbar__back" hidden>
         <a href="/" class="navbar__back--button">
           <svg class="back-arrow" transform="rotate(90)">
@@ -24,7 +34,9 @@
           </svg>
         </a>
       </div>
-      <a href="/" class="navbar__title">Launchpad</a>
-      <div class="side-decoration"></div>
+      <div class="navbar__title">
+        <a href="/" class="navbar__link">Launchpad</a>
+      </div>
+      {{!-- <div class="side-decoration"></div> --}}
     </div>
   </header>

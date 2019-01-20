@@ -6285,6 +6285,7 @@ function initDropdownButtons() {
   const upcomingExpand = document.querySelector('.upcoming-expand');
   const upcomingCollapse = document.querySelector('.upcoming-collapse');
   const upcomingLaunch = document.querySelector('.upcoming-launch');
+  const mapMobile = document.querySelector('#map-mobile');
 
   // Set the number of loads possible (i.e. total launches / 5)
   numLoads = (launchList.length - 1) / 5 - 2;
@@ -6327,10 +6328,12 @@ function initDropdownButtons() {
 
   upcomingExpand.querySelector('.upcoming-expand__button').addEventListener('click', () => {
     upcomingLaunch.setAttribute('style', 'grid-template-rows: 150px 0px auto 90px');
+    mapMobile.hidden = false;
   });
 
   upcomingCollapse.querySelector('.upcoming-collapse__button').addEventListener('click', () => {
     upcomingLaunch.setAttribute('style', 'grid-template-rows: 150px 60px 0px 0px ');
+    mapMobile.hidden = true;
   });
 }
 
@@ -6499,6 +6502,19 @@ function tickClock() {
   }
 }
 
+function initLaunchDates() {
+  const launchDates = document.querySelectorAll('.launch__date----test');
+
+  for(let i = 0; i < launchDates.length; i++) {
+    const windowStart = new Date(launchDates[i].querySelector('.launch__datetime').innerHTML);
+    console.log(windowStart);
+  }
+
+  // const windowStart = new Date(upcomingHeaderTextDate.innerHTML);
+  // const options = { hour12: true, year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+  // const userDate = windowStart.toLocaleDateString('en', options);
+}
+
 function run() {
   initMap();
   initUpcomingCountdown();
@@ -6507,6 +6523,7 @@ function run() {
   initDropdownButtons();
   initLoadButtons();
   convertCurrentTimeToUsersTime();
+  initLaunchDates();
   setInterval(tickClock, 1000);
 }
 

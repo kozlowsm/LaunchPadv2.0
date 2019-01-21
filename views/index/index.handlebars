@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="upcoming-header--bottom">
-      <a href="/launches/{{data.launches.[0].id}}" class="more-information more-information--expand"><span>More
+      <a href="/launches/{{data.launches.[0].id}}" class="more-information"><span>More
           Information</span></a>
     </div>
   </div>
@@ -81,11 +81,10 @@
       <span class="upcoming-body__location--name" hidden>{{data.launches.[0].location.name}}</span>
       <span class="upcoming-body__location--lat" hidden>{{data.launches.[0].location.pads.[0].latitude}}</span>
       <span class="upcoming-body__location--lng" hidden>{{data.launches.[0].location.pads.[0].longitude}}</span>
-      <div class="upcoming-map--desktop" id="map-desktop"></div>
       <div class="upcoming-component map-component">
         <label for="location" class="upcoming-component__label">Location</label>
-        <div class="upcoming-component__text" name="location">
-          <div class="upcoming-map--mobile" id="map-mobile"></div>
+        <div class="map" name="location">
+          <div class="upcoming-map" id="map"></div>
         </div>
       </div>
       {{#if data.launches.[1].vidURLs}}
@@ -102,18 +101,12 @@
   </div>
   <div class="upcoming-collapse">
     <div class="upcoming-collapse__more-information">
-      <a href="/launches/{{data.launches.[0].id}}" class="more-information more-information--collapse" href="#"><span>More
+      <a href="/launches/{{data.launches.[0].id}}" class="more-information" href="#"><span>More
           Information</span></a>
     </div>
     <button class="upcoming-collapse__button">
       <svg class="upcoming-expand__down-arrow" transform="rotate(180)">
-        <defs>
-          <linearGradient id="grad-collapse" x1="100%" y1="0%" x2="0%" y2="0%" spreadMethod="pad">
-            <stop offset="0%" stop-color="#af5300" stop-opacity="1" />
-            <stop offset="100%" stop-color="#f5851f" stop-opacity="1" />
-          </linearGradient>
-        </defs>
-        <polygon points="16,6 26,6 26,21 36,21 21,36 6,21 16,21" fill="url(#grad-collapse)" filter="none"></polygon>
+        <polygon points="16,6 26,6 26,21 36,21 21,36 6,21 16,21" fill="#b0b1b3"></polygon>
       </svg>
     </button>
   </div>

@@ -6147,7 +6147,6 @@ const {
   isAfter,
 } = require('date-fns');
 
-let currentOffset = 0;
 let launchesHeight = 45;
 let numLoads = 0;
 let remainingLoads = 0;
@@ -6168,47 +6167,34 @@ function initMap() {
   const launch = { lat: latitude, lng: longitude };
   const center = { lat: latitude + offset, lng: longitude };
 
-  const mapDesktop = new google.maps.Map(document.getElementById('map-desktop'), {
-    zoom: 6,
-    center,
-    disableDefaultUI: true,
-  });
-  const mapMobile = new google.maps.Map(document.getElementById('map-mobile'), {
+  const map = new google.maps.Map(document.getElementById('map'), {
     zoom: 6,
     center,
     disableDefaultUI: true,
   });
 
-  const markerDesktop = new google.maps.Marker({ position: launch, map: mapDesktop });
-  const markerMobile = new google.maps.Marker({ position: launch, map: mapMobile });
+  const marker = new google.maps.Marker({ position: launch, map: map });
 
   const padName = document.querySelector('.upcoming-body__location--pad').textContent;
   const locName = document.querySelector('.upcoming-body__location--name').textContent;
 
   const contentString = `<h2 class='info-window-pad'>${padName}<h3 class='info-window-city'>${locName}</h3>`;
 
-  const infoWindowDesktop = new google.maps.InfoWindow({ content: contentString });
-  const infoWindowMobile = new google.maps.InfoWindow({ content: contentString });
+  const infoWindow = new google.maps.InfoWindow({ content: contentString });
 
-  infoWindowDesktop.open(mapDesktop, markerDesktop);
-  infoWindowMobile.open(mapMobile, markerMobile);
+  infoWindow.open(map, marker);
 
-  let openDesktop = true;
-  let openMobile = true;
+  let open = true;
 
-  markerDesktop.addListener('click', () => {
-    openDesktop ? infoWindowDesktop.close() : infoWindowDesktop.open(mapDesktop, markerDesktop);
-    openDesktop = !openDesktop;
-  });
-  markerMobile.addListener('click', () => {
-    openMobile ? infoWindowMobile.close() : infoWindowMobile.open(mapMobile, markerMobile);
-    openMobile = !openMobile;
+  marker.addListener('click', () => {
+    open ? infoWindow.close() : infoWindow.open(map, marker);
+    open = !open;
   });
 }
 
 function initUpcomingCountdown() {
   upcomingHeaderTimer = document.querySelector('.upcoming-header__text--countdown');
-  windowStart = new Date(document.querySelector('.upcoming-header__text--date').innerHTML);
+  const windowStart = new Date(document.querySelector('.upcoming-header__text--date').innerHTML);
   const now = new Date();
 
   let diffDays = differenceInDays(now, windowStart);
@@ -6239,23 +6225,23 @@ function initUpcomingCountdown() {
   upcomingHeaderTimer.innerHTML = `T - ${diffDays}:${diffHours}:${diffMinutes}:${diffSeconds}`;
 }
 
+function initExpandCollapse() {
+  const upcomingLaunch = document.querySelector('.upcoming-launch');
+  const upcomingExpand = document.querySelector('.upcoming-expand');
+  const upcomingCollapse = document.querySelector('.upcoming-collapse');
+
+  upcomingExpand.addEventListener('click', () => {
+    console.log('expand');
+    upcomingLaunch.setAttribute('style', 'grid-template-rows: 150px 0px auto 90px;');
+  });
+
+  upcomingCollapse.addEventListener('click', () => {
+    console.log('collapse');
+    upcomingLaunch.setAttribute('style', 'grid-template-rows: 150px 60px 0px 0px;');
+  });
+}
+
 function initLaunches() {
-  // const upcomingHeaderTextDate = document.querySelector('.upcoming-header__text--date');
-  // const windowStart = new Date(upcomingHeaderTextDate.innerHTML);
-  // const options = {
-  //   hour12: true,
-  //   year: 'numeric',
-  //   month: 'long',
-  //   day: 'numeric',
-  //   hour: '2-digit',
-  //   minute: '2-digit',
-  //   second: '2-digit',
-  // };
-  // const userDate = windowStart.toLocaleDateString('en', options);
-
-  // upcomingHeaderTextDate.innerHTML = userDate;
-
-  currentOffset += 10;
   const launches = document.querySelector('.launches');
   const launchList = document.querySelectorAll('.launch');
 
@@ -6275,7 +6261,6 @@ function initLaunches() {
     };
 
     const userDate = windowStart.toLocaleDateString('en', options);
-    console.log(userDate);
 
     launchMonthDay.innerHTML = userDate;
   }
@@ -6289,11 +6274,9 @@ function initLoadButtons() {
     console.log('clicked');
     if (numLoads > 1) {
       numLoads -= 1;
-      console.log('numLoads: ' + numLoads);
       launchesHeight += 400;
       launches.setAttribute('style', `height: ${launchesHeight}px`);
     } else {
-      console.log('numLoads = 0');
       launchesHeight += remainingLoads * 40;
       launches.setAttribute('style', `height: ${launchesHeight}px`);
       loadMoreButton.setAttribute('disabled', 'disabled');
@@ -6364,6 +6347,7 @@ function tickClock() {
 function run() {
   initMap();
   initUpcomingCountdown();
+  initExpandCollapse();
   initLaunches();
   initLoadButtons();
   convertCurrentTimeToUsersTime();

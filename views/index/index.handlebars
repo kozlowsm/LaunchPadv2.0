@@ -88,9 +88,9 @@
           <div class="upcoming-map--mobile" id="map-mobile"></div>
         </div>
       </div>
-      {{#if data.launches.[0].vidURLs}}
+      {{#if data.launches.[1].vidURLs}}
       <div class="livestream">
-        <a class="livestream__button" target="_blank" href="{{data.launches.[0].vidURLs.[0]}}">Watch
+        <a class="livestream__button" target="_blank" href="{{data.launches.[1].vidURLs.[0]}}">Watch
           Livestream</a>
       </div>
       {{else}}
@@ -138,7 +138,7 @@
   <a href="/launches/{{id}}" class="launch launch-{{@index}}">
     <div class="launch__date">
       <div class="launch__datetime" hidden>{{windowstart}}</div>
-      <h4 class="launch__month-day launch__text">JAN 13</h4>
+      <h4 class="launch__month-day launch__text"></h4>
     </div>
     <div class="launch__mission launch__component">
       <h4 class="launch__text ellipses-overflow" title="{{name}}">{{name}}</h4>

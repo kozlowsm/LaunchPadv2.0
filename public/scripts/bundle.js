@@ -6258,26 +6258,27 @@ function initLaunches() {
   currentOffset += 10;
   const launches = document.querySelector('.launches');
   const launchList = document.querySelectorAll('.launch');
-  const loadMoreButton = document.querySelector('.load-more__button');
 
   numLoads = (launchList.length - 1) / 10 - 1;
-  console.log('numLoads: ' + numLoads);
   remainingLoads = (launchList.length - 1) % 10;
-  console.log('remainingLoads: ' + remainingLoads);
 
-  // const width = window.innerWidth;
-  // if (width < 768) {
-  //   launches.setAttribute('style', `height: ${currentOffset * 40}px`);
-  //   launchesHeight = currentOffset * 72;
-  // }
-  // if (width >= 768) {
-  //   launches.setAttribute('style', `height: ${currentOffset * 92}px`);
-  //   launchesHeight = currentOffset * 92;
-  // }
-  console.log(launchesHeight);
-  console.log(currentOffset * 40);
   launchesHeight += 400;
   launches.setAttribute('style', `height: ${launchesHeight}px`);
+
+  for (let i = 0; i < launchList.length; i += 1) {
+    const launchMonthDay = launchList[i].querySelector('.launch__month-day');
+    let windowStart = new Date(launchList[i].querySelector('.launch__datetime').innerHTML);
+    const options = {
+      hour12: true,
+      month: 'short',
+      day: 'numeric',
+    };
+
+    const userDate = windowStart.toLocaleDateString('en', options);
+    console.log(userDate);
+
+    launchMonthDay.innerHTML = userDate;
+  }
 }
 
 function initLoadButtons() {
@@ -6302,123 +6303,6 @@ function initLoadButtons() {
     numLoads -= 1;
   });
 }
-
-// function initHoverButtons() {
-//   const launchButtons = document.querySelectorAll('.launch__button');
-//   const rightArrowSymbols = document.querySelectorAll('.right-arrow__symbol');
-
-//   for (let i = 0; i < launchButtons.length; i++) {
-//     launchButtons[i].addEventListener('mouseover', event => {
-//       launchButtons[i].setAttribute('style', 'background-color: #dddbdb');
-//       rightArrowSymbols[i].setAttribute('fill', 'url(#grad-desk)');
-//       rightArrowSymbols[i].setAttribute('filter', 'url(#dropshadow-desk)');
-//     });
-
-//     launchButtons[i].addEventListener('mouseout', event => {
-//       launchButtons[i].setAttribute('style', 'background-color: #636262');
-//       rightArrowSymbols[i].setAttribute('fill', '#b0b1b3');
-//       rightArrowSymbols[i].setAttribute('filter', 'none');
-//     });
-//   }
-// }
-
-// function initDropdownButtons() {
-//   const launches = document.querySelector('.launches');
-//   const launchList = document.querySelectorAll('.launch');
-//   const launchHeaders = document.querySelectorAll('.launch__header');
-//   const launchTitles = document.querySelectorAll('.launch__title');
-
-//   const launchDropdowns = document.querySelectorAll('.launch__dropdown');
-//   const downArrowSymbols = document.querySelectorAll('.down-arrow__symbol');
-
-//   const upcomingExpand = document.querySelector('.upcoming-expand');
-//   const upcomingCollapse = document.querySelector('.upcoming-collapse');
-//   const upcomingLaunch = document.querySelector('.upcoming-launch');
-
-//   // Set the number of loads possible (i.e. total launches / 5)
-//   numLoads = (launchList.length - 1) / 5 - 2;
-//   // Numer of launches to load after all but less than 5 launches are left
-//   remainingLoads = (launchList.length - 1) % 5;
-
-//   for (let i = 0; i < launchDropdowns.length; i++) {
-//     // The repetitive nesting is a fix for a bug allowing infinite expansion/collapsing
-
-//     // eslint-disable-next-line no-loop-func
-//     launchDropdowns[i].addEventListener('click', () => {
-//       if (launchList[i].offsetHeight === 60) {
-//         launchList[i].setAttribute('style', 'height: 360px');
-//         launches.setAttribute('style', `height: ${launchesHeight + 300}px`);
-//         launchesHeight += 300;
-
-//         launchHeaders[i].classList.toggle('launch__header--open');
-//         launchTitles[i].classList.toggle('launch__title--open');
-//         launchDropdowns[i].classList.toggle('launch__dropdown--open');
-//         downArrowSymbols[i].setAttribute(
-//           'fill',
-//           downArrowSymbols[i].getAttribute('fill') === '#b0b1b3' ? 'url(#grad-mob)' : '#b0b1b3'
-//         );
-//         downArrowSymbols[i].classList.toggle('down-arrow__symbol--rotated');
-//       } else if (launchList[i].offsetHeight === 360) {
-//         launchList[i].setAttribute('style', 'height: 60px');
-//         launches.setAttribute('style', `height: ${launchesHeight - 300}px`);
-//         launchesHeight -= 300;
-//         launchHeaders[i].classList.toggle('launch__header--open');
-//         launchTitles[i].classList.toggle('launch__title--open');
-//         launchDropdowns[i].classList.toggle('launch__dropdown--open');
-//         downArrowSymbols[i].setAttribute(
-//           'fill',
-//           downArrowSymbols[i].getAttribute('fill') === '#b0b1b3' ? 'url(#grad-mob)' : '#b0b1b3'
-//         );
-//         downArrowSymbols[i].classList.toggle('down-arrow__symbol--rotated');
-//       }
-//     });
-//   }
-
-//   upcomingExpand.querySelector('.upcoming-expand__button').addEventListener('click', () => {
-//     upcomingLaunch.setAttribute('style', 'grid-template-rows: 150px 0px auto 90px');
-//   });
-
-//   upcomingCollapse.querySelector('.upcoming-collapse__button').addEventListener('click', () => {
-//     upcomingLaunch.setAttribute('style', 'grid-template-rows: 150px 60px 0px 0px ');
-//   });
-// }
-
-// function initLoadButtons() {
-//   const launchesParent = document.querySelector('.launches');
-//   const loadMoreButton = document.querySelector('.load-more__button');
-
-//   const width = window.innerWidth;
-
-//   loadMoreButton.addEventListener('click', event => {
-//     if (numLoads > 0) {
-//       currentOffset += 5;
-//       if (width < 768) {
-//         launchesParent.setAttribute('style', `height: ${launchesHeight + 5 * 72}px`);
-//         launchesHeight += 5 * 72;
-//       }
-//       if (width >= 768) {
-//         launchesParent.setAttribute('style', `height: ${launchesHeight + 5 * 92}px`);
-//         launchesHeight += 5 * 92;
-//       }
-//       for (let i = 0; i < 5; i++) {
-//         launchesParent.querySelector(`.launch-${currentOffset - 5 + i}`).hidden = false;
-//       }
-//     } else {
-//       if (width < 768) {
-//         launchesParent.setAttribute('style', `height: ${launchesHeight + remainingLoads * 72}px`);
-//         launchesHeight += remainingLoads * 72;
-//       }
-//       if (width >= 768) {
-//         launchesParent.setAttribute('style', `height: ${launchesHeight + remainingLoads * 92}px`);
-//         launchesHeight += remainingLoads * 92;
-//       }
-//       loadMoreButton.setAttribute('disabled', 'disabled');
-//       loadMoreButton.classList.toggle('load-more__button--disabled');
-//       loadMoreButton.innerHTML = 'No More Launches to Load';
-//     }
-//     numLoads--;
-//   });
-// }
 
 function convertCurrentTimeToUsersTime() {
   const upcomingHeaderTextDate = document.querySelector('.upcoming-header__text--date');
@@ -6481,8 +6365,6 @@ function run() {
   initMap();
   initUpcomingCountdown();
   initLaunches();
-  // initHoverButtons();
-  // initDropdownButtons();
   initLoadButtons();
   convertCurrentTimeToUsersTime();
   setInterval(tickClock, 1000);

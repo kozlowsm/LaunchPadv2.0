@@ -87,9 +87,9 @@
           <div class="upcoming-map" id="map"></div>
         </div>
       </div>
-      {{#if data.launches.[1].vidURLs}}
+      {{#if data.launches.[0].vidURLs}}
       <div class="livestream">
-        <a class="livestream__button" target="_blank" href="{{data.launches.[1].vidURLs.[0]}}">Watch
+        <a class="livestream__button" target="_blank" href="{{data.launches.[0].vidURLs.[0]}}">Watch
           Livestream</a>
       </div>
       {{else}}

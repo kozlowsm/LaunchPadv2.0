@@ -816,7 +816,7 @@ footer {
 
 .single-launch {
   width: 60%;
-  margin: 10px 0;
+  margin: 10px 20px;
   background-color: #e2e1e1;
   box-shadow: 3px 3px 3px #98989b;
 
@@ -857,6 +857,8 @@ footer {
 }
 
 .single-launch__body {
+  padding-left: 10px;
+
   display: flex;
   flex-direction: column;
 }
@@ -928,7 +930,7 @@ footer {
 }
 
 .mission__text {
-  margin: 3px 0 0 5px;
+  margin: 5px 0 0 5px;
 }
 
 .single-launch__mission-name {
@@ -941,7 +943,8 @@ footer {
 }
 
 .single-launch__mission-desc {
-  margin-bottom: 5px;
+  margin: 0 10px 10px 10px;
+  line-height: 18px;
 }
 
 .city {

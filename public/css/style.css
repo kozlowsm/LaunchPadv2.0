@@ -930,7 +930,7 @@ footer {
 }
 
 .mission__text {
-  margin: 3px 0 0 5px;
+  margin: 5px 0 0 5px;
 }
 
 .single-launch__mission-name {
@@ -943,7 +943,8 @@ footer {
 }
 
 .single-launch__mission-desc {
-  margin-bottom: 5px;
+  margin: 0 10px 10px 10px;
+  line-height: 18px;
 }
 
 .city {

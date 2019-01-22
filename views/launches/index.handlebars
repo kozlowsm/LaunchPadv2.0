@@ -1,62 +1,84 @@
 <div class="single-launch">
-  <div class="single-launch__block single-launch__name">
-    <h1 class="single-launch__name--text">{{data.launches.[0].name}}</h1>
+  <div class="single-launch__header">
+    <div class="single-launch__header-decoration header-decoration">
+      <a href="/" class="header-decoration__anchor">
+        <svg class="header-decoration__symbol symbol-width-60">
+          <g>
+            <circle cx="0" cy="30" r="3" stroke="#e2e1e1" fill="#e2e1e1"></circle>
+            <circle cx="-40" cy="30" r="90" stroke="#e2e1e1" stroke-width="2" fill="none"></circle>
+          </g>
+        </svg>
+      </a>
+    </div>
+    <div class="single-launch__name">
+      <h2 class="single-launch__text single-launch__text--big ellipses-overflow">{{data.launches.[0].name}}</h2>
+    </div>
+    <div class="single-launch__date">
+      <h3 class="single-launch__text single-launch__text--small ellipses-overflow">{{data.launches.[0].windowstart}}</h3>
+    </div>
   </div>
-  <div class="single-launch__block single-launch__date">
-    <h2 class="single-launch__date--text">{{data.launches.[0].windowstart}}</h2>
-  </div>
-  <div class="single-launch__item single-launch__provider">
-    <label for="provider" class="single-launch__item--label">Provider</label>
-    <div class="single-launch__item--info single-launch__item--grid" name="provider">
+  <div class="single-launch__body">
+    <div class="single-launch__item single-launch__provider">
+      <label for="provider" class="single-launch__label">Provider</label>
       {{#if data.launches.[0].lsp.wikiURL}}
-      <a href="{{data.launches.[0].lsp.wikiURL}}" class="upcoming-component__text upcoming-component__wiki" name="provider"
-        target="_blank">{{data.launches.[0].lsp.name}}</a>
+      <a href="{{data.launches.[0].lsp.wikiURL}}" class="label-item label-item--link provider" name="provider">
+        <h4 class="label-item__text provider__text ellipses-overflow">{{data.launches.[0].lsp.name}}</h4>
+      </a>
       {{else}}
-      <h3 class="upcoming-component__text upcoming-component__wiki--disabled" name="provider">{{data.launches.[0].lsp.name}}</h3>
+      <div class="label-item provider" name="provider">
+        <h4 class="label-item__text provider__text ellipses-overflow">{{data.launches.[0].lsp.name}}</h4>
+      </div>
       {{/if}}
     </div>
-  </div>
-  <div class="single-launch__item single-launch__rocket">
-    <label for="rocket" class="single-launch__item--label">Rocket</label>
-    <div class="single-launch__item--info single-launch__item--grid" name="rocket">
-      {{#if data.launches.[0].rocket.wikiURL}}
-      <a href="{{data.launches.[0].rocket.wikiURL}}" class="upcoming-component__text upcoming-component__wiki" name="rocket"
-        target="_blank">{{data.launches.[0].rocket.name}}</a>
-      {{else}}
-      <h3 class="upcoming-component__text upcoming-component__wiki upcoming-component__wiki--disabled" name="rocket">{{data.launches.[0].rocket.name}}</h3>
-      {{/if}}
+    <div class="single-launch__item single-launch__rocket">
+      <label for="rocket" class="single-launch__label">Rocket</label>
+      <a href="{{data.launches.[0].rocket.wikiURL}}" class="label-item label-item--link rocket" name="rocket">
+        <h4 class="label-item__text ellipses-overflow">{{data.launches.[0].rocket.name}}</h4>
+      </a>
     </div>
-  </div>
-  <div class="single-launch__item single-launch__mission">
-    <label for="mission" class="single-launch__item--label">Mission</label>
-    {{#if data.launches.[0].missions}}
-    <div class="single-launch__item--info mission" name="mission">
-      <h3 class="mission__name single-launch__item--text">{{data.launches.[0].missions.[0].name}}</h3>
-      <h4 class="mission__type single-launch__item--text">{{data.launches.[0].missions.[0].typeName}}</h4>
-      <h5 class="mission__desc single-launch__item--text">{{data.launches.[0].missions.[0].description}}</h5>
+    <div class="single-launch__item single-launch__mission">
+      <label for="mission" class="single-launch__label">Mission</label>
+      <div class="label-item mission" name="mission">
+        <div class="mission__text single-launch__mission-name">{{data.launches.[0].missions.[0].name}}</div>
+        <div class="mission__text single-launch__mission-type">for {{data.launches.[0].missions.[0].typeName}}</div>
+        <div class="mission__text single-launch__mission-desc">{{data.launches.[0].missions.[0].description}}</div>
+      </div>
     </div>
-    {{else}}
-    <div class="single-launch__item--info mission mission--not-available" name="mission">
-      <h3 class="mission__no-text">No Mission Available</h3>
+    <div class="single-launch__item single-launch__city">
+      <label for="city" class="single-launch__label">City</label>
+      <div class="label-item city" name="city">
+        <h4 class="label-item__text ellipses-overflow">{{data.launches.[0].location.name}}</h4>
+      </div>
     </div>
-    {{/if}}
-  </div>
-  <div class="single-launch__item single-launch__location">
-    <label for="location" class="single-launch__item--label">Location</label>
-    <div class="single-launch__item--info single-launch__item--grid" name="location">
-      <h4 class="single-launch__item--text single-launch__location--text">{{data.launches.[0].location.name}}</h4>
-    </div>
-  </div>
-  <div class="single-launch__item single-launch__item--last">
-    <label for="map" class="single-launch__item--label">Map</label>
-    <div class="single-launch__item--info single-launch__map" name="map">
+    <div class="single-launch__item single-launch__location">
+      <label for="location" class="single-launch__label">Location</label>
       <div class="single-launch__map--lat" hidden>{{data.launches.[0].location.pads.[0].latitude}}</div>
       <div class="single-launch__map--lng" hidden>{{data.launches.[0].location.pads.[0].longitude}}</div>
       <div class="single-launch__map--pad" hidden>{{data.launches.[0].location.pads.[0].name}}</div>
-      <div class="single-launch__map--active" name="map"></div>
+      <div class="single-launch__map--loc" hidden>{{data.launches.[0].location.name}}</div>
+      <div class="label-item single-launch__map" id="single-launch__map" name="location"></div>
+    </div>
+    <div class="single-launch__item single-launch__livestream">
+      <label for="livestream" class="single-launch__label">Livestream</label>
+      <div class="label-item livestream-link" name="livestream">
+        <h4 class="label-item__text livestream-link__text">Livestream is
+          {{#if data.launches.[0].vidURLs}}
+          <a href="{{data.launches.[0].vidURLs.[0]}}" class="livestream-link__anchor livestream-link--available">available</a>
+          {{else}}
+          <span class="livestream-link__anchor livestream-link--unavailable">unavailable</span>
+          {{/if}}
+        </h4>
+      </div>
     </div>
   </div>
-  <div class="side-decoration"></div>
+  <div class="single-launch__footer">
+    <div class="single-launch__backwards">
+      <a href="/" class="back-to-launches">Back To Launches</a>
+    </div>
+    <div class="single-launch__updated">
+      <h5 class="updated">Current as of {{data.launches.[0].changed}}</h5>
+    </div>
+  </div>
 </div>
 
 <script src="/scripts/launches.js"></script>

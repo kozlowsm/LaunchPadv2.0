@@ -688,10 +688,9 @@ footer {
 /*                                         Single Launch Styles                                           */
 /**********************************************************************************************************/
 
-.single-launch {
+/* .single-launch {
   position: relative;
   width: 70%;
-  /* height: 100vh; */
   margin: 0 15% 0 15%;
   background-color: #dddbdb;
   border-bottom-left-radius: 3px;
@@ -781,10 +780,7 @@ footer {
 
 .mission--not-available {
   height: 50px;
-  /* padding: 20px 0; */
   background-color: #e7e7e7;
-
-  /* font-size: 36px; */
 }
 
 .mission__no-text {
@@ -814,6 +810,223 @@ footer {
   width: 100%;
   height: 500px;
   border-radius: 3px;
+} */
+
+.single-launch {
+  width: 60%;
+  margin: 10px 0;
+  background-color: #e2e1e1;
+  box-shadow: 3px 3px 3px #98989b;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.single-launch__header {
+  width: 100%;
+  height: 60px;
+  background-color: #0a0a14;
+
+  display: block;
+}
+
+.single-launch__header-decoration {
+  opacity: 0.25;
+}
+
+.single-launch__text {
+  color: white;
+
+  font-weight: 200;
+}
+
+.single-launch__text--big {
+  margin: 15px auto auto 10px;
+  letter-spacing: 3px;
+
+  font-size: 24px;
+}
+
+.single-launch__text--small {
+  margin: 3px 0 0 10px;
+
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.single-launch__body {
+  display: flex;
+  flex-direction: column;
+}
+
+.single-launch__item {
+  margin: 5px 0 5px 10px;
+  height: auto;
+
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto 30px;
+}
+
+.single-launch__mission {
+  height: auto;
+
+  grid-template-rows: auto auto;
+}
+
+.single-launch__location {
+  height: auto;
+
+  grid-template-rows: auto auto;
+}
+
+.single-launch__label {
+  margin: 4px 0;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.label-item {
+  width: 90%;
+  height: 30px;
+  margin: 0 10% 0 0;
+  color: #0a0a14;
+  background-color: #c7c6c6;
+  border-radius: 3px;
+
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+.label-item:hover {
+  color: #7575a5;
+}
+
+.label-item--link {
+  color: #363669;
+
+  text-decoration: none;
+}
+
+.label-item__text {
+  width: calc(100% - 5px);
+  margin: 6px 0 0 5px;
+  display: inline-block;
+
+  font-weight: 400;
+}
+
+.mission {
+  height: auto;
+  color: #0a0a14;
+}
+
+.mission {
+  pointer-events: none;
+}
+
+.mission__text {
+  margin: 3px 0 0 5px;
+}
+
+.single-launch__mission-name {
+  font-size: 24px;
+}
+
+.single-launch__mission-type {
+  margin-bottom: 7px;
+  font-size: 18px;
+}
+
+.single-launch__mission-desc {
+  margin-bottom: 5px;
+}
+
+.city {
+  pointer-events: none;
+}
+
+.single-launch__map {
+  height: 400px;
+  margin-bottom: 10px;
+}
+
+.single-launch__map:hover {
+  color: #0a0a14;
+}
+
+.single-launch__livestream {
+  margin-bottom: 10px;
+}
+
+.livestream-link {
+  text-align: center;
+}
+
+.livestream-link:hover {
+  color: #0a0a14;
+}
+
+.livestream-link__text {
+  font-size: 20px;
+}
+
+.livestream-link--available {
+  color: #363669;
+
+  text-decoration: none;
+}
+
+.livestream-link--available:hover {
+  color: #7575a5;
+}
+
+.livestream-link--unavailable {
+  color: #65657a;
+}
+
+.single-launch__footer {
+  width: 100%;
+  height: 90px;
+  background-color: #0a0a14;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.single-launch__backwards {
+  margin: 5px;
+
+  grid-column: 1 / 5;
+  grid-row: 2 / 3;
+}
+
+.back-to-launches {
+  color: white;
+
+  font-weight: 200;
+  text-decoration: none;
+}
+
+.back-to-launches:hover {
+  color: rgb(197, 197, 197);
+}
+
+.single-launch__updated {
+  margin: 10px 15px 5px 0;
+  text-align: right;
+
+  grid-column: 1 / 5;
+  grid-row: 3 / 4;
+}
+
+.updated {
+  margin: 0;
+  color: rgb(116, 116, 116);
+
+  font-weight: 400;
+  letter-spacing: 1px;
 }
 
 /**********************************************************************************************************/
@@ -1248,6 +1461,37 @@ footer {
   footer {
     align-self: flex-end;
     margin-top: calc(28% + 1px);
+  }
+
+  .single-launch {
+    width: 100%;
+    margin: 0;
+  }
+
+  .label-item:hover {
+    color: #363669;
+  }
+
+  .livestream-link:hover {
+    color: #0a0a14;
+  }
+
+  .livestream-link--available {
+    color: #434391;
+
+    text-decoration: none;
+  }
+
+  .livestream-link--available:hover {
+    color: #434391;
+  }
+
+  .livestream-link--unavailable {
+    color: #7c7c94;
+  }
+
+  .back-to-launches:hover {
+    color: white;
   }
 }
 

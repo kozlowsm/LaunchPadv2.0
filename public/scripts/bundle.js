@@ -6138,7 +6138,7 @@ function subYears (dirtyDate, dirtyAmount) {
 module.exports = subYears
 
 },{"../add_years/index.js":11}],161:[function(require,module,exports){
-// Take only what you need
+// date-fns imports
 const {
   differenceInSeconds,
   differenceInMinutes,
@@ -6151,7 +6151,7 @@ let launchesHeight = 45;
 let numLoads = 0;
 let remainingLoads = 0;
 
-// Time Variables
+// Variables used for timer countdown
 let upcomingHeaderTimer = null;
 let currentDiffDays = 0;
 let currentDiffHours = 0;
@@ -6159,7 +6159,7 @@ let currentDiffMinutes = 0;
 let currentDiffSeconds = 0;
 let inTheFuture = true;
 
-function initMap() {
+function initNextLaunchMap() {
   const offset = 1.83;
   const latitude = +document.querySelector('.upcoming-body__location--lat').textContent;
   const longitude = +document.querySelector('.upcoming-body__location--lng').textContent;
@@ -6173,7 +6173,7 @@ function initMap() {
     disableDefaultUI: true,
   });
 
-  const marker = new google.maps.Marker({ position: launch, map: map });
+  const marker = new google.maps.Marker({ position: launch, map });
 
   const padName = document.querySelector('.upcoming-body__location--pad').textContent;
   const locName = document.querySelector('.upcoming-body__location--name').textContent;
@@ -6345,7 +6345,7 @@ function tickClock() {
 }
 
 function run() {
-  initMap();
+  initNextLaunchMap();
   initUpcomingCountdown();
   initExpandCollapse();
   initLaunches();

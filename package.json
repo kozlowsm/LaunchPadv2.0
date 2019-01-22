@@ -4,9 +4,14 @@
   "description": "LaunchPad version 2.0 - site redesign",
   "main": "index.js",
   "scripts": {
-    "start": "browserify public/scripts/script.js -o public/scripts/bundle.js && node server.js",
+    "start": "node server.js",
+    "start1": "browserify public/scripts/script.js -o public/scripts/bundle.js && node server.js",
+    "deploy": "node server.js",
     "format": "prettier --write '**/*.{js,jsx,json}'",
     "lint": "eslint '**/*.{js,jsx,json}' --quiet"
+  },
+  "engines": {
+    "node": "10.9.0"
   },
   "repository": {
     "type": "git",

@@ -46,10 +46,14 @@ function initNextLaunchMap() {
 
   let open = true;
 
-  marker.addListener('click', () => {
-    open ? infoWindow.close() : infoWindow.open(map, marker);
-    open = !open;
-  });
+  marker.addListener(
+    'click',
+    () => {
+      open ? infoWindow.close() : infoWindow.open(map, marker);
+      open = !open;
+    },
+    { passive: true }
+  );
 }
 
 function initUpcomingCountdown() {
@@ -90,15 +94,23 @@ function initExpandCollapse() {
   const upcomingExpand = document.querySelector('.upcoming-expand');
   const upcomingCollapse = document.querySelector('.upcoming-collapse');
 
-  upcomingExpand.addEventListener('click', () => {
-    console.log('expand');
-    upcomingLaunch.setAttribute('style', 'grid-template-rows: 150px 0px auto 90px;');
-  });
+  upcomingExpand.addEventListener(
+    'click',
+    () => {
+      console.log('expand');
+      upcomingLaunch.setAttribute('style', 'grid-template-rows: 150px 0px auto 90px;');
+    },
+    { passive: true }
+  );
 
-  upcomingCollapse.addEventListener('click', () => {
-    console.log('collapse');
-    upcomingLaunch.setAttribute('style', 'grid-template-rows: 150px 60px 0px 0px;');
-  });
+  upcomingCollapse.addEventListener(
+    'click',
+    () => {
+      console.log('collapse');
+      upcomingLaunch.setAttribute('style', 'grid-template-rows: 150px 60px 0px 0px;');
+    },
+    { passive: true }
+  );
 }
 
 function initLaunches() {
@@ -130,21 +142,25 @@ function initLoadButtons() {
   const launches = document.querySelector('.launches');
   let loadMoreButton = document.querySelector('.load-more__button');
 
-  loadMoreButton.addEventListener('click', () => {
-    console.log('clicked');
-    if (numLoads > 1) {
+  loadMoreButton.addEventListener(
+    'click',
+    () => {
+      console.log('clicked');
+      if (numLoads > 1) {
+        numLoads -= 1;
+        launchesHeight += 400;
+        launches.setAttribute('style', `height: ${launchesHeight}px`);
+      } else {
+        launchesHeight += remainingLoads * 40;
+        launches.setAttribute('style', `height: ${launchesHeight}px`);
+        loadMoreButton.setAttribute('disabled', 'disabled');
+        loadMoreButton.classList.toggle('load-more__button--disabled');
+        loadMoreButton.innerHTML = 'No More Launches to Load';
+      }
       numLoads -= 1;
-      launchesHeight += 400;
-      launches.setAttribute('style', `height: ${launchesHeight}px`);
-    } else {
-      launchesHeight += remainingLoads * 40;
-      launches.setAttribute('style', `height: ${launchesHeight}px`);
-      loadMoreButton.setAttribute('disabled', 'disabled');
-      loadMoreButton.classList.toggle('load-more__button--disabled');
-      loadMoreButton.innerHTML = 'No More Launches to Load';
-    }
-    numLoads -= 1;
-  });
+    },
+    { passive: true }
+  );
 }
 
 function convertCurrentTimeToUsersTime() {

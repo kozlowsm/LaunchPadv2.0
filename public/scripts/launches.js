@@ -25,10 +25,14 @@ function initLaunchMap() {
 
   let open = true;
 
-  marker.addListener('click', () => {
-    open ? infoWindow.close() : infoWindow.open(map, marker);
-    open = !open;
-  });
+  marker.addListener(
+    'click',
+    () => {
+      open ? infoWindow.close() : infoWindow.open(map, marker);
+      open = !open;
+    },
+    { passive: true }
+  );
 }
 
 function convertCurrentTimeToUsersTime() {

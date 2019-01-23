@@ -18,8 +18,6 @@ router.get('/', (req, res) => {
 
 router.get('/api/launches/:count', (req, res) => {
   const { count } = req.params;
-  console.log(count);
-  console.log('Seems to be working');
   res.json({ count });
 });
 

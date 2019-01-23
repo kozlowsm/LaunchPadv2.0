@@ -8,7 +8,7 @@ const exphbs = require('express-handlebars');
 const helmet = require('helmet');
 const responseTime = require('response-time');
 const morgan = require('morgan');
-// const cors = require('cors');
+const cors = require('cors');
 
 // Custom Modules
 const { eachBetween, jsonItUp } = require('./utilities/hbsHelpers');
@@ -23,6 +23,7 @@ const launchProviders = require('./routes/launchProvider');
 const app = express();
 
 // Middleware
+app.use(cors());
 app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

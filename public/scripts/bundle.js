@@ -6253,7 +6253,7 @@ function initLaunches() {
 
   for (let i = 0; i < launchList.length; i += 1) {
     const launchMonthDay = launchList[i].querySelector('.launch__month-day');
-    let windowStart = new Date(launchList[i].querySelector('.launch__datetime').innerHTML);
+    const windowStart = new Date(launchList[i].querySelector('.launch__datetime').innerHTML);
     const options = {
       hour12: true,
       month: 'short',
@@ -6268,7 +6268,7 @@ function initLaunches() {
 
 function initLoadButtons() {
   const launches = document.querySelector('.launches');
-  let loadMoreButton = document.querySelector('.load-more__button');
+  const loadMoreButton = document.querySelector('.load-more__button');
 
   loadMoreButton.addEventListener('click', () => {
     console.log('clicked');
@@ -6343,6 +6343,14 @@ function tickClock() {
     upcomingHeaderTimer.innerHTML = 'In Progress';
   }
 }
+
+const data = fetch('localhost:3000/api/launches/10'); // fetch('https://www.lpad.space/api/launches/10');
+data
+  .then(res => res.json())
+  .then(res => console.log(res))
+  .catch(err => console.error(err));
+
+console.log('this thing on?');
 
 function run() {
   initNextLaunchMap();

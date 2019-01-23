@@ -40,11 +40,17 @@
     </div>
     <div class="single-launch__item single-launch__mission">
       <label for="mission" class="single-launch__label">Mission</label>
+      {{#if data.launches.[0].missions}}
       <div class="label-item mission" name="mission">
         <div class="mission__text single-launch__mission-name">{{data.launches.[0].missions.[0].name}}</div>
         <div class="mission__text single-launch__mission-type">for {{data.launches.[0].missions.[0].typeName}}</div>
         <div class="mission__text single-launch__mission-desc">{{data.launches.[0].missions.[0].description}}</div>
       </div>
+      {{else}}
+      <div class="label-item mission mission--no-mission" name="mission">
+        <div class="mission__text mission__text--no-mission">No Mission Available</div>
+      </div>
+      {{/if}}
     </div>
     <div class="single-launch__item single-launch__city">
       <label for="city" class="single-launch__label">City</label>

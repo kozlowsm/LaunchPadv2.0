@@ -18,7 +18,12 @@ router.get('/', (req, res) => {
 
 router.get('/api/launches/:count', (req, res) => {
   const { count } = req.params;
-  res.json({ count });
+  const launchData = getLaunchData(count);
+  launchData
+    .then(data => res.json({ data }))
+    .catch(err => {
+      throw new Error(err);
+    });
 });
 
 module.exports = router;

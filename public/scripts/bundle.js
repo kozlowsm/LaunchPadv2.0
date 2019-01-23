@@ -6344,13 +6344,13 @@ function tickClock() {
   }
 }
 
-const data = fetch('localhost:3000/api/launches/10'); // fetch('https://www.lpad.space/api/launches/10');
-data
-  .then(res => res.json())
-  .then(res => console.log(res))
-  .catch(err => console.error(err));
+// const data = fetch('localhost:3000/api/launches/10'); // fetch('https://www.lpad.space/api/launches/10');
+// data
+//   .then(res => res.json())
+//   .then(res => console.log(res))
+//   .catch(err => console.error(err));
 
-console.log('this thing on?');
+// console.log('this thing on?');
 
 function run() {
   initNextLaunchMap();

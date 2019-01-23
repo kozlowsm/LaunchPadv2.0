@@ -21,7 +21,7 @@
     <div class="single-launch__item single-launch__provider">
       <label for="provider" class="single-launch__label">Provider</label>
       {{#if data.launches.[0].lsp.wikiURL}}
-      <a href="{{data.launches.[0].lsp.wikiURL}}" class="label-item label-item--link provider" name="provider">
+      <a rel="noopener" href="{{data.launches.[0].lsp.wikiURL}}" class="label-item label-item--link provider" name="provider">
         <h4 class="label-item__text provider__text ellipses-overflow">{{data.launches.[0].lsp.name}}</h4>
       </a>
       {{else}}
@@ -32,7 +32,7 @@
     </div>
     <div class="single-launch__item single-launch__rocket">
       <label for="rocket" class="single-launch__label">Rocket</label>
-      <a href="{{data.launches.[0].rocket.wikiURL}}" class="label-item label-item--link rocket" name="rocket">
+      <a rel="noopener" href="{{data.launches.[0].rocket.wikiURL}}" class="label-item label-item--link rocket" name="rocket">
         <h4 class="label-item__text ellipses-overflow">{{data.launches.[0].rocket.name}}</h4>
       </a>
     </div>
@@ -63,7 +63,7 @@
       <div class="label-item livestream-link" name="livestream">
         <h4 class="label-item__text livestream-link__text">Livestream is
           {{#if data.launches.[0].vidURLs}}
-          <a href="{{data.launches.[0].vidURLs.[0]}}" class="livestream-link__anchor livestream-link--available">available</a>
+          <a rel="noopener" href="{{data.launches.[0].vidURLs.[0]}}" class="livestream-link__anchor livestream-link--available">available</a>
           {{else}}
           <span class="livestream-link__anchor livestream-link--unavailable">unavailable</span>
           {{/if}}

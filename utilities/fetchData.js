@@ -27,6 +27,10 @@ const getSingleLaunchData = async launchID => {
   return data;
 };
 
+const requestLaunches = async (count = 5) => {
+  
+}
+
 module.exports = {
   getLaunchData,
   getSingleLaunchData,

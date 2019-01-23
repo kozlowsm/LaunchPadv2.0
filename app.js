@@ -8,6 +8,7 @@ const exphbs = require('express-handlebars');
 const helmet = require('helmet');
 const responseTime = require('response-time');
 const morgan = require('morgan');
+// const cors = require('cors');
 
 // Custom Modules
 const { eachBetween, jsonItUp } = require('./utilities/hbsHelpers');

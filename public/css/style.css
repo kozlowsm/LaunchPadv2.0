@@ -368,7 +368,7 @@ button {
 }
 
 .upcoming-mission {
-  min-height: 210px;
+  height: 210px;
   margin-top: 0;
   overflow: scroll;
 
@@ -934,10 +934,6 @@ footer {
 
 /* Rules for tablet/iPad */
 @media (min-width: 768px) and (max-width: 1024px) {
-  .upcoming-launch {
-    height: 55vh;
-  }
-
   .upcoming-component__text {
     font-size: 16px;
   }
@@ -947,8 +943,8 @@ footer {
     font-size: 18px;
   }
 
-  .upcoming-mission {
-    min-height: 121px;
+  .upcoming-body__location {
+    margin-top: 7px;
   }
 
   .upcoming-component__mission--no-mission {
@@ -965,6 +961,11 @@ footer {
 
   .upcoming-mission__desc {
     font-size: 16px;
+  }
+
+  .map-component {
+    margin-right: 0;
+    margin-left: 0;
   }
 }
 

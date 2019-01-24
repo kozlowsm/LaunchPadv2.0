@@ -164,7 +164,8 @@ button {
   height: 90px;
   /* padding-top: 5px; */
   /* background: linear-gradient(90deg, rgba(29, 29, 29, 1) 0%, rgba(41, 41, 41, 1) 100%); */
-  background: linear-gradient(90deg, rgba(10, 10, 20, 1) 50%, rgba(226, 225, 225, 1) 100%);
+  /* background: linear-gradient(90deg, rgba(10, 10, 20, 1) 50%, rgba(226, 225, 225, 1) 100%); */
+  background-color: #0a0a14;
   box-shadow: 0 5px 5px -5px black;
   overflow: hidden;
 
@@ -250,7 +251,7 @@ button {
   grid-row: 2 / 3;
 }
 
-.upcoming-header__timer > .upcoming-header__text {
+.upcoming-header__text--countdown {
   margin: 7px 0 0 0;
 
   font-size: 30px;
@@ -695,7 +696,7 @@ footer {
 
 .single-launch {
   width: 60%;
-  margin: 10px 20px;
+  margin: 10px 20%;
   background-color: #e2e1e1;
   box-shadow: 3px 3px 3px #98989b;
 
@@ -723,14 +724,14 @@ footer {
 }
 
 .single-launch__text--big {
-  margin: 10px auto 5px 10px;
+  margin: 6px auto 5px 10px;
   letter-spacing: 3px;
 
   font-size: 24px;
 }
 
 .single-launch__text--small {
-  margin: 0px 0 0 10px;
+  margin: 0 0 4px 10px;
 
   font-size: 14px;
   letter-spacing: 1px;
@@ -794,7 +795,7 @@ footer {
 
 .label-item__text {
   width: calc(100% - 5px);
-  margin: 7px 0 0 5px;
+  margin: 5px 0 0 5px;
   display: inline-block;
 
   font-weight: 400;
@@ -895,7 +896,9 @@ footer {
 }
 
 .single-launch__backwards {
-  margin: 5px;
+  margin: 5px 10px 5px 5px;
+
+  text-align: right;
 
   grid-column: 1 / 5;
   grid-row: 2 / 3;
@@ -913,8 +916,8 @@ footer {
 }
 
 .single-launch__updated {
-  margin: 10px 15px 5px 0;
-  text-align: right;
+  margin: 10px 0 5px 15px;
+  text-align: left;
 
   grid-column: 1 / 5;
   grid-row: 3 / 4;
@@ -967,6 +970,10 @@ footer {
     margin-right: 0;
     margin-left: 0;
   }
+
+  .livestream__button {
+    margin-top: 5px;
+  }
 }
 
 /**********************************************************************************************************/
@@ -980,8 +987,7 @@ footer {
   /* Changes navbar to solid color from gradient*/
   .navbar {
     margin: 0;
-    background: none;
-    background-color: #232323;
+    background-color: #0a0a14;
   }
 
   /* ? Does this need to be here */
@@ -1008,7 +1014,7 @@ footer {
     height: 150px;
     padding: auto;
     background: none;
-    background-color: #1e1e1e;
+    background-color: #0d0d25;
 
     grid-column: 1 / 2;
     grid-row: 1 / 2;
@@ -1044,6 +1050,10 @@ footer {
 
   .upcoming-header__timer {
     font-size: 28px;
+  }
+
+  .upcoming-header__text--countdown {
+    margin-top: 3px;
   }
 
   .upcoming-header--bottom {
@@ -1135,6 +1145,10 @@ footer {
 
   .info-window-pad {
     width: 100%;
+  }
+
+  .livestream__button {
+    margin-top: 5px;
   }
 
   .upcoming-collapse {

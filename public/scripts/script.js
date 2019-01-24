@@ -91,6 +91,8 @@ function initUpcomingCountdown() {
 
 function initExpandCollapse() {
   const upcomingLaunch = document.querySelector('.upcoming-launch');
+  const upcomingHeader = document.querySelector('.upcoming-header');
+
   const upcomingExpand = document.querySelector('.upcoming-expand');
   const upcomingCollapse = document.querySelector('.upcoming-collapse');
 
@@ -98,7 +100,8 @@ function initExpandCollapse() {
     'click',
     () => {
       console.log('expand');
-      upcomingLaunch.setAttribute('style', 'grid-template-rows: 150px 0px auto 90px;');
+      upcomingCollapse.setAttribute('style', 'display: unset');
+      upcomingLaunch.setAttribute('style', 'grid-template-rows: 150px 0px auto 30px;');
     },
     { passive: true }
   );
@@ -107,7 +110,8 @@ function initExpandCollapse() {
     'click',
     () => {
       console.log('collapse');
-      upcomingLaunch.setAttribute('style', 'grid-template-rows: 150px 60px 0px 0px;');
+      upcomingCollapse.setAttribute('style', 'display: none');
+      upcomingLaunch.setAttribute('style', 'grid-template-rows: 150px 30px 0px 0px;');
     },
     { passive: true }
   );

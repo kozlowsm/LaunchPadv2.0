@@ -91,6 +91,8 @@ function initUpcomingCountdown() {
 
 function initExpandCollapse() {
   const upcomingLaunch = document.querySelector('.upcoming-launch');
+  const upcomingHeader = document.querySelector('.upcoming-header');
+
   const upcomingExpand = document.querySelector('.upcoming-expand');
   const upcomingCollapse = document.querySelector('.upcoming-collapse');
 
@@ -98,7 +100,8 @@ function initExpandCollapse() {
     'click',
     () => {
       console.log('expand');
-      upcomingLaunch.setAttribute('style', 'grid-template-rows: 150px 0px auto 90px;');
+      upcomingCollapse.setAttribute('style', 'display: unset');
+      upcomingLaunch.setAttribute('style', 'grid-template-rows: 150px 0px auto 30px;');
     },
     { passive: true }
   );
@@ -107,7 +110,8 @@ function initExpandCollapse() {
     'click',
     () => {
       console.log('collapse');
-      upcomingLaunch.setAttribute('style', 'grid-template-rows: 150px 60px 0px 0px;');
+      upcomingCollapse.setAttribute('style', 'display: none');
+      upcomingLaunch.setAttribute('style', 'grid-template-rows: 150px 30px 0px 0px;');
     },
     { passive: true }
   );
@@ -125,7 +129,7 @@ function initLaunches() {
 
   for (let i = 0; i < launchList.length; i += 1) {
     const launchMonthDay = launchList[i].querySelector('.launch__month-day');
-    let windowStart = new Date(launchList[i].querySelector('.launch__datetime').innerHTML);
+    const windowStart = new Date(launchList[i].querySelector('.launch__datetime').innerHTML);
     const options = {
       hour12: true,
       month: 'short',
@@ -140,7 +144,7 @@ function initLaunches() {
 
 function initLoadButtons() {
   const launches = document.querySelector('.launches');
-  let loadMoreButton = document.querySelector('.load-more__button');
+  const loadMoreButton = document.querySelector('.load-more__button');
 
   loadMoreButton.addEventListener(
     'click',

@@ -31,7 +31,7 @@
   <div class="upcoming-expand">
     <button aria-label="Expand launch information" class="upcoming-expand__button">
       <svg class="upcoming-expand__down-arrow">
-        <polygon points="16,6 26,6 26,21 36,21 21,36 6,21 16,21" fill="#b0b1b3" filter="none"></polygon>
+        <polyline points="0,4 25,24 50,4" fill="none" stroke="#8c8b8b" stroke-width="5"></polyline>
       </svg>
     </button>
   </div>
@@ -98,16 +98,16 @@
           Unavailable</a>
       </div>
       {{/if}}
+      <div class="more-information more-information--mobile">
+        <a aria-label="More information" href="/launches/{{data.launches.[0].id}}" class="more-information" href="#"><span>More
+            Information</span></a>
+      </div>
     </div>
   </div>
   <div class="upcoming-collapse">
-    <div class="upcoming-collapse__more-information">
-      <a aria-label="More information" href="/launches/{{data.launches.[0].id}}" class="more-information" href="#"><span>More
-          Information</span></a>
-    </div>
     <button aria-label="Collapse launch information" class="upcoming-collapse__button">
-      <svg class="upcoming-expand__down-arrow" transform="rotate(180)">
-        <polygon points="16,6 26,6 26,21 36,21 21,36 6,21 16,21" fill="#b0b1b3"></polygon>
+      <svg class="upcoming-expand__down-arrow">
+        <polyline points="0,26 25,6 50,26" fill="none" stroke="#8c8b8b" stroke-width="5"></polyline>
       </svg>
     </button>
   </div>

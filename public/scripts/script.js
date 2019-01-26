@@ -18,13 +18,18 @@ let currentDiffHours = 0;
 let currentDiffMinutes = 0;
 let currentDiffSeconds = 0;
 let inTheFuture = true;
-
+/**
+ * Initializes map for upcoming launch along with map marker and info window.
+ */
 function initNextLaunchMap() {
+  /** Offset used to center map over info window instead of marker */
   const offset = 1.83;
   const latitude = +document.querySelector('.upcoming-body__location--lat').textContent;
   const longitude = +document.querySelector('.upcoming-body__location--lng').textContent;
 
+  /** Marker location */
   const launch = { lat: latitude, lng: longitude };
+  /** Map center point (with offset) */
   const center = { lat: latitude + offset, lng: longitude };
 
   const map = new google.maps.Map(document.getElementById('map'), {
@@ -38,6 +43,7 @@ function initNextLaunchMap() {
   const padName = document.querySelector('.upcoming-body__location--pad').textContent;
   const locName = document.querySelector('.upcoming-body__location--name').textContent;
 
+  /** HTML to go in the info window */
   const contentString = `<h2 class='info-window-pad'>${padName}<h3 class='info-window-city'>${locName}</h3>`;
 
   const infoWindow = new google.maps.InfoWindow({ content: contentString });
@@ -46,6 +52,7 @@ function initNextLaunchMap() {
 
   let open = true;
 
+  /** Open and close info window on click */
   marker.addListener(
     'click',
     () => {
@@ -55,7 +62,9 @@ function initNextLaunchMap() {
     { passive: true }
   );
 }
-
+/**
+ * Initialize current countdown time until launch
+ */
 function initUpcomingCountdown() {
   upcomingHeaderTimer = document.querySelector('.upcoming-header__text--countdown');
   const windowStart = new Date(document.querySelector('.upcoming-header__text--date').innerHTML);
@@ -79,7 +88,7 @@ function initUpcomingCountdown() {
 
   inTheFuture = isAfter(windowStart, now);
 
-  // If the launch is in the future, use 'T-'
+  /** If the launch is in the future, use 'T-' */
   if (inTheFuture) {
     diffDays = diffDays <= -10 ? -diffDays : `0${-diffDays}`;
     diffHours = diffHours <= -10 ? -diffHours : `0${-diffHours}`;
@@ -88,15 +97,17 @@ function initUpcomingCountdown() {
   }
   upcomingHeaderTimer.innerHTML = `T - ${diffDays}:${diffHours}:${diffMinutes}:${diffSeconds}`;
 }
-
+/**
+ * Adds functionality to expand and collapse button in mobile to show and hide upcoming launch
+ */
 function initExpandCollapse() {
+  /** Wrapper to change height of */
   const upcomingLaunchWrapper = document.querySelector('.upcoming-launch__wrapper');
-  const upcomingLaunch = document.querySelector('.upcoming-launch');
-  const upcomingHeader = document.querySelector('.upcoming-header');
 
   const upcomingExpand = document.querySelector('.upcoming-expand');
   const upcomingCollapse = document.querySelector('.upcoming-collapse');
 
+  /** Expand upcoming launch, hide the expand button, show the collapse button */
   upcomingExpand.addEventListener(
     'click',
     () => {
@@ -107,6 +118,7 @@ function initExpandCollapse() {
     { passive: true }
   );
 
+  /** Collapse upcoming launch, hide the collapse button, show the expand button */
   upcomingCollapse.addEventListener(
     'click',
     () => {
@@ -118,8 +130,11 @@ function initExpandCollapse() {
     { passive: true }
   );
 }
-
+/**
+ * Initializes the dates and of all launches and the height of the wrapper element
+ */
 function initLaunches() {
+  // TODO: Change functionality to not change the height
   const launches = document.querySelector('.launches');
   const launchList = document.querySelectorAll('.launch');
 
@@ -143,8 +158,11 @@ function initLaunches() {
     launchMonthDay.innerHTML = userDate;
   }
 }
-
+/**
+ * Loads more launches
+ */
 function initLoadButtons() {
+  // TODO: Requires complete rewrite
   const launches = document.querySelector('.launches');
   const loadMoreButton = document.querySelector('.load-more__button');
 
@@ -168,7 +186,9 @@ function initLoadButtons() {
     { passive: true }
   );
 }
-
+/**
+ * Converts upcoming launch date to the users local timezone
+ */
 function convertCurrentTimeToUsersTime() {
   const upcomingHeaderTextDate = document.querySelector('.upcoming-header__text--date');
   const windowStart = new Date(upcomingHeaderTextDate.innerHTML);
@@ -185,14 +205,16 @@ function convertCurrentTimeToUsersTime() {
 
   upcomingHeaderTextDate.innerHTML = userDate;
 }
-
+/**
+ * Every second, click the countdown timer down until T-0, then changed to 'In Progress'
+ */
 function tickClock() {
   if (currentDiffSeconds === 0) {
     if (currentDiffMinutes === 0) {
       if (currentDiffHours === 0) {
         if (currentDiffDays === 0) {
           inTheFuture = false;
-          upcomingHeaderTimer.innerHTML = 'In Flight';
+          upcomingHeaderTimer.innerHTML = 'In Progress';
         } else {
           currentDiffDays -= 1;
           currentDiffHours = 23;
@@ -225,7 +247,9 @@ function tickClock() {
     upcomingHeaderTimer.innerHTML = 'In Progress';
   }
 }
-
+/**
+ * On window load, run all of the following routines.
+ */
 function run() {
   initNextLaunchMap();
   initUpcomingCountdown();

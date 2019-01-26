@@ -6230,6 +6230,7 @@ function initUpcomingCountdown() {
 }
 
 function initExpandCollapse() {
+  const upcomingLaunchWrapper = document.querySelector('.upcoming-launch__wrapper');
   const upcomingLaunch = document.querySelector('.upcoming-launch');
   const upcomingHeader = document.querySelector('.upcoming-header');
 
@@ -6239,9 +6240,9 @@ function initExpandCollapse() {
   upcomingExpand.addEventListener(
     'click',
     () => {
-      console.log('expand');
+      upcomingExpand.setAttribute('style', 'display: none');
       upcomingCollapse.setAttribute('style', 'display: unset');
-      upcomingLaunch.setAttribute('style', 'grid-template-rows: 150px 0px auto 30px;');
+      upcomingLaunchWrapper.classList.toggle('upcoming-launch__wrapper--open');
     },
     { passive: true }
   );
@@ -6250,8 +6251,9 @@ function initExpandCollapse() {
     'click',
     () => {
       console.log('collapse');
+      upcomingExpand.setAttribute('style', 'display: unset');
       upcomingCollapse.setAttribute('style', 'display: none');
-      upcomingLaunch.setAttribute('style', 'grid-template-rows: 150px 30px 0px 0px;');
+      upcomingLaunchWrapper.classList.toggle('upcoming-launch__wrapper--open');
     },
     { passive: true }
   );

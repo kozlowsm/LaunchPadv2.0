@@ -125,9 +125,8 @@ button {
   width: 90%;
   height: 500px;
   margin: 0 15% 0 5%;
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
   background-color: #e2e1e1;
+  box-shadow: 3px 3px 3px #8b8b94, -3px 3px 3px #8b8b94;
 
   z-index: 0;
 }
@@ -282,7 +281,6 @@ button {
 .upcoming-body__data {
   height: auto;
   margin-bottom: 5px;
-  /* overflow: scroll; */
 }
 
 .upcoming-component {
@@ -970,15 +968,23 @@ footer {
     opacity: 0.25;
   }
 
+  .upcoming-launch__wrapper {
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+  }
+
+  .upcoming-launch__wrapper--open {
+    height: 100%;
+  }
+
   .upcoming-launch {
     width: 100%;
     height: auto;
     margin: 0;
-    box-shadow: none;
 
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 150px 30px 0px 0px;
+    display: flex;
+    flex-direction: column;
   }
 
   .upcoming-header {
@@ -1032,38 +1038,12 @@ footer {
     grid-row: 3 / 4;
   }
 
-  .upcoming-expand {
-    display: unset;
-    background-color: #636262;
-    overflow: hidden;
-    transition: 0.2s;
-    z-index: 0;
-
-    grid-column: 1 / 2;
-    grid-row: 2 / 3;
-  }
-
-  .upcoming-expand__button {
-    width: 100%;
-    height: 100%;
-    background-color: #b0b1b3;
-    border-radius: 0;
-  }
-
-  .upcoming-expand__down-arrow {
-    width: 50px;
-    height: 30px;
-    margin: 0 calc(50% - 50px);
-
-    display: inline-block;
-  }
-
   .upcoming-body {
     height: auto;
     overflow: hidden;
 
     grid-column: 1 / 2;
-    grid-row: 3 / 4;
+    grid-row: 2 / 3;
 
     display: flex;
     flex-direction: column;
@@ -1137,15 +1117,38 @@ footer {
     display: unset;
   }
 
+  .upcoming-expand {
+    width: 100%;
+    height: 30px;
+    transition: 0.2s;
+    z-index: 0;
+
+    display: unset;
+  }
+
+  .upcoming-expand__button {
+    width: 100%;
+    height: 30px;
+    background-color: #b0b1b3;
+    border-radius: 0;
+  }
+
+  .upcoming-expand__down-arrow {
+    width: 50px;
+    height: 30px;
+    margin: 0 calc(50% - 50px);
+
+    display: inline-block;
+  }
+
   .upcoming-collapse {
     height: 30px;
-    overflow: hidden;
     z-index: 20;
   }
 
   .upcoming-collapse__button {
     width: 100%;
-    height: 100%;
+    height: 30px;
     background-color: #b0b1b3;
     border-radius: 0;
   }

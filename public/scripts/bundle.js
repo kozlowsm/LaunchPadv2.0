@@ -6202,6 +6202,7 @@ function initNextLaunchMap() {
     { passive: true }
   );
 }
+
 /**
  * Initialize current countdown time until launch
  */
@@ -6237,6 +6238,7 @@ function initUpcomingCountdown() {
   }
   upcomingHeaderTimer.innerHTML = `T - ${diffDays}:${diffHours}:${diffMinutes}:${diffSeconds}`;
 }
+
 /**
  * Adds functionality to expand and collapse button in mobile to show and hide upcoming launch
  */
@@ -6251,8 +6253,10 @@ function initExpandCollapse() {
   upcomingExpand.addEventListener(
     'click',
     () => {
-      upcomingExpand.setAttribute('style', 'display: none');
-      upcomingCollapse.setAttribute('style', 'display: unset');
+      upcomingExpand.classList.toggle('upcoming-expand--hidden');
+      upcomingExpand.classList.toggle('upcoming-expand--unset');
+      upcomingCollapse.classList.toggle('upcoming-collapse--hidden');
+      upcomingCollapse.classList.toggle('upcoming-collapse--unset');
       upcomingLaunchWrapper.classList.toggle('upcoming-launch__wrapper--open');
     },
     { passive: true }
@@ -6263,13 +6267,16 @@ function initExpandCollapse() {
     'click',
     () => {
       console.log('collapse');
-      upcomingExpand.setAttribute('style', 'display: unset');
-      upcomingCollapse.setAttribute('style', 'display: none');
+      upcomingExpand.classList.toggle('upcoming-expand--hidden');
+      upcomingExpand.classList.toggle('upcoming-expand--unset');
+      upcomingCollapse.classList.toggle('upcoming-collapse--hidden');
+      upcomingCollapse.classList.toggle('upcoming-collapse--unset');
       upcomingLaunchWrapper.classList.toggle('upcoming-launch__wrapper--open');
     },
     { passive: true }
   );
 }
+
 /**
  * Initializes the dates and of all launches and the height of the wrapper element
  */
@@ -6298,6 +6305,7 @@ function initLaunches() {
     launchMonthDay.innerHTML = userDate;
   }
 }
+
 /**
  * Loads more launches
  */
@@ -6320,12 +6328,14 @@ function initLoadButtons() {
         loadMoreButton.setAttribute('disabled', 'disabled');
         loadMoreButton.classList.toggle('load-more__button--disabled');
         loadMoreButton.innerHTML = 'No More Launches to Load';
+        loadMoreButton.setAttribute('style', 'color: #b9b9b9; background-color: #929292');
       }
       numLoads -= 1;
     },
     { passive: true }
   );
 }
+
 /**
  * Converts upcoming launch date to the users local timezone
  */
@@ -6345,6 +6355,7 @@ function convertCurrentTimeToUsersTime() {
 
   upcomingHeaderTextDate.innerHTML = userDate;
 }
+
 /**
  * Every second, click the countdown timer down until T-0, then changed to 'In Progress'
  */
@@ -6391,7 +6402,6 @@ function tickClock() {
 /**
  * On window load, run all of the following routines.
  */
-
 function run() {
   initNextLaunchMap();
   initUpcomingCountdown();

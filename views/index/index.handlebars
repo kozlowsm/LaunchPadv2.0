@@ -53,18 +53,30 @@
             {{/if}}
           </div>
         </div>
+        <div class="upcoming-component upcoming-component__livestream">
+          <label for="livestream" class="upcoming-component__label">Livestream</label>
+          <div class="upcoming-component__info">
+            <h4 class="livestream upcoming-component__text">Livestream is
+              {{#if data.launches.[0].vidURLs}}
+              <a aria-label="Livestream link" rel="noopener" href="{{data.launches.[0].vidURLs.[0]}}" class="livestream__link">available</a>
+              {{else}}
+              <a aria-label="Livestream link unavailable" class="livestream__link livestream__link--unavailable">unavailable</a>
+              {{/if}}
+            </h4>
+          </div>
+        </div>
         <div class="upcoming-component upcoming-component__mission">
           <label for="mission" class="upcoming-component__label">Mission</label>
           {{#if data.launches.[0].missions}}
-          <div class="upcoming-component__info upcoming-mission">
+          <div class="upcoming-component__info upcoming-component__mission upcoming-mission">
             <div class="upcoming-component__text upcoming-mission__text">
               <h2 class="upcoming-mission__name">{{data.launches.[0].missions.[0].name}}</h2>
-              <h3 class="upcoming-mission__type">{{data.launches.[0].missions.[0].typeName}}</h3>
+              <h3 class="upcoming-mission__type">for {{data.launches.[0].missions.[0].typeName}}</h3>
               <h4 class="upcoming-mission__desc">{{data.launches.[0].missions.[0].description}}</h4>
             </div>
           </div>
           {{else}}
-          <div class="upcoming-component__mission upcoming-component__mission--no-mission">
+          <div class="upcoming-component__info upcoming-component__mission upcoming-component__mission--no-mission upcoming-mission">
             <h1 class="upcoming-component__no-mission">No Mission Available</h1>
           </div>
           {{/if}}
@@ -75,39 +87,25 @@
         <span class="upcoming-body__location--name" hidden>{{data.launches.[0].location.name}}</span>
         <span class="upcoming-body__location--lat" hidden>{{data.launches.[0].location.pads.[0].latitude}}</span>
         <span class="upcoming-body__location--lng" hidden>{{data.launches.[0].location.pads.[0].longitude}}</span>
-        <div class="upcoming-component map-component">
-          <label for="location" class="upcoming-component__label">Location</label>
-          <div class="map" name="location">
-            <div class="upcoming-map" id="map"></div>
-          </div>
+        <div class="map" name="location">
+          <div class="upcoming-map" id="map"></div>
         </div>
-        {{#if data.launches.[0].vidURLs}}
-        <div class="livestream">
-          <a aria-label="Livestream link" rel="noopener" class="livestream__button" target="_blank" href="{{data.launches.[0].vidURLs.[0]}}">Watch
-            Livestream</a>
-        </div>
-        {{else}}
-        <div class="livestream livestream--disabled">
-          <a aria-label="Livestream link disabled" class="livestream__button livestream__button--disabled">Livestream
-            Unavailable</a>
-        </div>
-        {{/if}}
-        <div class="more-information more-information--mobile">
-          <a aria-label="More information" href="/launches/{{data.launches.[0].id}}" class="more-information" href="#"><span>More
-              Information</span></a>
-        </div>
+      </div>
+      <div class="more-information more-information--mobile">
+        <a aria-label="More information" href="/launches/{{data.launches.[0].id}}" class="more-information"><span>More
+            Information</span></a>
       </div>
     </div>
   </div>
 </div>
-<div class="upcoming-expand">
+<div class="upcoming-expand upcoming-expand--unset">
   <button aria-label="Expand launch information" class="upcoming-expand__button">
     <svg class="upcoming-expand__down-arrow">
       <polyline points="0,4 25,24 50,4" fill="none" stroke="#8c8b8b" stroke-width="5"></polyline>
     </svg>
   </button>
 </div>
-<div class="upcoming-collapse">
+<div class="upcoming-collapse upcoming-collapse--hidden">
   <button aria-label="Collapse launch information" class="upcoming-collapse__button">
     <svg class="upcoming-expand__down-arrow">
       <polyline points="0,26 25,6 50,26" fill="none" stroke="#8c8b8b" stroke-width="5"></polyline>

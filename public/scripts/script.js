@@ -180,6 +180,7 @@ function initLoadButtons() {
         loadMoreButton.setAttribute('disabled', 'disabled');
         loadMoreButton.classList.toggle('load-more__button--disabled');
         loadMoreButton.innerHTML = 'No More Launches to Load';
+        loadMoreButton.setAttribute('style', 'color: #b9b9b9; background-color: #929292');
       }
       numLoads -= 1;
     },

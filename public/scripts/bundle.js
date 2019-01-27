@@ -6387,9 +6387,11 @@ function tickClock() {
     upcomingHeaderTimer.innerHTML = 'In Progress';
   }
 }
+
 /**
  * On window load, run all of the following routines.
  */
+
 function run() {
   initNextLaunchMap();
   initUpcomingCountdown();

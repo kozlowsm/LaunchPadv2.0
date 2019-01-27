@@ -27,7 +27,22 @@ const getSingleLaunchData = async launchID => {
   return data;
 };
 
+// const requestLaunches = async (count = 5) => {
+//   const china = 88;
+//   const url = `https://launchlibrary.net/1.4/launch/next/${count}/?mode=verbose`;
+//   const response = await fetch(url);
+//   let data = await response.json();
+
+//   //Filter out chinese launches
+//   data.launches = data.launches.filter((launch) => {
+//     return launch.lsp.id !== china;
+//   });
+
+//   return data;
+// }
+
 module.exports = {
   getLaunchData,
   getSingleLaunchData,
+  // requestLaunches,
 };

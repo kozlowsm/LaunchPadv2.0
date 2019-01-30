@@ -828,16 +828,8 @@ footer {
   margin-bottom: 10px;
 }
 
-.livestream-link {
-  text-align: center;
-}
-
 .livestream-link:hover {
   color: #0a0a14;
-}
-
-.livestream-link__text {
-  font-size: 20px;
 }
 
 .livestream-link--available {
@@ -1041,8 +1033,7 @@ footer {
   }
 
   .upcoming-component__info {
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
+    margin-right: 15px;
   }
 
   /* .upcoming-component__text {
@@ -1076,9 +1067,11 @@ footer {
   }
 
   .upcoming-map {
-    width: 100%;
-    margin: 0 0 10px 0;
+    width: calc(100% - 30px);
+    height: calc(100% - 10px);
+    margin: 0 15px 10px 15px;
     border: none;
+    border-radius: 3px;
   }
 
   .info-window-pad {

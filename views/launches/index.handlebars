@@ -38,6 +38,24 @@
         <h4 class="label-item__text ellipses-overflow">{{data.launches.[0].rocket.name}}</h4>
       </a>
     </div>
+    <div class="single-launch__item single-launch__city">
+      <label for="city" class="single-launch__label">City</label>
+      <div class="label-item city" name="city">
+        <h4 class="label-item__text ellipses-overflow">{{data.launches.[0].location.name}}</h4>
+      </div>
+    </div>
+    <div class="single-launch__item single-launch__livestream">
+      <label for="livestream" class="single-launch__label">Livestream</label>
+      <div class="label-item livestream-link" name="livestream">
+        <h4 class="label-item__text livestream-link__text">Livestream is
+          {{#if data.launches.[0].vidURLs}}
+          <a aria-label="Livestream link" rel="noopener" href="{{data.launches.[0].vidURLs.[0]}}" class="livestream-link__anchor livestream-link--available">available</a>
+          {{else}}
+          <span class="livestream-link__anchor livestream-link--unavailable">unavailable</span>
+          {{/if}}
+        </h4>
+      </div>
+    </div>
     <div class="single-launch__item single-launch__mission">
       <label for="mission" class="single-launch__label">Mission</label>
       {{#if data.launches.[0].missions}}
@@ -52,12 +70,6 @@
       </div>
       {{/if}}
     </div>
-    <div class="single-launch__item single-launch__city">
-      <label for="city" class="single-launch__label">City</label>
-      <div class="label-item city" name="city">
-        <h4 class="label-item__text ellipses-overflow">{{data.launches.[0].location.name}}</h4>
-      </div>
-    </div>
     <div class="single-launch__item single-launch__location">
       <label for="location" class="single-launch__label">Location</label>
       <div class="single-launch__map--lat" hidden>{{data.launches.[0].location.pads.[0].latitude}}</div>
@@ -65,18 +77,6 @@
       <div class="single-launch__map--pad" hidden>{{data.launches.[0].location.pads.[0].name}}</div>
       <div class="single-launch__map--loc" hidden>{{data.launches.[0].location.name}}</div>
       <div class="label-item single-launch__map" id="single-launch__map" name="location"></div>
-    </div>
-    <div class="single-launch__item single-launch__livestream">
-      <label for="livestream" class="single-launch__label">Livestream</label>
-      <div class="label-item livestream-link" name="livestream">
-        <h4 class="label-item__text livestream-link__text">Livestream is
-          {{#if data.launches.[0].vidURLs}}
-          <a aria-label="Livestream link" rel="noopener" href="{{data.launches.[0].vidURLs.[0]}}" class="livestream-link__anchor livestream-link--available">available</a>
-          {{else}}
-          <span class="livestream-link__anchor livestream-link--unavailable">unavailable</span>
-          {{/if}}
-        </h4>
-      </div>
     </div>
   </div>
   <div class="single-launch__footer">

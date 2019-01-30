@@ -828,16 +828,8 @@ footer {
   margin-bottom: 10px;
 }
 
-.livestream-link {
-  text-align: center;
-}
-
 .livestream-link:hover {
   color: #0a0a14;
-}
-
-.livestream-link__text {
-  font-size: 20px;
 }
 
 .livestream-link--available {
